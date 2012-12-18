@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sovelluslogiikkaTests;
+package mafia.sovelluslogiikka;
 
 import mafia.sovelluslogiikka.Peli;
 import mafia.sovelluslogiikka.Pelaaja;
@@ -43,14 +43,14 @@ public class PeliTest {
 
     @Test
     public void alussaEiPelaajia() {
-        assertEquals(peli.getPelaajat().size(), 0);
+        assertEquals(0, peli.getPelaajat().size());
     }
 
     @Test
     public void lisaaYksiPelaaja() {
         Pelaaja pelaaja = new Pelaaja("Arto");
         peli.lisaaPelaaja(pelaaja);
-        assertEquals(peli.getPelaajat().size(), 1);
+        assertEquals(1, peli.getPelaajat().size());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class PeliTest {
         Pelaaja player = new Pelaaja("Matti");
         peli.lisaaPelaaja(pelaaja);
         peli.lisaaPelaaja(player);
-        assertEquals(peli.getPelaajat().size(), 2);
+        assertEquals(2, peli.getPelaajat().size());
     }
 
     @Test
@@ -67,6 +67,21 @@ public class PeliTest {
         Pelaaja pelaaja = new Pelaaja("Arto");
         peli.lisaaPelaaja(pelaaja);
         peli.lisaaPelaaja(pelaaja);
-        assertEquals(peli.getPelaajat().size(), 1);
+        assertEquals(1, peli.getPelaajat().size());
+    }
+
+    @Test
+    public void lisaaKaksiPelaajaaJaPoistaYksi() {
+        Pelaaja pelaaja = new Pelaaja("Arto");
+        Pelaaja player = new Pelaaja("Matti");
+        peli.lisaaPelaaja(pelaaja);
+        peli.lisaaPelaaja(player);
+        peli.poistaPelaaja(pelaaja);
+        assertEquals(1, peli.getPelaajat().size());
+    }
+    
+        @Test
+    public void peliAlkaaPaivalla() {
+                assertEquals(true, peli.getSaannot().getPaivaEnsin());
     }
 }

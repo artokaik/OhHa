@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sovelluslogiikkaTests;
+package mafia.sovelluslogiikka;
 
 import mafia.sovelluslogiikka.Mafioso;
 import mafia.sovelluslogiikka.Pelaaja;
@@ -49,29 +49,29 @@ public class PelaajaTest {
 
     @Test
     public void luoPelaajaNimiOikein() {
-        assertEquals(pelaaja.getNimi(), "Arto");
+        assertEquals("Arto", pelaaja.getNimi());
     }
 
     @Test
     public void alussaEiRoolia() {
-        assertEquals(pelaaja.getRooli(), null);
+        assertEquals(null, pelaaja.getRooli());
     }
 
     @Test
-    public void setRooliToimiiOikein() {
+    public void setRooliToimiiOikeinMafiosolla() {
         Mafioso mafioso = new Mafioso();
         pelaaja.setRooli(mafioso);
-        assertEquals(pelaaja.getRooli(), mafioso);
+        assertEquals(mafioso, pelaaja.getRooli());
     }
 
     @Test
     public void alussaElossa() {
-        assertEquals(pelaaja.getElossa(), true);
+        assertEquals(true, pelaaja.getElossa());
     }
 
     @Test
     public void kuoleToimii() {
         pelaaja.kuole();
-        assertEquals(pelaaja.getElossa(), false);
+        assertEquals(false, pelaaja.getElossa());
     }
 }

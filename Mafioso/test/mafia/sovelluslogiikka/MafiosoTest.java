@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sovelluslogiikkaTests;
+package mafia.sovelluslogiikka;
 
 import mafia.sovelluslogiikka.Mafioso;
 import org.junit.After;
@@ -16,10 +16,10 @@ import static org.junit.Assert.*;
  *
  * @author Arto
  */
-public class RooliTest {
+public class MafiosoTest {
     Mafioso mafioso;
     
-    public RooliTest() {
+    public MafiosoTest() {
     }
     
     @BeforeClass
@@ -45,6 +45,6 @@ public class RooliTest {
     // public void hello() {}
     @Test
     public void mafiosoLuotu(){
-        assertEquals(mafioso, mafioso);
+        assertEquals("Mafioso", mafioso.getRoolinimi());
     }
 }
