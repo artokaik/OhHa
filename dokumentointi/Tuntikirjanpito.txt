@@ -1,1 +1,3 @@
-﻿Tuntikirjanpito17.12.12	Aloitusluento, Github-säätöä, 	2h
+Tuntikirjanpito17.12.12	Aloitusluento, Github-säätöä, 	2h
+18.12.12	Koodausta ja yksikkötestaamista	5h
+		Suunnittelua			1h
