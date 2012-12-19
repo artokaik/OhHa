@@ -1,3 +1,5 @@
-Tuntikirjanpito17.12.12	Aloitusluento, Github-sÃ¤Ã¤tÃ¶Ã¤, 	2h
-18.12.12	Koodausta ja yksikkÃ¶testaamista	5h
-		Suunnittelua			1h
+Tuntikirjanpito
+
+17.12.12	Aloitusluento, Github-sŠŠtšŠ 	2h
+18.12.12	Koodausta ja yksikkštestaamista	5h
+		Suunnittelua				1h
