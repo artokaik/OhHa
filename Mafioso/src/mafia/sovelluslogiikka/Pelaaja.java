@@ -31,4 +31,24 @@ public class Pelaaja {
     public void setRooli(Rooli rooli){
         this.rooli=rooli;
     }
+    
+    @Override
+    public String toString(){
+        return this.nimi;
+    }
+    
+    @Override
+    public boolean equals(Object olio){
+        if(olio==null){
+            return false;
+        }
+        if(!this.getClass().equals(olio.getClass())){
+            return false;
+        }
+        Pelaaja verrattava = (Pelaaja) olio;
+        if(this.getNimi().equals(verrattava.getNimi())){
+            return true;
+        }
+        return false;
+    }
 }

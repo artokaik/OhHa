@@ -15,16 +15,33 @@ public class Saannot {
     public Saannot() {
         paivaEnsin = true;
     }
-    
-    public boolean getPaivaEnsin(){
+
+    public boolean getPaivaEnsin() {
         return paivaEnsin;
     }
-    
+
     public void asetaPaivaEnsin() {
         paivaEnsin = true;
     }
 
     public void asetaYoEnsin() {
         paivaEnsin = false;
+    }
+
+    @Override
+    public String toString() {
+        String saannot = "";
+        saannot += alkaakoPaivallaToString();
+        return saannot;
+    }
+
+    public String alkaakoPaivallaToString() {
+        String saannot = "";
+        if (paivaEnsin) {
+            saannot += "Peli alkaa päivällä.\n";
+        } else {
+            saannot += "Peli alkaa yöllä.\n";
+        }
+        return saannot;
     }
 }

@@ -12,7 +12,16 @@ public class Aani {
     private Pelaaja aanestaja;
     private Pelaaja aanestetty;
     
-    public Aani(){
-        
+    public Aani(Pelaaja aanestaja, Pelaaja aanestetty){
+        this.aanestaja = aanestaja;
+        this.aanestetty = aanestetty;
+    }
+    
+    public Pelaaja getAanestaja(){
+        return this.aanestaja;
+    }
+    
+    public Pelaaja getAanestetty(){
+        return this.aanestetty;
     }
 }

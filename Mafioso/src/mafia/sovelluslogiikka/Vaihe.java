@@ -4,9 +4,11 @@
  */
 package mafia.sovelluslogiikka;
 
+import java.util.ArrayList;
+
 
 public interface Vaihe {
 
-    public void pelaa();
+    public ArrayList<Pelaaja> pelaa();
     
 }

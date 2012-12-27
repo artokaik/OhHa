@@ -11,16 +11,16 @@ import java.util.ArrayList;
  * @author Arto
  */
 public class Yo implements Vaihe {
-
     private ArrayList<Pelaaja> pelaajat;
 
     public Yo(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
 
-    public void pelaa() {
+    public ArrayList<Pelaaja> pelaa() {
         for (Pelaaja pelaaja : pelaajat) {
             pelaaja.getRooli().toimi(this);
         }
+        return pelaajat;
     }
 }

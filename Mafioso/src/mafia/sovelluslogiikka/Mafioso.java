@@ -10,13 +10,18 @@ package mafia.sovelluslogiikka;
  */
 public class Mafioso implements Rooli{
     private String roolinimi;
+    private boolean pahis;
 
     public Mafioso(){
         roolinimi = "Mafioso";
+        pahis = true;
     }
     
-    public void toimi(Yo yo){
-        
+    public void toimi(Yo yo){        
+    }
+    
+    public boolean onkoPahis(){
+        return pahis;
     }
     
     public String getRoolinimi(){

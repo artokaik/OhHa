@@ -59,7 +59,7 @@ public class SaannotTest {
     }
 
     @Test
-    public void saantojenMuutosPeliAlkaaYollaPaivalla() {
+    public void saantojenMuutosPeliAlkaaYollaPeliAlkaaPaivalla() {
         saannot.asetaYoEnsin();
         saannot.asetaPaivaEnsin();
         assertEquals(true, saannot.getPaivaEnsin());

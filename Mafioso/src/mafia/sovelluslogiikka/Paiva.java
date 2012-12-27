@@ -13,16 +13,17 @@ import java.util.ArrayList;
 public class Paiva implements Vaihe {
     private ArrayList<Pelaaja> pelaajat;
     private Aanestys aanestys;
-    private Vaihe seuraava;
 
     public Paiva(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
     
-    public void pelaa(){
+    public ArrayList<Pelaaja> pelaa(){
         aanestys = new Aanestys();
+        
         Pelaaja tapettu = aanestys.suorita(pelaajat);
         pelaajat.remove(tapettu);
-        Yo yo = new Yo(pelaajat);
+        
+        return pelaajat;
     }
 }

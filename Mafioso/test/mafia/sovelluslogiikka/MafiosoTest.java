@@ -17,24 +17,25 @@ import static org.junit.Assert.*;
  * @author Arto
  */
 public class MafiosoTest {
+
     Mafioso mafioso;
-    
+
     public MafiosoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         mafioso = new Mafioso();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,8 +44,14 @@ public class MafiosoTest {
     //
     // @Test
     // public void hello() {}
+
     @Test
-    public void mafiosoLuotu(){
+    public void mafiosoLuotu() {
         assertEquals("Mafioso", mafioso.getRoolinimi());
+    }
+
+    @Test
+    public void mafiosoonPahis() {
+        assertEquals(true, mafioso.onkoPahis());
     }
 }

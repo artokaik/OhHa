@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author Arto
  */
-public class PelaajanValitsija implements PelaajanHakija {
+public class PelaajanValitsija implements PelaajanValitseva {
 
     private Scanner lukija;
 
