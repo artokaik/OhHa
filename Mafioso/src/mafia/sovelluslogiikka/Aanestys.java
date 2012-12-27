@@ -20,7 +20,7 @@ public class Aanestys {
     public Pelaaja suorita(ArrayList<Pelaaja> pelaajat){
         PelaajanHakija hakija = new PelaajanHakija();
         for (Pelaaja pelaaja : pelaajat) {
-            Aani aani = new Aani(pelaaja,hakija.valitsePelaaja(pelaajat));
+            Aani aani = new Aani(pelaaja, hakija.valitsePelaaja(pelaajat));
             aanet.add(aani);
         }
         return null;

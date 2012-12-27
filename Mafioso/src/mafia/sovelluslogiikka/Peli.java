@@ -43,14 +43,14 @@ public class Peli {
             Vaihe vaihe = new Yo(hengissa);
             if (seuraavaksiPaiva) {
                 vaihe = new Paiva(hengissa);
-            } 
+            }
             hengissa = kopioi(vaihe.pelaa());
             jatkuu = jatkuuko(hengissa);
             vaiheet.add(vaihe);
         }
     }
 
-private boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
+    public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
         int hyvikset = 0;
         int pahikset = 0;
         for (Pelaaja pelaaja : hengissa) {
@@ -61,11 +61,12 @@ private boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
             }
         }
         if (hyvikset > pahikset) {
-            return true;
+            if (pahikset > 0) {
+                return true;
+            }
         }
         return false;
     }
-    
 
     private ArrayList kopioi(ArrayList kopioitava) {
         ArrayList kopio = new ArrayList();
@@ -74,9 +75,9 @@ private boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
         }
         return kopio;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String tuloste = "";
         tuloste += "Pelaajia: " + pelaajat.size() + "\n";
         tuloste += "Pelaajat: " + pelaajat + "\n";

@@ -17,8 +17,10 @@ public class PelinLuoja {
         lukija = new Scanner(System.in);
         arpoja = new Random();
         roolit = new ArrayList<Rooli>();
+        
         roolit.add(new Mafioso());
         roolit.add(new Etsiva());
+        roolit.add(new Kansalainen());
     }
 
     public Peli luoPeli() {
@@ -63,7 +65,6 @@ public class PelinLuoja {
                 valittu = lukija.nextInt();
             }
             pelinRoolit.add(roolit.get(valittu));
- 
         }
         return pelinRoolit;
     }
