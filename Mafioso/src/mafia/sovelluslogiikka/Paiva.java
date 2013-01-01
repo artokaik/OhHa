@@ -19,8 +19,7 @@ public class Paiva implements Vaihe {
     }
     
     public ArrayList<Pelaaja> pelaa(){
-        aanestys = new Aanestys();
-        
+        aanestys = new Aanestys();     
         Pelaaja tapettu = aanestys.suorita(pelaajat);
         pelaajat.remove(tapettu);
         

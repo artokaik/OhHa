@@ -32,6 +32,10 @@ public class Pelaaja {
         this.rooli=rooli;
     }
     
+    public void toimiRoolinMukaan(Yo yo){
+        this.rooli.toimi(yo);
+    }
+    
     @Override
     public String toString(){
         return this.nimi;

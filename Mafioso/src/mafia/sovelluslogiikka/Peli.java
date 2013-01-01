@@ -37,14 +37,17 @@ public class Peli {
     public void pelaa() {
         boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
         boolean jatkuu = true;
-        ArrayList<Pelaaja> hengissa = kopioi(pelaajat);
+        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
 
         while (jatkuu) {
             Vaihe vaihe = new Yo(hengissa);
             if (seuraavaksiPaiva) {
                 vaihe = new Paiva(hengissa);
+                seuraavaksiPaiva=false;
+            } else {
+                seuraavaksiPaiva = true;
             }
-            hengissa = kopioi(vaihe.pelaa());
+            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa().clone();
             jatkuu = jatkuuko(hengissa);
             vaiheet.add(vaihe);
         }
@@ -68,13 +71,13 @@ public class Peli {
         return false;
     }
 
-    private ArrayList kopioi(ArrayList kopioitava) {
-        ArrayList kopio = new ArrayList();
-        for (Object object : kopioitava) {
-            kopio.add(object);
-        }
-        return kopio;
-    }
+//    private ArrayList kopioi(ArrayList kopioitava) {
+//        ArrayList kopio = new ArrayList();
+//        for (Object object : kopioitava) {
+//            kopio.add(object);
+//        }
+//        return kopio;
+//    }
 
     @Override
     public String toString() {

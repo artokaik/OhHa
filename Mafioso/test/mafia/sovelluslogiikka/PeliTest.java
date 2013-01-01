@@ -1,5 +1,8 @@
 /* Seuraavia metodeja on testattu melko paljon:
+ * 
  * boolean jatkuuko(ArrayList<Pelaaja>)
+ * boolean poistaPelaaja(Pelaaja)
+ * boolean lisaaPelaaja(Pelaaja)
  * 
  */
 package mafia.sovelluslogiikka;
@@ -21,6 +24,7 @@ public class PeliTest {
 
     Peli peli;
 
+
     public PeliTest() {
     }
 
@@ -35,6 +39,7 @@ public class PeliTest {
     @Before
     public void setUp() {
         peli = new Peli();
+
     }
 
     @After

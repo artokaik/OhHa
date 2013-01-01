@@ -20,6 +20,7 @@ public class PelinLuoja {
         
         roolit.add(new Mafioso());
         roolit.add(new Etsiva());
+        roolit.add(new Suojelija());
         roolit.add(new Kansalainen());
     }
 

@@ -10,6 +10,5 @@ public class Mafia {
         PelinLuoja luoja = new PelinLuoja();
         Peli peli = luoja.luoPeli();
         System.out.println(peli);
-        peli.pelaa();
     }
 }
