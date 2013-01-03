@@ -11,5 +11,6 @@ public interface Vaihe {
 
     public ArrayList<Pelaaja> pelaa();
     public ArrayList<Pelaaja> getPelaajat();
+    public Pelaaja haePelaaja(String nimi);
     
 }

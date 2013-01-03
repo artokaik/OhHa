@@ -11,20 +11,31 @@ import java.util.ArrayList;
  * @author Arto
  */
 public class Yo implements Vaihe {
+
     private ArrayList<Pelaaja> pelaajat;
-    private ArrayList<Pelaaja> ammutut;
+    private Pelaaja ammuttu;
+    private Pelaaja suojeltu;
 
     public Yo(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
-    
-    public ArrayList<Pelaaja> getPelaajat(){
+
+    public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
     }
-    
-    public boolean setTapettava(Pelaaja pelaaja){
-        if(pelaajat.contains(pelaaja)){
-            ammutut.add(pelaaja);
+
+    public Pelaaja haePelaaja(String nimi) {
+        for (Pelaaja pelaaja : pelaajat) {
+            if (pelaaja.getNimi().equals(nimi)) {
+                return pelaaja;
+            }
+        }
+        return null;
+    }
+
+    public boolean setTapettava(Pelaaja pelaaja) {
+        if (pelaajat.contains(pelaaja)) {
+            ammuttu = pelaaja;
             return true;
         }
         return false;
@@ -37,11 +48,10 @@ public class Yo implements Vaihe {
         this.tapaAmmutut();
         return pelaajat;
     }
-    
-    public void tapaAmmutut(){
-        for (Pelaaja pelaaja : ammutut) {
-            this.pelaajat.remove(pelaaja);
-            
+
+    public void tapaAmmutut() {
+        if (!suojeltu.equals(ammuttu)){
+            pelaajat.remove(ammuttu);
         }
     }
 }

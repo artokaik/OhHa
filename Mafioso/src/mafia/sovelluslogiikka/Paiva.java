@@ -13,21 +13,33 @@ import java.util.ArrayList;
 public class Paiva implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;
-    private Aanestys aanestys;
+    private ArrayList<Aanestys> aanestykset;
 
     public Paiva(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
+        this.aanestykset = new ArrayList<Aanestys>();
+    }
+    
+    public ArrayList<Aanestys> getAanestykset(){
+        return this.aanestykset;
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
     }
+    
+    public Pelaaja haePelaaja(String nimi){
+        for (Pelaaja pelaaja : pelaajat) {
+            if (pelaaja.getNimi().equals(nimi)){
+                return pelaaja;
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Pelaaja> pelaa() {
-        aanestys = new Aanestys();
-        Pelaaja tapettu = aanestys.suorita(pelaajat);
-        pelaajat.remove(tapettu);
+        
 
-        return pelaajat;
+        return null;
     }
 }

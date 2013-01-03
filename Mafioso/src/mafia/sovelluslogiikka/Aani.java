@@ -24,4 +24,9 @@ public class Aani {
     public Pelaaja getAanestetty(){
         return this.aanestetty;
     }
+    
+    @Override
+    public String toString(){
+        return aanestaja + ": " + aanestetty;
+    }
 }

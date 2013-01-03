@@ -15,6 +15,13 @@ public class Peli {
         this.saannot = new Saannot();
         this.kaynnissaOlevaVaihe = null;
     }
+    
+    public Vaihe pelaaSeuraavaVaihe(ArrayList<Pelaaja> pelaajat){
+        Vaihe vaihe = this.seuraavaVaihe(pelaajat);
+        kaynnissaOlevaVaihe = vaihe;
+        vaiheet.add(vaihe);
+        return vaihe;
+    }
 
     public ArrayList<Pelaaja> getPelaajat() {
         return this.pelaajat;
@@ -42,6 +49,9 @@ public class Peli {
 
 
     public Vaihe seuraavaVaihe(ArrayList<Pelaaja> hengissa) {
+        if(this.jatkuuko(hengissa)){
+            return null;
+        }
         Vaihe vaihe = new Yo(hengissa);
         if (vaiheet.isEmpty()) {
             if (saannot.getPaivaEnsin()) {
@@ -53,25 +63,24 @@ public class Peli {
         return vaihe;
     }
 
-//    public void pelaa() {
-//        boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
-//        boolean jatkuu = true;
-//        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
-//
-//        while (jatkuu) {
-//            Vaihe vaihe = new Yo(hengissa);
-//            if (seuraavaksiPaiva) {
-//                vaihe = new Paiva(hengissa);
-//                seuraavaksiPaiva = false;
-//            } else {
-//                seuraavaksiPaiva = true;
-//            }
-//            kaynnissaOlevaVaihe = vaihe;
-//            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa().clone();
-//            jatkuu = jatkuuko(hengissa);
-//            vaiheet.add(vaihe);
-//        }
-//    }
+    public void pelaa() {
+        boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
+        boolean jatkuu = true;
+        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
+        while (jatkuu) {
+            Vaihe vaihe = new Yo(hengissa);
+            if (seuraavaksiPaiva) {
+                vaihe = new Paiva(hengissa);
+                seuraavaksiPaiva = false;
+            } else {
+                seuraavaksiPaiva = true;
+            }
+            kaynnissaOlevaVaihe = vaihe;
+            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa().clone();
+            jatkuu = jatkuuko(hengissa);
+            vaiheet.add(vaihe);
+        }
+    }
 
     public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
         int hyvikset = 0;
