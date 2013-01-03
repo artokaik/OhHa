@@ -11,7 +11,7 @@ public interface Vaihe {
 
     public ArrayList<Pelaaja> pelaa(Saannot saannot);
     public ArrayList<Pelaaja> getPelaajat();
-    public Pelaaja haePelaaja(String nimi);
+//    public Pelaaja haePelaaja(String nimi);
     public String kerroTapahtumat();
     
 }

@@ -30,14 +30,14 @@ public class Paiva implements Vaihe {
         return pelaajat;
     }
 
-    public Pelaaja haePelaaja(String nimi) {
-        for (Pelaaja pelaaja : pelaajat) {
-            if (pelaaja.getNimi().equals(nimi)) {
-                return pelaaja;
-            }
-        }
-        return null;
-    }
+//    public Pelaaja haePelaaja(String nimi) {
+//        for (Pelaaja pelaaja : pelaajat) {
+//            if (pelaaja.getNimi().equals(nimi)) {
+//                return pelaaja;
+//            }
+//        }
+//        return null;
+//    }
 
     public ArrayList<Pelaaja> pelaa(Saannot saannot) {
         ArrayList<Pelaaja> tapettavat = tappoAanestys(saannot);
@@ -79,6 +79,7 @@ public class Paiva implements Vaihe {
         }
         tuloste += "\nJäljellä olevat pelaajat:\n";
         tuloste += pelaajat + "\n";
+        tuloste += "Seuraavaksi vuorossa yö.";
         return tuloste;
     }
 

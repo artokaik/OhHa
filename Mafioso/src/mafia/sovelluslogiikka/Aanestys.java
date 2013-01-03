@@ -26,15 +26,15 @@ public class Aanestys {
         Aani aani = new Aani(aanestaja, aanestetty);
         aanet.add(aani);
     }
-
-    public Pelaaja haeEhdokas(String nimi) {
-        for (Pelaaja pelaaja : ehdokkaat) {
-            if (pelaaja.getNimi().equals(nimi)) {
-                return pelaaja;
-            }
-        }
-        return null;
-    }
+//
+//    public Pelaaja haeEhdokas(String nimi) {
+//        for (Pelaaja pelaaja : ehdokkaat) {
+//            if (pelaaja.getNimi().equals(nimi)) {
+//                return pelaaja;
+//            }
+//        }
+//        return null;
+//    }
 
     public ArrayList<Pelaaja> getEhdokkaat() {
         return ehdokkaat;

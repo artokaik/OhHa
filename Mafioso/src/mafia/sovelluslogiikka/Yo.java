@@ -27,14 +27,14 @@ public class Yo implements Vaihe {
         return ammuttu;
     }
 
-    public Pelaaja haePelaaja(String nimi) {
-        for (Pelaaja pelaaja : pelaajat) {
-            if (pelaaja.getNimi().equals(nimi)) {
-                return pelaaja;
-            }
-        }
-        return null;
-    }
+//    public Pelaaja haePelaaja(String nimi) {
+//        for (Pelaaja pelaaja : pelaajat) {
+//            if (pelaaja.getNimi().equals(nimi)) {
+//                return pelaaja;
+//            }
+//        }
+//        return null;
+//    }
 
     public boolean setTapettava(Pelaaja pelaaja) {
         if (pelaajat.contains(pelaaja)) {
@@ -77,6 +77,7 @@ public class Yo implements Vaihe {
         } else {
             tuloste = ammuttu + " kuoli!";
         }
+        tuloste += "\n Seuraavaksi vuorossa päivä ja äänestys:";
         return tuloste;
         
     }

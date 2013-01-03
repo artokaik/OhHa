@@ -11,12 +11,10 @@ public class Etsiva implements Rooli {
 
     private String roolinimi;
     private boolean pahis;
-    private int tarkkuus;
 
     public Etsiva() {
         roolinimi = "Etsivä";
         pahis = false;
-        tarkkuus = 100;
     }
 
     public void toimi(Yo yo) {

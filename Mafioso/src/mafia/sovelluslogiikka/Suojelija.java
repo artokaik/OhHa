@@ -10,12 +10,11 @@ import java.util.*;
 public class Suojelija implements Rooli{
     private String roolinimi;
     private boolean pahis;
-    private int tarkkuus;
+
     
     public Suojelija(){
         roolinimi = "Suojelija";
         pahis = false;
-        tarkkuus = 100;
     }
     
     public void toimi(Yo yo){

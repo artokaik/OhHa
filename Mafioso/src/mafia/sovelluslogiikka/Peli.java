@@ -17,12 +17,12 @@ public class Peli {
         this.kaynnissaOlevaVaihe = null;
     }
 
-    public Vaihe pelaaSeuraavaVaihe(ArrayList<Pelaaja> pelaajat) {
-        Vaihe vaihe = this.seuraavaVaihe(pelaajat);
-        kaynnissaOlevaVaihe = vaihe;
-        vaiheet.add(vaihe);
-        return vaihe;
-    }
+//    public Vaihe pelaaSeuraavaVaihe(ArrayList<Pelaaja> pelaajat) {
+//        Vaihe vaihe = this.seuraavaVaihe(pelaajat);
+//        kaynnissaOlevaVaihe = vaihe;
+//        vaiheet.add(vaihe);
+//        return vaihe;
+//    }
 
     public ArrayList<Pelaaja> getPelaajat() {
         return this.pelaajat;
@@ -48,20 +48,20 @@ public class Peli {
         return pelaajat.remove(pelaaja);
     }
 
-    public Vaihe seuraavaVaihe(ArrayList<Pelaaja> hengissa) {
-        if (this.jatkuuko(hengissa)) {
-            return null;
-        }
-        Vaihe vaihe = new Yo(hengissa);
-        if (vaiheet.isEmpty()) {
-            if (saannot.getPaivaEnsin()) {
-                vaihe = new Paiva(hengissa);
-            }
-        } else if (vaiheet.get(vaiheet.size() - 1).getClass().equals(vaihe)) {
-            vaihe = new Paiva(hengissa);
-        }
-        return vaihe;
-    }
+//    public Vaihe seuraavaVaihe(ArrayList<Pelaaja> hengissa) {
+//        if (this.jatkuuko(hengissa)) {
+//            return null;
+//        }
+//        Vaihe vaihe = new Yo(hengissa);
+//        if (vaiheet.isEmpty()) {
+//            if (saannot.getPaivaEnsin()) {
+//                vaihe = new Paiva(hengissa);
+//            }
+//        } else if (vaiheet.get(vaiheet.size() - 1).getClass().equals(vaihe)) {
+//            vaihe = new Paiva(hengissa);
+//        }
+//        return vaihe;
+//    }
 
     public void pelaa() {
         boolean seuraavaksiPaiva = saannot.getPaivaEnsin();

@@ -16,7 +16,7 @@ public class TekstiRoolienToiminnot {
     }
 
     public void etsivaToimii(ArrayList<Pelaaja> pelaajat) {
-        System.out.println("Olet Etsivä.");
+        System.out.println("Olet Etsivä, kenet tarkastat?");
         TekstiPelaajanValitsija valitsija = new TekstiPelaajanValitsija();
         Pelaaja tarkastettava = valitsija.valitse(pelaajat);
         if (tarkastettava.getRooli().onkoPahis()) {
@@ -27,7 +27,7 @@ public class TekstiRoolienToiminnot {
     }
 
     public Pelaaja mafiosoToimii(ArrayList<Pelaaja> pelaajat, Yo yo) {
-        System.out.println("Olet Mafioso.");
+        System.out.println("Olet Mafioso, kenet haluat tappaa?");
         if (yo.getAmmuttu()!=null){
             System.out.println("Tällä hetkellä tapettavana on " + yo.getAmmuttu() + ".");
         }
@@ -37,7 +37,7 @@ public class TekstiRoolienToiminnot {
     }
 
     public Pelaaja suojelijaToimii(ArrayList<Pelaaja> pelaajat) {
-        System.out.println("Olet suojelija.");
+        System.out.println("Olet suojelija, ketä suojelet?");
         TekstiPelaajanValitsija valitsija = new TekstiPelaajanValitsija();
         Pelaaja suojeltava = valitsija.valitse(pelaajat);
         return suojeltava;
