@@ -76,7 +76,7 @@ public class Peli {
                 seuraavaksiPaiva = true;
             }
             kaynnissaOlevaVaihe = vaihe;
-            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa().clone();
+            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa(saannot).clone();
             jatkuu = jatkuuko(hengissa);
             vaiheet.add(vaihe);
         }

@@ -4,30 +4,31 @@
  */
 package mafia.sovelluslogiikka;
 
-/**
- *
- * @author Arto
- */
-public class Etsiva implements Rooli{
+import mafia.kayttoliittyma.Ohjaus;
+import java.util.*;
+
+public class Etsiva implements Rooli {
+
     private String roolinimi;
     private boolean pahis;
     private int tarkkuus;
-    
-    public Etsiva(){
+
+    public Etsiva() {
         roolinimi = "Etsivä";
         pahis = false;
         tarkkuus = 100;
     }
-    
-        public void toimi(Yo yo){        
+
+    public void toimi(Yo yo) {
+        Ohjaus ohjaus = new Ohjaus();
+        ohjaus.etsivaToimii(yo.getPelaajat());
     }
-    
-    public boolean onkoPahis(){
+
+    public boolean onkoPahis() {
         return pahis;
     }
-    
-    public String getRoolinimi(){
+
+    public String getRoolinimi() {
         return this.roolinimi;
     }
-    
 }

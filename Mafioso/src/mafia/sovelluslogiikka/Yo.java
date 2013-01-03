@@ -5,23 +5,26 @@
 package mafia.sovelluslogiikka;
 
 import java.util.ArrayList;
+import mafia.kayttoliittyma.Ohjaus;
 
-/**
- *
- * @author Arto
- */
 public class Yo implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;
+    private ArrayList<Pelaaja> pelaamatta;
     private Pelaaja ammuttu;
     private Pelaaja suojeltu;
 
     public Yo(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
+        this.pelaamatta = pelaajat;
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
+    }
+    
+    public Pelaaja getAmmuttu(){
+        return ammuttu;
     }
 
     public Pelaaja haePelaaja(String nimi) {
@@ -41,16 +44,28 @@ public class Yo implements Vaihe {
         return false;
     }
 
-    public ArrayList<Pelaaja> pelaa() {
-        for (Pelaaja pelaaja : pelaajat) {
+    public boolean setSuojeltu(Pelaaja pelaaja) {
+        if (pelaajat.contains(pelaaja)) {
+            suojeltu = pelaaja;
+            return true;
+        }
+        return false;
+    }
+
+    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
+        Ohjaus ohjaus = new Ohjaus();
+        while(!pelaamatta.isEmpty()){
+            Pelaaja pelaaja = ohjaus.valitsePelaaja(pelaamatta);
             pelaaja.toimiRoolinMukaan(this);
+            pelaamatta.remove(pelaaja);
         }
         this.tapaAmmutut();
+        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
         return pelaajat;
     }
 
     public void tapaAmmutut() {
-        if (!suojeltu.equals(ammuttu)){
+        if (suojeltu == null || !suojeltu.equals(ammuttu)) {
             pelaajat.remove(ammuttu);
         }
     }

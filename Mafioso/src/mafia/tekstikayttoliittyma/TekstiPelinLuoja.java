@@ -7,13 +7,13 @@ package mafia.tekstikayttoliittyma;
 import java.util.*;
 import mafia.sovelluslogiikka.*;
 
-public class PelinLuoja {
+public class TekstiPelinLuoja {
 
     private Scanner lukija;
     private ArrayList<Rooli> roolit;
     private Random arpoja;
 
-    public PelinLuoja() {
+    public TekstiPelinLuoja() {
         lukija = new Scanner(System.in);
         arpoja = new Random();
         roolit = new ArrayList<Rooli>();

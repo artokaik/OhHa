@@ -4,10 +4,9 @@
  */
 package mafia.sovelluslogiikka;
 
-/**
- *
- * @author Arto
- */
+import mafia.kayttoliittyma.Ohjaus;
+import java.util.*;
+
 public class Suojelija implements Rooli{
     private String roolinimi;
     private boolean pahis;
@@ -19,7 +18,10 @@ public class Suojelija implements Rooli{
         tarkkuus = 100;
     }
     
-    public void toimi(Yo yo){        
+    public void toimi(Yo yo){
+        Ohjaus ohjaus = new Ohjaus();
+        Pelaaja suojeltu = ohjaus.suojelijaToimii(yo.getPelaajat());
+        yo.setSuojeltu(suojeltu);
     }
     
     public boolean onkoPahis(){

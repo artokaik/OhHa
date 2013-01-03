@@ -7,11 +7,12 @@ import mafia.sovelluslogiikka.*;
 public class Mafia {
 
     public static void main(String[] args) {
-        PelinLuoja luoja = new PelinLuoja();
+        TekstiPelinLuoja luoja = new TekstiPelinLuoja();
         Peli peli = luoja.luoPeli();
         System.out.println(peli);
+        peli.pelaa();
         
-        Aanestys aanestys = new Aanestys(peli.getPelaajat());
-        aanestys.suorita(peli.getPelaajat());
+//        Aanestys aanestys = new Aanestys(peli.getPelaajat());
+//        aanestys.suorita(peli.getPelaajat());
     }
 }

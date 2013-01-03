@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface Vaihe {
 
-    public ArrayList<Pelaaja> pelaa();
+    public ArrayList<Pelaaja> pelaa(Saannot saannot);
     public ArrayList<Pelaaja> getPelaajat();
     public Pelaaja haePelaaja(String nimi);
     

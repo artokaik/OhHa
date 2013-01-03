@@ -19,27 +19,66 @@ public class Paiva implements Vaihe {
         this.pelaajat = pelaajat;
         this.aanestykset = new ArrayList<Aanestys>();
     }
-    
-    public ArrayList<Aanestys> getAanestykset(){
+
+    public ArrayList<Aanestys> getAanestykset() {
         return this.aanestykset;
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
     }
-    
-    public Pelaaja haePelaaja(String nimi){
+
+    public Pelaaja haePelaaja(String nimi) {
         for (Pelaaja pelaaja : pelaajat) {
-            if (pelaaja.getNimi().equals(nimi)){
+            if (pelaaja.getNimi().equals(nimi)) {
                 return pelaaja;
             }
         }
         return null;
     }
+    
+    public ArrayList<Pelaaja> pelaa(Saannot saannot){
+        ArrayList<Pelaaja> tapettavat = tappoAanestys(saannot);
+        for (Pelaaja pelaaja : tapettavat) {
+            pelaajat.remove(pelaaja);
+        }
+        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
+        return hengissa;
+    }
+    
 
-    public ArrayList<Pelaaja> pelaa() {
-        
+    public ArrayList<Pelaaja> tappoAanestys(Saannot saannot) {
+        ArrayList<Pelaaja> ehdokkaat = (ArrayList<Pelaaja>) this.pelaajat.clone();
+        for (int i = 0; i < saannot.getAanestykset().size(); i++) {
+            ehdokkaat = this.aanestysKierros(saannot.getAanestykset().get(i), ehdokkaat);
+        }
+        while (ehdokkaat.size() > 1) {
+            ehdokkaat = this.aanestysKierros(1, ehdokkaat);
+        }
+        return ehdokkaat;
+    }
+    
+   
 
-        return null;
+    public ArrayList<Pelaaja> aanestysKierros(int maara, ArrayList<Pelaaja> ehdokkaat) {
+        Aanestys aanestys = new Aanestys(ehdokkaat);
+        aanestys.suorita(pelaajat, ehdokkaat);
+        ehdokkaat = aanestys.haeTulokset(maara);
+        aanestykset.add(aanestys);
+        return ehdokkaat;
+
+    }
+    
+    @Override
+    public String toString(){
+        String tuloste = "";
+        int n = 1;
+        for (Aanestys aanestys : aanestykset) {
+            tuloste += "Äänestys " + n + ":\n";
+            tuloste += aanestys + "\n";
+        }
+        tuloste += "\nJäljellä olevat pelaajat:\n";
+        tuloste += pelaajat + "\n";
+        return tuloste;
     }
 }
