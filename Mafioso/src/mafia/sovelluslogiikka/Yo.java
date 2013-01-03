@@ -18,6 +18,10 @@ public class Yo implements Vaihe {
         this.pelaajat = pelaajat;
     }
     
+    public ArrayList<Pelaaja> getPelaajat(){
+        return pelaajat;
+    }
+    
     public boolean setTapettava(Pelaaja pelaaja){
         if(pelaajat.contains(pelaaja)){
             ammutut.add(pelaaja);

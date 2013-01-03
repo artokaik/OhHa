@@ -3,3 +3,6 @@ Tuntikirjanpito
 17.12.12	Aloitusluento, Github-sŠŠtšŠ 	2h
 18.12.12	Koodausta ja yksikkštestaamista	5h
 		Suunnittelua				1h
+28.12.12	Koodausta, suunnittelua		4h
+1.1.12		Koodausta, testausta		6h
+3.1.12		

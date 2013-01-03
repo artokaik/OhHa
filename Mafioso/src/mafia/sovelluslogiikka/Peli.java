@@ -6,12 +6,14 @@ public class Peli {
 
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Vaihe> vaiheet;
+    private Vaihe kaynnissaOlevaVaihe;
     private Saannot saannot;
 
     public Peli() {
         this.pelaajat = new ArrayList<Pelaaja>();
         this.vaiheet = new ArrayList<Vaihe>();
         this.saannot = new Saannot();
+        this.kaynnissaOlevaVaihe = null;
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
@@ -20,6 +22,10 @@ public class Peli {
 
     public Saannot getSaannot() {
         return saannot;
+    }
+
+    public Vaihe getKaynnissaOlevaVaihe() {
+        return this.kaynnissaOlevaVaihe;
     }
 
     public boolean lisaaPelaaja(Pelaaja pelaaja) {
@@ -34,24 +40,38 @@ public class Peli {
         return pelaajat.remove(pelaaja);
     }
 
-    public void pelaa() {
-        boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
-        boolean jatkuu = true;
-        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
 
-        while (jatkuu) {
-            Vaihe vaihe = new Yo(hengissa);
-            if (seuraavaksiPaiva) {
+    public Vaihe seuraavaVaihe(ArrayList<Pelaaja> hengissa) {
+        Vaihe vaihe = new Yo(hengissa);
+        if (vaiheet.isEmpty()) {
+            if (saannot.getPaivaEnsin()) {
                 vaihe = new Paiva(hengissa);
-                seuraavaksiPaiva=false;
-            } else {
-                seuraavaksiPaiva = true;
             }
-            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa().clone();
-            jatkuu = jatkuuko(hengissa);
-            vaiheet.add(vaihe);
+        } else if (vaiheet.get(vaiheet.size() - 1).getClass().equals(vaihe)) {
+            vaihe = new Paiva(hengissa);
         }
+        return vaihe;
     }
+
+//    public void pelaa() {
+//        boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
+//        boolean jatkuu = true;
+//        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
+//
+//        while (jatkuu) {
+//            Vaihe vaihe = new Yo(hengissa);
+//            if (seuraavaksiPaiva) {
+//                vaihe = new Paiva(hengissa);
+//                seuraavaksiPaiva = false;
+//            } else {
+//                seuraavaksiPaiva = true;
+//            }
+//            kaynnissaOlevaVaihe = vaihe;
+//            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa().clone();
+//            jatkuu = jatkuuko(hengissa);
+//            vaiheet.add(vaihe);
+//        }
+//    }
 
     public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
         int hyvikset = 0;
@@ -78,7 +98,6 @@ public class Peli {
 //        }
 //        return kopio;
 //    }
-
     @Override
     public String toString() {
         String tuloste = "";
