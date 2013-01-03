@@ -31,6 +31,7 @@ public class TekstiPelinLuoja {
         ArrayList<Rooli> pelinRoolit = lisaaRooli(maara);
         lisaaPelaajat(peli, maara, pelinRoolit);
         maaritaSaannot(peli);
+        System.out.println(peli);
         return peli;
     }
 
