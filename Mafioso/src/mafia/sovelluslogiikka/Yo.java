@@ -10,13 +10,13 @@ import mafia.kayttoliittyma.Ohjaus;
 public class Yo implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;
-    private ArrayList<Pelaaja> pelaamatta;
+    private ArrayList<Pelaaja> vuoroPelaamatta;
     private Pelaaja ammuttu;
     private Pelaaja suojeltu;
 
     public Yo(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
-        this.pelaamatta = pelaajat;
+        this.vuoroPelaamatta = (ArrayList<Pelaaja>) pelaajat.clone();
     }
 
     public ArrayList<Pelaaja> getPelaajat() {
@@ -54,10 +54,10 @@ public class Yo implements Vaihe {
 
     public ArrayList<Pelaaja> pelaa(Saannot saannot) {
         Ohjaus ohjaus = new Ohjaus();
-        while(!pelaamatta.isEmpty()){
-            Pelaaja pelaaja = ohjaus.valitsePelaaja(pelaamatta);
+        while(!vuoroPelaamatta.isEmpty()){
+            Pelaaja pelaaja = ohjaus.valitsePelaaja(vuoroPelaamatta);
             pelaaja.toimiRoolinMukaan(this);
-            pelaamatta.remove(pelaaja);
+            vuoroPelaamatta.remove(pelaaja);
         }
         this.tapaAmmutut();
         ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
@@ -68,5 +68,16 @@ public class Yo implements Vaihe {
         if (suojeltu == null || !suojeltu.equals(ammuttu)) {
             pelaajat.remove(ammuttu);
         }
+    }
+    
+    public String kerroTapahtumat(){
+        String tuloste = "";
+        if (this.ammuttu.equals(this.suojeltu)){
+            tuloste = "Kukaan ei kuollut!";
+        } else {
+            tuloste = ammuttu + " kuoli!";
+        }
+        return tuloste;
+        
     }
 }

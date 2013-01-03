@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.tekstikayttoliittyma;
+package mafia.turhat;
 
 /**
  *
  * @author Arto
  */
+import mafia.turhat.PaivanPelaaminen;
 import mafia.sovelluslogiikka.*;
 import java.util.*;
 

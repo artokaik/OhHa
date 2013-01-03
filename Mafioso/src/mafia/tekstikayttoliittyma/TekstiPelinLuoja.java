@@ -81,12 +81,10 @@ public class TekstiPelinLuoja {
         for (int i = 0; i < maara; i++) {
             Pelaaja pelaaja;
             while (true) {
-
+                System.out.println("Anna nimesi:");
                 String nimi = "";
-                while (nimi.isEmpty()) {
-                    System.out.println("Anna nimi:");
-                    nimi = lukija.nextLine();
-                }
+                nimi = lukija.nextLine();
+                nimi = lukija.nextLine();
                 pelaaja = new Pelaaja(nimi);
                 if (peli.lisaaPelaaja(pelaaja)) {
                     break;

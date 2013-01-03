@@ -14,10 +14,12 @@ public class Paiva implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Aanestys> aanestykset;
+    private ArrayList<Pelaaja> lynkattu;   //Tällä hetkellä vain yksi lynkataan, mutta tätä ehkä pystytään säätämään myöhemmin. Siksi ArrayList
 
     public Paiva(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
         this.aanestykset = new ArrayList<Aanestys>();
+        lynkattu = new ArrayList<Pelaaja>();
     }
 
     public ArrayList<Aanestys> getAanestykset() {
@@ -36,16 +38,16 @@ public class Paiva implements Vaihe {
         }
         return null;
     }
-    
-    public ArrayList<Pelaaja> pelaa(Saannot saannot){
+
+    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
         ArrayList<Pelaaja> tapettavat = tappoAanestys(saannot);
         for (Pelaaja pelaaja : tapettavat) {
             pelaajat.remove(pelaaja);
+            lynkattu.add(pelaaja);
         }
         ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
         return hengissa;
     }
-    
 
     public ArrayList<Pelaaja> tappoAanestys(Saannot saannot) {
         ArrayList<Pelaaja> ehdokkaat = (ArrayList<Pelaaja>) this.pelaajat.clone();
@@ -57,8 +59,6 @@ public class Paiva implements Vaihe {
         }
         return ehdokkaat;
     }
-    
-   
 
     public ArrayList<Pelaaja> aanestysKierros(int maara, ArrayList<Pelaaja> ehdokkaat) {
         Aanestys aanestys = new Aanestys(ehdokkaat);
@@ -68,9 +68,9 @@ public class Paiva implements Vaihe {
         return ehdokkaat;
 
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String tuloste = "";
         int n = 1;
         for (Aanestys aanestys : aanestykset) {
@@ -79,6 +79,12 @@ public class Paiva implements Vaihe {
         }
         tuloste += "\nJäljellä olevat pelaajat:\n";
         tuloste += pelaajat + "\n";
+        return tuloste;
+    }
+
+    public String kerroTapahtumat() {
+        String tuloste = "Tapetut pelaajat:\n";
+        tuloste += lynkattu;
         return tuloste;
     }
 }

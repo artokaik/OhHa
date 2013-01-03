@@ -1,6 +1,7 @@
 package mafia.sovelluslogiikka;
 
 import java.util.*;
+import mafia.kayttoliittyma.Ohjaus;
 
 public class Peli {
 
@@ -15,8 +16,8 @@ public class Peli {
         this.saannot = new Saannot();
         this.kaynnissaOlevaVaihe = null;
     }
-    
-    public Vaihe pelaaSeuraavaVaihe(ArrayList<Pelaaja> pelaajat){
+
+    public Vaihe pelaaSeuraavaVaihe(ArrayList<Pelaaja> pelaajat) {
         Vaihe vaihe = this.seuraavaVaihe(pelaajat);
         kaynnissaOlevaVaihe = vaihe;
         vaiheet.add(vaihe);
@@ -47,9 +48,8 @@ public class Peli {
         return pelaajat.remove(pelaaja);
     }
 
-
     public Vaihe seuraavaVaihe(ArrayList<Pelaaja> hengissa) {
-        if(this.jatkuuko(hengissa)){
+        if (this.jatkuuko(hengissa)) {
             return null;
         }
         Vaihe vaihe = new Yo(hengissa);
@@ -79,7 +79,11 @@ public class Peli {
             hengissa = (ArrayList<Pelaaja>) vaihe.pelaa(saannot).clone();
             jatkuu = jatkuuko(hengissa);
             vaiheet.add(vaihe);
+            Ohjaus ohjaus = new Ohjaus();
+            ohjaus.tulostaTapahtumat(vaihe);
         }
+        this.julistaVoittaja(hengissa);
+
     }
 
     public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
@@ -98,6 +102,17 @@ public class Peli {
             }
         }
         return false;
+    }
+
+    public void julistaVoittaja(ArrayList<Pelaaja> hengissa) {
+        Ohjaus ohjaus = new Ohjaus();
+        for (Pelaaja pelaaja : hengissa) {
+            if (pelaaja.getRooli().onkoPahis()) {
+                ohjaus.julistaVoittaja("Pahikset");
+                return;
+            }
+        }
+        ohjaus.julistaVoittaja("Hyvikset");
     }
 
 //    private ArrayList kopioi(ArrayList kopioitava) {

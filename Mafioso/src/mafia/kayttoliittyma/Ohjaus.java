@@ -11,9 +11,11 @@ import mafia.tekstikayttoliittyma.*;
 public class Ohjaus {
 
     private TekstiRoolienToiminnot toiminnot;
+    private TekstiNaytolleTulostaja tulostaja;
 
     public Ohjaus() {
         toiminnot = new TekstiRoolienToiminnot();
+        tulostaja = new TekstiNaytolleTulostaja();
     }
 
     public Pelaaja valitsePelaaja(ArrayList<Pelaaja> pelaajat) {
@@ -36,5 +38,13 @@ public class Ohjaus {
 
     public Pelaaja suojelijaToimii(ArrayList<Pelaaja> pelaajat) {
         return toiminnot.suojelijaToimii(pelaajat);
+    }
+    
+    public void tulostaTapahtumat(Vaihe vaihe){
+        tulostaja.tulostaVaiheenTapahtumat(vaihe);
+    }
+    
+    public void julistaVoittaja(String voittaja){
+        tulostaja.julistaVoittaja(voittaja);
     }
 }
