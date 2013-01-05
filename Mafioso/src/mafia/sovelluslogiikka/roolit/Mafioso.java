@@ -16,7 +16,7 @@ public class Mafioso implements Rooli{
     public void toimi(Yo yo){
         Ohjaus ohjaus = new Ohjaus();
         Pelaaja tapettava = ohjaus.mafiosoToimii(getHyvikset(yo.getPelaajat()), yo);
-        yo.setTapettava(tapettava);
+        yo.asetaTapettava(tapettava);
     }
     
     public boolean onkoPahis(){

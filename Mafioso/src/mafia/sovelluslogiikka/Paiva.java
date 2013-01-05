@@ -1,4 +1,3 @@
-
 package mafia.sovelluslogiikka;
 
 import mafia.sovelluslogiikka.peli.Saannot;
@@ -8,45 +7,32 @@ public class Paiva implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Aanestys> aanestykset;
-    private ArrayList<Pelaaja> lynkattu;   //Tällä hetkellä vain yksi lynkataan, mutta tätä ehkä pystytään säätämään myöhemmin. Siksi ArrayList
+    private ArrayList<Pelaaja> lynkattavat;   //Tällä hetkellä vain yksi lynkataan, mutta tätä ehkä pystytään säätämään myöhemmin. Siksi ArrayList
 
     public Paiva(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
         this.aanestykset = new ArrayList<Aanestys>();
-        lynkattu = new ArrayList<Pelaaja>();
+        lynkattavat = new ArrayList<Pelaaja>();
     }
-
-    public ArrayList<Aanestys> getAanestykset() {
-        return this.aanestykset;
-    }
-
-    public ArrayList<Pelaaja> getPelaajat() {
-        return pelaajat;
-    }
-
-//    public Pelaaja haePelaaja(String nimi) {
-//        for (Pelaaja pelaaja : pelaajat) {
-//            if (pelaaja.getNimi().equals(nimi)) {
-//                return pelaaja;
-//            }
-//        }
-//        return null;
-//    }
 
     public ArrayList<Pelaaja> pelaa(Saannot saannot) {
-        ArrayList<Pelaaja> tapettavat = tappoAanestys(saannot);
-        for (Pelaaja pelaaja : tapettavat) {
-            pelaajat.remove(pelaaja);
-            lynkattu.add(pelaaja);
-        }
+        lynkattavat = tappoAanestys(saannot);
+        tapaLynkattavat();
         ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
         return hengissa;
+    }
+    
+    public void tapaLynkattavat(){
+        for (Pelaaja pelaaja : lynkattavat) {
+            pelaajat.remove(pelaaja);
+        }
     }
 
     public ArrayList<Pelaaja> tappoAanestys(Saannot saannot) {
         ArrayList<Pelaaja> ehdokkaat = (ArrayList<Pelaaja>) this.pelaajat.clone();
         for (int i = 0; i < saannot.getAanestykset().size(); i++) {
-            ehdokkaat = this.aanestysKierros(saannot.getAanestykset().get(i), ehdokkaat);
+            int valittavienMaara = saannot.getAanestykset().get(i);
+            ehdokkaat = this.aanestysKierros(valittavienMaara, ehdokkaat);
         }
         while (ehdokkaat.size() > 1) {
             ehdokkaat = this.aanestysKierros(1, ehdokkaat);
@@ -79,7 +65,42 @@ public class Paiva implements Vaihe {
 
     public String kerroTapahtumat() {
         String tuloste = "Tapetut pelaajat:\n";
-        tuloste += lynkattu;
+        tuloste += lynkattavat;
         return tuloste;
     }
+
+    //setterit ja getterit
+    public void setPelaajat(ArrayList<Pelaaja> pelaajat) {
+        this.pelaajat = pelaajat;
+    }
+
+    public void setAanestykset(ArrayList<Aanestys> aanestykset) {
+        this.aanestykset = aanestykset;
+    }
+
+    public void setLynkattu(ArrayList<Pelaaja> lynkattu) {
+        this.lynkattavat = lynkattu;
+    }
+
+    public ArrayList<Pelaaja> getLynkattu() {
+        return lynkattavat;
+    }
+
+    public ArrayList<Aanestys> getAanestykset() {
+        return this.aanestykset;
+    }
+
+    public ArrayList<Pelaaja> getPelaajat() {
+        return pelaajat;
+    }
+    
+//    public Pelaaja haePelaaja(String nimi) {
+//        for (Pelaaja pelaaja : pelaajat) {
+//            if (pelaaja.getNimi().equals(nimi)) {
+//                return pelaaja;
+//            }
+//        }
+//        return null;
+//    }
+    
 }

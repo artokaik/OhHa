@@ -17,24 +17,8 @@ public class Yo implements Vaihe {
         this.vuoroPelaamatta = (ArrayList<Pelaaja>) pelaajat.clone();
     }
 
-    public ArrayList<Pelaaja> getPelaajat() {
-        return pelaajat;
-    }
-    
-    public Pelaaja getAmmuttu(){
-        return ammuttu;
-    }
 
-//    public Pelaaja haePelaaja(String nimi) {
-//        for (Pelaaja pelaaja : pelaajat) {
-//            if (pelaaja.getNimi().equals(nimi)) {
-//                return pelaaja;
-//            }
-//        }
-//        return null;
-//    }
-
-    public boolean setTapettava(Pelaaja pelaaja) {
+    public boolean asetaTapettava(Pelaaja pelaaja) {
         if (pelaajat.contains(pelaaja)) {
             ammuttu = pelaaja;
             return true;
@@ -42,7 +26,7 @@ public class Yo implements Vaihe {
         return false;
     }
 
-    public boolean setSuojeltu(Pelaaja pelaaja) {
+    public boolean asetaSuojeltu(Pelaaja pelaaja) {
         if (pelaajat.contains(pelaaja)) {
             suojeltu = pelaaja;
             return true;
@@ -79,4 +63,42 @@ public class Yo implements Vaihe {
         return tuloste;
         
     }
+    
+    //getterit ja setterit;
+
+    public void setPelaajat(ArrayList<Pelaaja> pelaajat) {
+        this.pelaajat = pelaajat;
+    }
+
+    public void setVuoroPelaamatta(ArrayList<Pelaaja> vuoroPelaamatta) {
+        this.vuoroPelaamatta = vuoroPelaamatta;
+    }
+    
+       public ArrayList<Pelaaja> getVuoroPelaamatta() {
+        return vuoroPelaamatta;
+    }
+
+    public Pelaaja getSuojeltu() {
+        return suojeltu;
+    }
+
+    public ArrayList<Pelaaja> getPelaajat() {
+        return pelaajat;
+    }
+    
+    public Pelaaja getAmmuttu(){
+        return ammuttu;
+    }
+
+     
+//    public Pelaaja haePelaaja(String nimi) {
+//        for (Pelaaja pelaaja : pelaajat) {
+//            if (pelaaja.getNimi().equals(nimi)) {
+//                return pelaaja;
+//            }
+//        }
+//        return null;
+//    }
+
+    
 }

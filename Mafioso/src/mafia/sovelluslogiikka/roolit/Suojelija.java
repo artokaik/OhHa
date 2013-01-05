@@ -16,7 +16,7 @@ public class Suojelija implements Rooli{
     public void toimi(Yo yo){
         Ohjaus ohjaus = new Ohjaus();
         Pelaaja suojeltu = ohjaus.suojelijaToimii(yo.getPelaajat());
-        yo.setSuojeltu(suojeltu);
+        yo.asetaSuojeltu(suojeltu);
     }
     
     public boolean onkoPahis(){
