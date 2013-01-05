@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mafia.sovelluslogiikka;
 
-/**
- *
- * @author Arto
- */
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import mafia.kayttoliittyma.Ohjaus;
 
 public class Aanestys {
@@ -19,12 +15,42 @@ public class Aanestys {
     public Aanestys(ArrayList<Pelaaja> ehdokkaat) {
         this.ehdokkaat = ehdokkaat;
         this.aanet = new ArrayList<Aani>();
-
     }
 
-    public void lisaaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
+    public ArrayList<Aani> getAanet() {
+        return aanet;
+    }
+
+    public boolean lisaaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
         Aani aani = new Aani(aanestaja, aanestetty);
+        for (Aani aani1 : aanet) {
+            if (aani1.getAanestaja().equals(aani.getAanestaja())){
+                return false;
+            }
+        }
         aanet.add(aani);
+        return true;
+    }
+    
+    
+    public boolean vaihdaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
+        for (Aani aani1 : aanet) {
+            if (aani1.getAanestaja().equals(aanestaja)){
+                aani1.setAanestetty(aanestetty);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public int laskeAanimaara(Pelaaja pelaaja){
+        int maara = 0;
+        for (Aani aani : aanet) {
+            if (aani.getAanestetty().equals(pelaaja)){
+                maara++;
+            }
+        }
+        return maara;
     }
 //
 //    public Pelaaja haeEhdokas(String nimi) {

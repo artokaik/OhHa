@@ -2,8 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
+import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.peli.Peli;
+import mafia.sovelluslogiikka.roolit.Etsiva;
+import mafia.sovelluslogiikka.roolit.Mafioso;
+import mafia.sovelluslogiikka.roolit.Suojelija;
+import mafia.sovelluslogiikka.roolit.Kansalainen;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -71,5 +77,8 @@ public class PeliPelaaTest {
     public void tearDown() {
     }
 
-
+    @Test
+    public void testi() {
+        assertTrue(true);
+    }
 }

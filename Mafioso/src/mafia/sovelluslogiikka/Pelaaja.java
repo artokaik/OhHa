@@ -1,6 +1,8 @@
 
 package mafia.sovelluslogiikka;
 
+import mafia.sovelluslogiikka.roolit.Rooli;
+
 
 public class Pelaaja {
     private String nimi;

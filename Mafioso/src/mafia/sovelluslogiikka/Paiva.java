@@ -1,15 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mafia.sovelluslogiikka;
 
+import mafia.sovelluslogiikka.peli.Saannot;
 import java.util.ArrayList;
 
-/**
- *
- * @author Arto
- */
 public class Paiva implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;

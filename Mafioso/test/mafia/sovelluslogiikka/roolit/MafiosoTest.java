@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.roolit;
 
-import mafia.sovelluslogiikka.Mafioso;
+import mafia.sovelluslogiikka.roolit.Mafioso;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

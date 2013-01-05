@@ -1,20 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package mafia.sovelluslogiikka;
+
+package mafia.sovelluslogiikka.roolit;
 
 import mafia.kayttoliittyma.Ohjaus;
-import java.util.*;
+import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.Yo;
 
 public class Suojelija implements Rooli{
-    private String roolinimi;
-    private boolean pahis;
+    private final String roolinimi = "Suojelija";
+    private final boolean pahis = false;
 
     
     public Suojelija(){
-        roolinimi = "Suojelija";
-        pahis = false;
     }
     
     public void toimi(Yo yo){

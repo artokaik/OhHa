@@ -1,7 +1,12 @@
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
-import java.util.*;
+import java.util.ArrayList;
 import mafia.kayttoliittyma.Ohjaus;
+import mafia.sovelluslogiikka.Paiva;
+import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.Vaihe;
+import mafia.sovelluslogiikka.Yo;
+
 
 public class Peli {
 
@@ -23,19 +28,6 @@ public class Peli {
 //        vaiheet.add(vaihe);
 //        return vaihe;
 //    }
-
-    public ArrayList<Pelaaja> getPelaajat() {
-        return this.pelaajat;
-    }
-
-    public Saannot getSaannot() {
-        return saannot;
-    }
-
-    public Vaihe getKaynnissaOlevaVaihe() {
-        return this.kaynnissaOlevaVaihe;
-    }
-
     public boolean lisaaPelaaja(Pelaaja pelaaja) {
         if (!pelaajat.contains(pelaaja)) {
             this.pelaajat.add(pelaaja);
@@ -62,7 +54,6 @@ public class Peli {
 //        }
 //        return vaihe;
 //    }
-
     public void pelaa() {
         boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
         boolean jatkuu = true;
@@ -115,13 +106,6 @@ public class Peli {
         ohjaus.julistaVoittaja("Hyvikset");
     }
 
-//    private ArrayList kopioi(ArrayList kopioitava) {
-//        ArrayList kopio = new ArrayList();
-//        for (Object object : kopioitava) {
-//            kopio.add(object);
-//        }
-//        return kopio;
-//    }
     @Override
     public String toString() {
         String tuloste = "";
@@ -129,5 +113,39 @@ public class Peli {
         tuloste += "Pelaajat: " + pelaajat + "\n";
         tuloste += saannot;
         return tuloste;
+    }
+
+    //Getterit ja setterit:
+    
+    public ArrayList<Vaihe> getVaiheet() {
+        return vaiheet;
+    }
+
+    public ArrayList<Pelaaja> getPelaajat() {
+        return this.pelaajat;
+    }
+
+    public Saannot getSaannot() {
+        return saannot;
+    }
+
+    public Vaihe getKaynnissaOlevaVaihe() {
+        return this.kaynnissaOlevaVaihe;
+    }
+
+    public void setPelaajat(ArrayList<Pelaaja> pelaajat) {
+        this.pelaajat = pelaajat;
+    }
+
+    public void setVaiheet(ArrayList<Vaihe> vaiheet) {
+        this.vaiheet = vaiheet;
+    }
+
+    public void setKaynnissaOlevaVaihe(Vaihe kaynnissaOlevaVaihe) {
+        this.kaynnissaOlevaVaihe = kaynnissaOlevaVaihe;
+    }
+
+    public void setSaannot(Saannot saannot) {
+        this.saannot = saannot;
     }
 }

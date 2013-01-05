@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Saannot {
 

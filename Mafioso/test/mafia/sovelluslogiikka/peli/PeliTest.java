@@ -5,9 +5,13 @@
  * boolean lisaaPelaaja(Pelaaja)
  * 
  */
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
-import mafia.sovelluslogiikka.Peli;
+import mafia.sovelluslogiikka.roolit.Etsiva;
+import mafia.sovelluslogiikka.roolit.Mafioso;
+import mafia.sovelluslogiikka.roolit.Kansalainen;
+import mafia.sovelluslogiikka.peli.Peli;
+import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;

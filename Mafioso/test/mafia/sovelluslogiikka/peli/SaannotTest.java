@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
+import mafia.sovelluslogiikka.peli.Saannot;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

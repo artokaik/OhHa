@@ -4,8 +4,19 @@
  */
 package mafia.tekstikayttoliittyma;
 
-import java.util.*;
-import mafia.sovelluslogiikka.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.peli.Peli;
+import mafia.sovelluslogiikka.peli.Saannot;
+import mafia.sovelluslogiikka.roolit.Etsiva;
+import mafia.sovelluslogiikka.roolit.Kansalainen;
+import mafia.sovelluslogiikka.roolit.Mafioso;
+import mafia.sovelluslogiikka.roolit.Rooli;
+import mafia.sovelluslogiikka.roolit.Suojelija;
+
+
 
 public class TekstiPelinLuoja {
 

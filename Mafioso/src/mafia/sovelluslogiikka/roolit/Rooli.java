@@ -1,5 +1,7 @@
 
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.roolit;
+
+import mafia.sovelluslogiikka.Yo;
 
 public interface Rooli {
     

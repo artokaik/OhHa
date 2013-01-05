@@ -1,24 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package mafia.sovelluslogiikka;
 
+package mafia.sovelluslogiikka.roolit;
+
+import java.util.ArrayList;
 import mafia.kayttoliittyma.Ohjaus;
-import java.util.*;
+import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.Yo;
 
 public class Mafioso implements Rooli{
-    private String roolinimi;
-    private boolean pahis;
+    private final String roolinimi = "Mafioso";
+    private final boolean pahis = true;
 
     public Mafioso(){
-        roolinimi = "Mafioso";
-        pahis = true;
     }
     
     public void toimi(Yo yo){
         Ohjaus ohjaus = new Ohjaus();
-        Pelaaja tapettava = ohjaus.mafiosoToimii(this.getHyvikset(yo.getPelaajat()), yo);
+        Pelaaja tapettava = ohjaus.mafiosoToimii(getHyvikset(yo.getPelaajat()), yo);
         yo.setTapettava(tapettava);
     }
     

@@ -4,8 +4,10 @@
  */
 package mafia.tekstikayttoliittyma;
 
-import java.util.*;
-import mafia.sovelluslogiikka.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+import mafia.sovelluslogiikka.Pelaaja;
+
 
 public class TekstiPelaajanValitsija {
 

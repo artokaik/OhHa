@@ -2,19 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.roolit;
 
 import mafia.kayttoliittyma.Ohjaus;
-import java.util.*;
+import mafia.sovelluslogiikka.Yo;
+
 
 public class Etsiva implements Rooli {
 
-    private String roolinimi;
-    private boolean pahis;
+    private final String roolinimi = "Etsivä";
+    private final boolean pahis = false;
 
     public Etsiva() {
-        roolinimi = "Etsivä";
-        pahis = false;
     }
 
     public void toimi(Yo yo) {

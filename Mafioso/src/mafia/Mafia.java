@@ -1,6 +1,7 @@
 
 package mafia;
 
+import mafia.sovelluslogiikka.peli.Peli;
 import mafia.tekstikayttoliittyma.*;
 import mafia.sovelluslogiikka.*;
 
