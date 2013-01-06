@@ -7,7 +7,6 @@ import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Vaihe;
 import mafia.sovelluslogiikka.Yo;
 
-
 public class Peli {
 
     private ArrayList<Pelaaja> pelaajat;
@@ -22,12 +21,7 @@ public class Peli {
         this.kaynnissaOlevaVaihe = null;
     }
 
-//    public Vaihe pelaaSeuraavaVaihe(ArrayList<Pelaaja> pelaajat) {
-//        Vaihe vaihe = this.seuraavaVaihe(pelaajat);
-//        kaynnissaOlevaVaihe = vaihe;
-//        vaiheet.add(vaihe);
-//        return vaihe;
-//    }
+
     public boolean lisaaPelaaja(Pelaaja pelaaja) {
         if (!pelaajat.contains(pelaaja)) {
             this.pelaajat.add(pelaaja);
@@ -40,60 +34,54 @@ public class Peli {
         return pelaajat.remove(pelaaja);
     }
 
-//    public Vaihe seuraavaVaihe(ArrayList<Pelaaja> hengissa) {
-//        if (this.jatkuuko(hengissa)) {
-//            return null;
-//        }
-//        Vaihe vaihe = new Yo(hengissa);
-//        if (vaiheet.isEmpty()) {
-//            if (saannot.getPaivaEnsin()) {
-//                vaihe = new Paiva(hengissa);
-//            }
-//        } else if (vaiheet.get(vaiheet.size() - 1).getClass().equals(vaihe)) {
-//            vaihe = new Paiva(hengissa);
-//        }
-//        return vaihe;
-//    }
     public void pelaa() {
-        boolean seuraavaksiPaiva = saannot.getPaivaEnsin();
-        boolean jatkuu = true;
-        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
-        while (jatkuu) {
-            Vaihe vaihe = new Yo(hengissa);
-            if (seuraavaksiPaiva) {
-                vaihe = new Paiva(hengissa);
-                seuraavaksiPaiva = false;
-            } else {
-                seuraavaksiPaiva = true;
-            }
-            kaynnissaOlevaVaihe = vaihe;
-            hengissa = (ArrayList<Pelaaja>) vaihe.pelaa(saannot).clone();
-            jatkuu = jatkuuko(hengissa);
-            vaiheet.add(vaihe);
-            Ohjaus ohjaus = new Ohjaus();
-            ohjaus.tulostaTapahtumat(vaihe);
+        Vaihe seuraavaVaihe = new Yo((ArrayList<Pelaaja>) pelaajat.clone());
+        if (saannot.getPaivaEnsin()) {
+            seuraavaVaihe = new Paiva((ArrayList<Pelaaja>) pelaajat.clone());
         }
-        this.julistaVoittaja(hengissa);
+        while (jatkuuko(seuraavaVaihe.getPelaajat())) {
+            seuraavaVaihe = pelaaYksiVaihe(seuraavaVaihe);
+        }
+        this.julistaVoittaja(seuraavaVaihe.getPelaajat());
+    }
 
+    public Vaihe pelaaYksiVaihe(Vaihe vaihe) {
+        kaynnissaOlevaVaihe = vaihe;
+        vaihe.pelaa(saannot);
+        vaiheet.add(vaihe);
+        Ohjaus ohjaus = new Ohjaus();
+        ohjaus.tulostaTapahtumat(vaihe);
+        return vaihe.luoSeuraavaVaihe();
     }
 
     public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
-        int hyvikset = 0;
-        int pahikset = 0;
+        if(laskePahikset(hengissa)==0){
+            return false;
+        } else if (laskePahikset(hengissa)>=laskeHyvikset(hengissa)){
+            return false;
+        }
+        return true;
+    }
+    
+    public int laskeHyvikset(ArrayList<Pelaaja> hengissa){
+        int hyvistenMaara = 0;
+        for (Pelaaja pelaaja : hengissa) {
+            if (!pelaaja.getRooli().onkoPahis()) {
+                hyvistenMaara++;
+            }
+        }
+        return hyvistenMaara;
+    }
+        public int laskePahikset(ArrayList<Pelaaja> hengissa){
+        int pahistenMaara = 0;
         for (Pelaaja pelaaja : hengissa) {
             if (pelaaja.getRooli().onkoPahis()) {
-                pahikset++;
-            } else {
-                hyvikset++;
+                pahistenMaara++;
             }
         }
-        if (hyvikset > pahikset) {
-            if (pahikset > 0) {
-                return true;
-            }
-        }
-        return false;
+        return pahistenMaara;
     }
+    
 
     public void julistaVoittaja(ArrayList<Pelaaja> hengissa) {
         Ohjaus ohjaus = new Ohjaus();
@@ -116,7 +104,6 @@ public class Peli {
     }
 
     //Getterit ja setterit:
-    
     public ArrayList<Vaihe> getVaiheet() {
         return vaiheet;
     }

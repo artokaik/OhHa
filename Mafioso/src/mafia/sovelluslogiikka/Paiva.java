@@ -48,6 +48,11 @@ public class Paiva implements Vaihe {
         return ehdokkaat;
 
     }
+    
+    public Yo luoSeuraavaVaihe(){
+        Yo yo = new Yo(pelaajat);
+        return yo;
+    }
 
     @Override
     public String toString() {

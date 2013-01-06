@@ -52,6 +52,11 @@ public class Yo implements Vaihe {
         }
     }
     
+    public Paiva luoSeuraavaVaihe(){
+        Paiva paiva = new Paiva(pelaajat);
+        return paiva;
+    }
+    
     public String kerroTapahtumat(){
         String tuloste = "";
         if (this.ammuttu.equals(this.suojeltu)){
