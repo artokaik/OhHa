@@ -35,17 +35,29 @@ public class PeliPelaaTest {
     Pelaaja pasi;
     Pelaaja ossi;
 
+    /**
+     *
+     */
     public PeliPelaaTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         peli = new Peli();
@@ -73,10 +85,16 @@ public class PeliPelaaTest {
         peli.lisaaPelaaja(ossi);
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void testi() {
         assertTrue(true);

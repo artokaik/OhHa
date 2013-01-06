@@ -6,6 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author Arto
+ */
 public class AanestysTest {
 
     Aanestys aanestys;
@@ -20,6 +24,9 @@ public class AanestysTest {
     Pelaaja h;
     Pelaaja i;
 
+    /**
+     *
+     */
     public AanestysTest() {
         pelaajat = new ArrayList<Pelaaja>();
         a = new Pelaaja("a");
@@ -42,6 +49,9 @@ public class AanestysTest {
         pelaajat.add(i);
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
 
@@ -49,26 +59,41 @@ public class AanestysTest {
         aanestys = new Aanestys(pelaajat);
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void ehdokkaatOikein() {
         assertEquals(9, aanestys.getEhdokkaat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void alussaEiAania() {
         assertEquals(0, aanestys.getAanet().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void aanienMaaraOikein() {
         kaikkiAanestavatA4B3C2();
         assertEquals(9, aanestys.getAanet().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void enitenAaniaSaanutOikein() {
         kaikkiAanestavatA4B3C2();
@@ -77,6 +102,9 @@ public class AanestysTest {
         assertEquals(1, aanestys.haeTulokset(1).size());
     }
 
+    /**
+     *
+     */
     @Test
     public void enitenAaniaSaanutOikeinTasapeli() {
         kaikkiAanestavatA4B4C1();
@@ -86,6 +114,9 @@ public class AanestysTest {
         assertEquals(2, aanestys.haeTulokset(1).size());
     }
 
+    /**
+     *
+     */
     @Test
     public void kaksiEnitenAaniaSaanuttaOikein() {
         kaikkiAanestavatA4B3C2();
@@ -95,6 +126,9 @@ public class AanestysTest {
         assertEquals(2, aanestys.haeTulokset(2).size());
     }
 
+    /**
+     *
+     */
     @Test
     public void kaksiEnitenAaniaSaanuttaOikeinKunKahdenTasapeli() {
         kaikkiAanestavatA4B4C1();
@@ -104,6 +138,9 @@ public class AanestysTest {
         assertEquals(2, aanestys.haeTulokset(2).size());
     }
 
+    /**
+     *
+     */
     @Test
     public void kaksiEnitenAaniaSaanuttaOikeinKunKolmenTasapeli() {
         kaikkiAanestavatA2B2C2D1E1F1();
@@ -114,24 +151,36 @@ public class AanestysTest {
         assertEquals(3, aanestys.haeTulokset(3).size());
     }
 
+    /**
+     *
+     */
     @Test
     public void laskeAanetOikeinYksiAani() {
         kaikkiAanestavatA4B4C1();
         assertEquals(1, aanestys.laskeAanimaara(c));
     }
 
+    /**
+     *
+     */
     @Test
     public void laskeAanetOikeinMontaAanta() {
         kaikkiAanestavatA4B4C1();
         assertEquals(4, aanestys.laskeAanimaara(a));
     }
 
+    /**
+     *
+     */
     @Test
     public void laskeAanetOikeinNollaAanta() {
         kaikkiAanestavatA4B4C1();
         assertEquals(0, aanestys.laskeAanimaara(d));
     }
 
+    /**
+     *
+     */
     @Test
     public void jokuAanestaaKahdesti() {
         aanestys.lisaaAani(a, b);
@@ -141,6 +190,9 @@ public class AanestysTest {
         assertEquals(0, aanestys.laskeAanimaara(c));
     }
 
+    /**
+     *
+     */
     @Test
     public void aanenVaihtoToimii() {
         kaikkiAanestavatA4B3C2();
@@ -151,6 +203,9 @@ public class AanestysTest {
         assertTrue(aanestys.vaihdaAani(b, d));
     }
 
+    /**
+     *
+     */
     @Test
     public void aanenVaihtoEiToimiJosAantaEiOleAnnettu() {
         aanestys.lisaaAani(a, b);
@@ -161,6 +216,9 @@ public class AanestysTest {
     }
 
 
+    /**
+     *
+     */
     public void kaikkiAanestavatA4B3C2() {
         aanestys.lisaaAani(a, b);
         aanestys.lisaaAani(b, c);
@@ -173,6 +231,9 @@ public class AanestysTest {
         aanestys.lisaaAani(i, a);
     }
 
+    /**
+     *
+     */
     public void kaikkiAanestavatA4B4C1() {
         aanestys.lisaaAani(a, c);
         aanestys.lisaaAani(b, a);
@@ -185,6 +246,9 @@ public class AanestysTest {
         aanestys.lisaaAani(i, b);
     }
 
+    /**
+     *
+     */
     public void kaikkiAanestavatA2B2C2D1E1F1() {
         aanestys.lisaaAani(a, f);
         aanestys.lisaaAani(b, a);

@@ -6,17 +6,32 @@ package mafia.tekstikayttoliittyma;
 
 import mafia.sovelluslogiikka.*;
 
+/**
+ *
+ * @author Arto
+ */
 public class TekstiNaytolleTulostaja {
     
+    /**
+     *
+     */
     public TekstiNaytolleTulostaja(){
         
     }
     
+    /**
+     *
+     * @param vaihe
+     */
     public void tulostaVaiheenTapahtumat(Vaihe vaihe){
         System.out.println(vaihe.kerroTapahtumat());
     }
     
-        public void julistaVoittaja(String voittaja){
+        /**
+     *
+     * @param voittaja
+     */
+    public void julistaVoittaja(String voittaja){
         System.out.println(voittaja + " voittivat pelin!");
     }
 }

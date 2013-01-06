@@ -8,6 +8,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author Arto
+ */
 public class YoTest {
 
     Yo yo;
@@ -22,6 +26,9 @@ public class YoTest {
     Pelaaja h;
     Pelaaja i;
 
+    /**
+     *
+     */
     public YoTest() {
         pelaajat = new ArrayList<Pelaaja>();
         a = new Pelaaja("a");
@@ -44,32 +51,50 @@ public class YoTest {
         pelaajat.add(i);
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         yo = new Yo(pelaajat);
     }
 
+    /**
+     *
+     */
     @Test
     public void ammuttuAluksiNull() {
         assertEquals(null, yo.getAmmuttu());
     }
 
+    /**
+     *
+     */
     @Test
     public void suojeltuAluksiNull() {
         assertEquals(null, yo.getSuojeltu());
     }
 
+    /**
+     *
+     */
     @Test
     public void getPelaajatToimii() {
         assertEquals(9, yo.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void asetaSuojeltuToimiiJosPelaajaOnOlemassa() {
         yo.asetaSuojeltu(a);
         assertEquals(a, yo.getSuojeltu());
     }
 
+    /**
+     *
+     */
     @Test
     public void asetaSuojeltuEiToimiiJosPelaajaEiOleOlemassa() {
         Pelaaja x = new Pelaaja("x");
@@ -79,12 +104,18 @@ public class YoTest {
         assertFalse(yo.asetaSuojeltu(y));
     }
 
+    /**
+     *
+     */
     @Test
     public void asetaTapettavaToimiiJosPelaajaOnOlemassa() {
         yo.asetaTapettava(a);
         assertEquals(a, yo.getAmmuttu()); 
     }
 
+    /**
+     *
+     */
     @Test
     public void asetaTapettavaEiToimiJosPelaajaEiOleOlemassa() {
         Pelaaja x = new Pelaaja("x");
@@ -94,6 +125,9 @@ public class YoTest {
         assertFalse(yo.asetaTapettava(y));
     }
 
+    /**
+     *
+     */
     @Test
     public void josSuojeltuJaAmmuttuSamatKukaanEiKuole() {
         yo.asetaSuojeltu(a);
@@ -102,6 +136,9 @@ public class YoTest {
         assertEquals(9, yo.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void josSuojeltuJaAmmuttuEriAmmuttuPoistetaan() {
         yo.asetaSuojeltu(a);
@@ -111,6 +148,9 @@ public class YoTest {
         assertFalse(yo.getPelaajat().contains(b));
     }
 
+    /**
+     *
+     */
     @Test
     public void josketäänEiSuojellaAmmuttuPoistetaan() {
         yo.asetaTapettava(b);

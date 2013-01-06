@@ -7,12 +7,20 @@ import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.roolit.Rooli;
 
 
+/**
+ * PeliRakentaja on luokka, jota käytetään pelin luomiseen. PeliRakentaja-luokkia voidaan tallentaa ja käyttää uudestaan, jolloin uuden pelin luominen samoilla pelaajilla, rooleilla ja säännöillä on nopeaa. Roolit kuitenkin arvotaan pelaajille aina uudestaan.
+ * @author Arto
+ */
 public class PeliRakentaja {
     private Saannot saannot;
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Rooli> roolit;
     private int pelaajienMaara;
     
+    /**
+     *
+     * @param pelaajia
+     */
     public PeliRakentaja(int pelaajia){
         saannot = new Saannot();
         pelaajat = new ArrayList<Pelaaja>();
@@ -20,19 +28,35 @@ public class PeliRakentaja {
         pelaajienMaara = pelaajia;
     }
     
+    /**
+     *
+     */
     public PeliRakentaja(){
         this(0);
     }
     
+    /**
+     *
+     */
     public void lisaaPelaajienMaaraaYhdella(){
         pelaajienMaara++;
     }
 
+    /**
+     *
+     * @param rooli
+     * @return
+     */
     public boolean lisaaRooli(Rooli rooli){
         roolit.add(rooli);
         return true;
     }
     
+    /**
+     *
+     * @param pelaaja
+     * @return
+     */
     public boolean lisaaPelaaja(Pelaaja pelaaja){
         if(this.pelaajat.contains(pelaaja)){
             return false;
@@ -41,6 +65,10 @@ public class PeliRakentaja {
         return true;
     }
     
+    /**
+     *
+     * @return
+     */
     public Peli teePeli(){
         Peli peli = new Peli();
         peli.setPelaajat(arvoRoolit());
@@ -51,6 +79,10 @@ public class PeliRakentaja {
         return peli;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pelaaja> arvoRoolit(){
         if(pelaajat.size()!=roolit.size()){
             return null;
@@ -67,34 +99,66 @@ public class PeliRakentaja {
     
     //Settereitä ja gettereitä:
     
+    /**
+     *
+     * @param saannot
+     */
     public void setSaannot(Saannot saannot) {
         this.saannot = saannot;
     }
 
+    /**
+     *
+     * @param pelaajat
+     */
     public void setPelaajat(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
 
+    /**
+     *
+     * @param roolit
+     */
     public void setRoolit(ArrayList<Rooli> roolit) {
         this.roolit = roolit;
     }
 
+    /**
+     *
+     * @param pelaajienMaara
+     */
     public void setPelaajienMaara(int pelaajienMaara) {
         this.pelaajienMaara = pelaajienMaara;
     }
 
+    /**
+     *
+     * @return
+     */
     public Saannot getSaannot() {
         return saannot;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Rooli> getRoolit() {
         return roolit;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPelaajienMaara() {
         return pelaajienMaara;
     }

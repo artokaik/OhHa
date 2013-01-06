@@ -3,32 +3,59 @@ package mafia.sovelluslogiikka;
 import mafia.sovelluslogiikka.peli.Saannot;
 import java.util.ArrayList;
 
+/**
+ *Paiva-luokka toteuttaa Vaihe-rajapinnan ja kuvaa toista pelin vaiheista (toinen on Yo). 
+ * 
+ * Oliomuuttujaan pelaajat (ArrayList<Pelaaja>) tallennetaan aluksi mukana olevat pelaajat. Kun päivän lopuksi yksi pelaajista poistetaan pelistä, tämä poistetaan myös pelaajat-listalta.
+ * 
+ * Oliomuuttujaan aanestykset (ArrayList<Aanestys>) tallennetaan lynkkausäänestyksen kierrokset. Säännöistä riippuen yhtenä päivänä äänestyksiä voi olla useita. 
+ * 
+ * Oliomuuttujaan lynkattavat (ArrayList<lynkattavat>) tallennetaan päivän aikana lynkattavat pelaajat. Lynkattavia on lähtökohtaisesti yksi, mutta listan käyttäminen mahdollistaa erilaisten sääntövarianttien toteuttamisen tulevaisuudessa.
+ * @author Arto
+ */
 public class Paiva implements Vaihe {
 
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Aanestys> aanestykset;
     private ArrayList<Pelaaja> lynkattavat;   //Tällä hetkellä vain yksi lynkataan, mutta tätä ehkä pystytään säätämään myöhemmin. Siksi ArrayList
 
+    /**
+     *
+     * @param pelaajat
+     */
     public Paiva(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
         this.aanestykset = new ArrayList<Aanestys>();
         lynkattavat = new ArrayList<Pelaaja>();
     }
 
+    /**
+     *
+     * @param saannot
+     * @return
+     */
     public ArrayList<Pelaaja> pelaa(Saannot saannot) {
-        lynkattavat = tappoAanestys(saannot);
+        lynkattavat = lynkkausAanestys(saannot);
         tapaLynkattavat();
         ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
         return hengissa;
     }
     
+    /**
+     *
+     */
     public void tapaLynkattavat(){
         for (Pelaaja pelaaja : lynkattavat) {
             pelaajat.remove(pelaaja);
         }
     }
 
-    public ArrayList<Pelaaja> tappoAanestys(Saannot saannot) {
+    /**
+     *
+     * @param saannot
+     * @return
+     */
+    public ArrayList<Pelaaja> lynkkausAanestys(Saannot saannot) {
         ArrayList<Pelaaja> ehdokkaat = (ArrayList<Pelaaja>) this.pelaajat.clone();
         for (int i = 0; i < saannot.getAanestykset().size(); i++) {
             int valittavienMaara = saannot.getAanestykset().get(i);
@@ -40,6 +67,12 @@ public class Paiva implements Vaihe {
         return ehdokkaat;
     }
 
+    /**
+     *
+     * @param maara
+     * @param ehdokkaat
+     * @return
+     */
     public ArrayList<Pelaaja> aanestysKierros(int maara, ArrayList<Pelaaja> ehdokkaat) {
         Aanestys aanestys = new Aanestys(ehdokkaat);
         aanestys.suorita(pelaajat, ehdokkaat);
@@ -49,6 +82,10 @@ public class Paiva implements Vaihe {
 
     }
     
+    /**
+     *
+     * @return
+     */
     public Yo luoSeuraavaVaihe(){
         Yo yo = new Yo(pelaajat);
         return yo;
@@ -68,6 +105,10 @@ public class Paiva implements Vaihe {
         return tuloste;
     }
 
+    /**
+     *
+     * @return
+     */
     public String kerroTapahtumat() {
         String tuloste = "Tapetut pelaajat:\n";
         tuloste += lynkattavat;
@@ -75,26 +116,50 @@ public class Paiva implements Vaihe {
     }
 
     //setterit ja getterit
+    /**
+     *
+     * @param pelaajat
+     */
     public void setPelaajat(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
 
+    /**
+     *
+     * @param aanestykset
+     */
     public void setAanestykset(ArrayList<Aanestys> aanestykset) {
         this.aanestykset = aanestykset;
     }
 
+    /**
+     *
+     * @param lynkattu
+     */
     public void setLynkattu(ArrayList<Pelaaja> lynkattu) {
         this.lynkattavat = lynkattu;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pelaaja> getLynkattu() {
         return lynkattavat;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Aanestys> getAanestykset() {
         return this.aanestykset;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
     }

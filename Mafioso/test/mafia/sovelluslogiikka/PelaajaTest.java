@@ -22,22 +22,37 @@ public class PelaajaTest {
 
     Pelaaja pelaaja;
 
+    /**
+     *
+     */
     public PelaajaTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("Arto");
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -47,16 +62,25 @@ public class PelaajaTest {
     // @Test
     // public void hello() {}
 
+    /**
+     *
+     */
     @Test
     public void luoPelaajaNimiOikein() {
         assertEquals("Arto", pelaaja.getNimi());
     }
 
+    /**
+     *
+     */
     @Test
     public void alussaEiRoolia() {
         assertEquals(null, pelaaja.getRooli());
     }
 
+    /**
+     *
+     */
     @Test
     public void setRooliToimiiOikeinMafiosolla() {
         Mafioso mafioso = new Mafioso();
@@ -64,11 +88,17 @@ public class PelaajaTest {
         assertEquals(mafioso, pelaaja.getRooli());
     }
 
+    /**
+     *
+     */
     @Test
     public void alussaElossa() {
         assertEquals(true, pelaaja.getElossa());
     }
 
+    /**
+     *
+     */
     @Test
     public void kuoleToimii() {
         pelaaja.kuole();

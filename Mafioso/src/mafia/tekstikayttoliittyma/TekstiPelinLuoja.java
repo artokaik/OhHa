@@ -18,12 +18,19 @@ import mafia.sovelluslogiikka.roolit.Suojelija;
 
 
 
+/**
+ *
+ * @author Arto
+ */
 public class TekstiPelinLuoja {
 
     private Scanner lukija;
     private ArrayList<Rooli> roolit;
     private Random arpoja;
 
+    /**
+     *
+     */
     public TekstiPelinLuoja() {
         lukija = new Scanner(System.in);
         arpoja = new Random();
@@ -35,6 +42,10 @@ public class TekstiPelinLuoja {
         roolit.add(new Kansalainen());
     }
 
+    /**
+     *
+     * @return
+     */
     public Peli luoPeli() {
         Peli peli = new Peli();
         System.out.println("Pelaajien lukumäärä:");

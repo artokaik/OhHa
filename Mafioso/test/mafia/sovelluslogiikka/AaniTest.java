@@ -21,33 +21,54 @@ public class AaniTest {
     Pelaaja arto;
     Pelaaja matti;
 
+    /**
+     *
+     */
     public AaniTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         arto = new Pelaaja("Arto");
         matti = new Pelaaja("Matti");
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void AanestajaOikein() {
         aani = new Aani(arto, matti);
         assertEquals(arto, aani.getAanestaja());
     }
 
+    /**
+     *
+     */
     @Test
     public void AanestettyOikein() {
         aani = new Aani(arto, matti);

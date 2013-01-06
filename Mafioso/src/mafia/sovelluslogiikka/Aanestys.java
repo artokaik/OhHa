@@ -7,20 +7,38 @@ import java.util.Collections;
 import java.util.HashMap;
 import mafia.kayttoliittyma.Ohjaus;
 
+/**
+ *Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat (ArrayList<Pelaaja>) ja annetut äänet (ArrayList<Aani>).
+ * @author Arto
+ */
 public class Aanestys {
 
     private ArrayList<Aani> aanet;
     private ArrayList<Pelaaja> ehdokkaat;
 
+    /**
+     *
+     * @param ehdokkaat
+     */
     public Aanestys(ArrayList<Pelaaja> ehdokkaat) {
         this.ehdokkaat = ehdokkaat;
         this.aanet = new ArrayList<Aani>();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Aani> getAanet() {
         return aanet;
     }
 
+    /**
+     *
+     * @param aanestaja
+     * @param aanestetty
+     * @return
+     */
     public boolean lisaaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
         Aani aani = new Aani(aanestaja, aanestetty);
         for (Aani aani1 : aanet) {
@@ -33,6 +51,12 @@ public class Aanestys {
     }
     
     
+    /**
+     *
+     * @param aanestaja
+     * @param aanestetty
+     * @return
+     */
     public boolean vaihdaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
         for (Aani aani1 : aanet) {
             if (aani1.getAanestaja().equals(aanestaja)){
@@ -43,6 +67,11 @@ public class Aanestys {
         return false;
     }
     
+    /**
+     *
+     * @param pelaaja
+     * @return
+     */
     public int laskeAanimaara(Pelaaja pelaaja){
         int maara = 0;
         for (Aani aani : aanet) {
@@ -62,6 +91,10 @@ public class Aanestys {
 //        return null;
 //    }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pelaaja> getEhdokkaat() {
         return ehdokkaat;
     }
@@ -78,6 +111,11 @@ public class Aanestys {
         return tulokset;
     }
 
+    /**
+     *
+     * @param maara
+     * @return
+     */
     public ArrayList<Pelaaja> haeTulokset(int maara) {
         HashMap<Pelaaja, Integer> tulokset = laskeTulokset();
         int raja = this.laskeRaja(maara, tulokset);
@@ -103,6 +141,11 @@ public class Aanestys {
         return raja;
     }
 
+    /**
+     *
+     * @param aanestajat
+     * @param ehdokkaat
+     */
     public void suorita(ArrayList<Pelaaja> aanestajat, ArrayList<Pelaaja> ehdokkaat) {
         Ohjaus ohjaus = new Ohjaus();
         for (Pelaaja pelaaja : aanestajat) {

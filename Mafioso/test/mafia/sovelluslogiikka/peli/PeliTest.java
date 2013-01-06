@@ -29,32 +29,53 @@ public class PeliTest {
     Peli peli;
 
 
+    /**
+     *
+     */
     public PeliTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         peli = new Peli();
 
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void alussaEiPelaajia() {
         assertEquals(0, peli.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaaYksiPelaaja() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -62,12 +83,18 @@ public class PeliTest {
         assertEquals(1, peli.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaaYksiPelaajaPalauttaaTrue() {
         Pelaaja pelaaja = new Pelaaja("Arto");
         assertEquals(true, peli.lisaaPelaaja(pelaaja));
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaaKaksiPelaajaa() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -77,6 +104,9 @@ public class PeliTest {
         assertEquals(2, peli.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaasamaPelaajaKahdesti() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -85,6 +115,9 @@ public class PeliTest {
         assertEquals(1, peli.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaaKaksiSamanNimistaPelaajaa() {
         Pelaaja pelaaja1 = new Pelaaja("Arto");
@@ -94,6 +127,9 @@ public class PeliTest {
         assertEquals(1, peli.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaaKaksiSamanNimistaPelaajaaPalauttaaFalse() {
         Pelaaja pelaaja1 = new Pelaaja("Arto");
@@ -102,6 +138,9 @@ public class PeliTest {
         assertEquals(false, peli.lisaaPelaaja(pelaaja2));
     }
 
+    /**
+     *
+     */
     @Test
     public void lisaaKaksiPelaajaaJaPoistaYksi() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -112,6 +151,9 @@ public class PeliTest {
         assertEquals(1, peli.getPelaajat().size());
     }
 
+    /**
+     *
+     */
     @Test
     public void PoistaOlemassaolevaPelaajaPalauttaaTrue() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -119,6 +161,9 @@ public class PeliTest {
         assertEquals(true, peli.poistaPelaaja(new Pelaaja("Arto")));
     }
     
+    /**
+     *
+     */
     @Test
     public void PoistaOlematonPelaajaPalauttaaFalse() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -126,16 +171,25 @@ public class PeliTest {
         assertEquals(false, peli.poistaPelaaja(new Pelaaja("Matti")));
     }
 
+    /**
+     *
+     */
     @Test
     public void peliAlkaaPaivalla() {
         assertEquals(true, peli.getSaannot().getPaivaEnsin());
     }
 
+    /**
+     *
+     */
     @Test
     public void tyhjaPelieiJatku() {
         assertEquals(false, peli.jatkuuko(peli.getPelaajat()));
     }
 
+    /**
+     *
+     */
     @Test
     public void yhdenMafiosonJaKahdenHyviksenPeliJatkuu() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -150,6 +204,9 @@ public class PeliTest {
         assertEquals(true, peli.jatkuuko(peli.getPelaajat()));
     }
 
+    /**
+     *
+     */
     @Test
     public void yhdenMafiosonJaYhdenHyviksenPeliEiJatku() {
         Pelaaja pelaaja = new Pelaaja("Arto");
@@ -161,6 +218,9 @@ public class PeliTest {
         assertEquals(false, peli.jatkuuko(peli.getPelaajat()));
     }
 
+    /**
+     *
+     */
     @Test
     public void KahdenHyviksenPeliEiJatkuu() {
         Pelaaja pelaaja2 = new Pelaaja("Matti");

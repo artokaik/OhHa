@@ -6,23 +6,42 @@ import mafia.kayttoliittyma.Ohjaus;
 import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
+/**
+ *
+ * @author Arto
+ */
 public class Mafioso implements Rooli{
     private final String roolinimi = "Mafioso";
     private final boolean pahis = true;
 
+    /**
+     *
+     */
     public Mafioso(){
     }
     
+    /**
+     *
+     * @param yo
+     */
     public void toimi(Yo yo){
         Ohjaus ohjaus = new Ohjaus();
         Pelaaja tapettava = ohjaus.mafiosoToimii(getHyvikset(yo.getPelaajat()), yo);
         yo.asetaTapettava(tapettava);
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean onkoPahis(){
         return pahis;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getRoolinimi(){
         return this.roolinimi;
     }

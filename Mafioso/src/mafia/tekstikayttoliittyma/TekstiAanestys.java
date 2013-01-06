@@ -7,14 +7,27 @@ package mafia.tekstikayttoliittyma;
 import java.util.*;
 import mafia.sovelluslogiikka.*;
 
+/**
+ *
+ * @author Arto
+ */
 public class TekstiAanestys {
 
     private Scanner lukija;
 
+    /**
+     *
+     */
     public TekstiAanestys() {
         lukija = new Scanner(System.in);
     }
     
+    /**
+     *
+     * @param aanestaja
+     * @param pelaajat
+     * @return
+     */
     public Aani aanesta(Pelaaja aanestaja, ArrayList<Pelaaja> pelaajat){
         ArrayList<Pelaaja> vaihtoehdot = (ArrayList<Pelaaja>) pelaajat.clone();
         vaihtoehdot.remove(aanestaja);

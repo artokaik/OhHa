@@ -7,14 +7,25 @@ package mafia.tekstikayttoliittyma;
 import java.util.*;
 import mafia.sovelluslogiikka.*;
 
+/**
+ *
+ * @author Arto
+ */
 public class TekstiRoolienToiminnot {
 
     private Scanner lukija;
 
+    /**
+     *
+     */
     public TekstiRoolienToiminnot() {
         lukija = new Scanner(System.in);
     }
 
+    /**
+     *
+     * @param pelaajat
+     */
     public void etsivaToimii(ArrayList<Pelaaja> pelaajat) {
         System.out.println("Olet Etsivä, kenet tarkastat?");
         TekstiPelaajanValitsija valitsija = new TekstiPelaajanValitsija();
@@ -26,6 +37,12 @@ public class TekstiRoolienToiminnot {
         }
     }
 
+    /**
+     *
+     * @param pelaajat
+     * @param yo
+     * @return
+     */
     public Pelaaja mafiosoToimii(ArrayList<Pelaaja> pelaajat, Yo yo) {
         System.out.println("Olet Mafioso, kenet haluat tappaa?");
         if (yo.getAmmuttu()!=null){
@@ -36,6 +53,11 @@ public class TekstiRoolienToiminnot {
         return tapettava;
     }
 
+    /**
+     *
+     * @param pelaajat
+     * @return
+     */
     public Pelaaja suojelijaToimii(ArrayList<Pelaaja> pelaajat) {
         System.out.println("Olet suojelija, ketä suojelet?");
         TekstiPelaajanValitsija valitsija = new TekstiPelaajanValitsija();

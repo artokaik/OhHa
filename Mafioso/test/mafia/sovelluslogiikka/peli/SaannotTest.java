@@ -22,43 +22,70 @@ public class SaannotTest {
 
     Saannot saannot;
 
+    /**
+     *
+     */
     public SaannotTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         saannot = new Saannot();
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void oletusarvoisestiPeliAlkaaPaivalla() {
         assertEquals(true, saannot.getPaivaEnsin());
     }
 
+    /**
+     *
+     */
     @Test
     public void saantojenMuutosPeliAlkaaYolla() {
         saannot.asetaYoEnsin();
         assertEquals(false, saannot.getPaivaEnsin());
     }
 
+    /**
+     *
+     */
     @Test
     public void saantojenMuutosPeliAlkaaPaivalla() {
         saannot.asetaPaivaEnsin();
         assertEquals(true, saannot.getPaivaEnsin());
     }
 
+    /**
+     *
+     */
     @Test
     public void saantojenMuutosPeliAlkaaYollaPeliAlkaaPaivalla() {
         saannot.asetaYoEnsin();

@@ -6,11 +6,18 @@ package mafia.sovelluslogiikka.peli;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Arto
+ */
 public class Saannot {
 
     private boolean paivaEnsin;
     private ArrayList<Integer> aanestykset;
 
+    /**
+     *
+     */
     public Saannot() {
         paivaEnsin = true;
         aanestykset = new ArrayList<Integer>();
@@ -18,18 +25,32 @@ public class Saannot {
         aanestykset.add(1);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getPaivaEnsin() {
         return paivaEnsin;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> getAanestykset(){
         return aanestykset;
     }
 
+    /**
+     *
+     */
     public void asetaPaivaEnsin() {
         paivaEnsin = true;
     }
 
+    /**
+     *
+     */
     public void asetaYoEnsin() {
         paivaEnsin = false;
     }
@@ -42,6 +63,10 @@ public class Saannot {
         return saannot;
     }
 
+    /**
+     *
+     * @return
+     */
     public String alkaakoPaivallaToString() {
         String saannot = "";
         if (paivaEnsin) {
@@ -52,6 +77,10 @@ public class Saannot {
         return saannot;
     }
     
+    /**
+     *
+     * @return
+     */
     public String aanestyksetToString(){
         String saannot = "";
         saannot += "Jokaisena päivänä äänestyskierroksia on vähintään " + aanestykset.size() +"\n";
