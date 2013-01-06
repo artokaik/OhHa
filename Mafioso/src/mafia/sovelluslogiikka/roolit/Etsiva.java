@@ -9,7 +9,8 @@ import mafia.sovelluslogiikka.Yo;
 
 
 /**
- *
+ *Etsivä-luokka toteuttaa rajapinnan rooli. Etsivä on hyvisten puolella oleva hahmo, joka voi joka yö tarkistaa yhden pelaajan, jolloin ohjelma kertoo onko tarkistettu pelaaja Mafioso vai ei.
+ * 
  * @author Arto
  */
 public class Etsiva implements Rooli {

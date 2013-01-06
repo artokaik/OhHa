@@ -31,6 +31,7 @@ public class Ohjaus {
      * @return
      */
     public Pelaaja valitsePelaaja(ArrayList<Pelaaja> pelaajat) {
+        
         TekstiPelaajanValitsija valitsija = new TekstiPelaajanValitsija();
         return valitsija.valitse(pelaajat);
     }

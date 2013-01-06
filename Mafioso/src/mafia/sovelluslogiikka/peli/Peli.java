@@ -31,20 +31,19 @@ public class Peli {
 
 
     /**
-     *
+     * Lisää parametrina annetun pelaajan peliin, jos pelaaja ei jo ole pelissä. Palauttaa true, jos lisääminen onnistuu ja false jos ei onnistu.
      * @param pelaaja
      * @return
      */
     public boolean lisaaPelaaja(Pelaaja pelaaja) {
         if (!pelaajat.contains(pelaaja)) {
-            this.pelaajat.add(pelaaja);
-            return true;
+            return this.pelaajat.add(pelaaja);
         }
         return false;
     }
 
     /**
-     *
+     * Poistaa parametrina annetun pelaajan pelistä. Jos poisto onnistuu, palauttaa true, muuten false.
      * @param pelaaja
      * @return
      */
@@ -67,7 +66,7 @@ public class Peli {
     }
 
     /**
-     *
+     * Suorittaa käynnissä olevan vaiheen pelaa(Saannot saannot) -metodin, lisää vaiheen pelin vaihelistaan, pyytää ohjausoliota tulostamaan vaiheen tapahtumat ja pyytää käynnissä olevaa vaihetta luomaan seuraavan vaiheen, joka on metodin paluuarvo.
      * @param vaihe
      * @return
      */
@@ -81,7 +80,7 @@ public class Peli {
     }
 
     /**
-     *
+     * Palauttaa true, jos parametrina annetussa pelaajalistassa on vähintään yksi pahis, mutta kuitenkin enemmän hyviksiä kuin pahiksia. Muuten palauttaa false.
      * @param hengissa
      * @return
      */
@@ -95,7 +94,7 @@ public class Peli {
     }
     
     /**
-     *
+     * Palauttaa hyvisten määrän parametrina annetussa pelaajalistassa.
      * @param hengissa
      * @return
      */
@@ -109,7 +108,7 @@ public class Peli {
         return hyvistenMaara;
     }
         /**
-     *
+     * Palauttaa pahisten määrän parametrina annetussa pelaajalistassa.
      * @param hengissa
      * @return
      */

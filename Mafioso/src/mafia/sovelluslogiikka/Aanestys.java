@@ -12,7 +12,8 @@ import mafia.kayttoliittyma.Ohjaus;
  * @author Arto
  */
 public class Aanestys {
-
+    
+    private ArrayList<Pelaaja> aanestamatta;
     private ArrayList<Aani> aanet;
     private ArrayList<Pelaaja> ehdokkaat;
 
@@ -20,9 +21,20 @@ public class Aanestys {
      *
      * @param ehdokkaat
      */
-    public Aanestys(ArrayList<Pelaaja> ehdokkaat) {
-        this.ehdokkaat = ehdokkaat;
+    public Aanestys(ArrayList<Pelaaja> aanestajat, ArrayList<Pelaaja> ehdokkaat) {
+        this.aanestamatta = (ArrayList<Pelaaja>) aanestajat.clone();
+        this.ehdokkaat = (ArrayList<Pelaaja>) ehdokkaat.clone();
         this.aanet = new ArrayList<Aani>();
+    }
+
+    public ArrayList<Pelaaja> getAanestamatta() {
+        return aanestamatta;
+    }
+    
+    public ArrayList<Pelaaja> getAanestettavat(Pelaaja pelaaja){
+        ArrayList<Pelaaja> aanestettavat = (ArrayList<Pelaaja>) ehdokkaat.clone();
+        aanestettavat.remove(pelaaja);
+        return aanestettavat;
     }
 
     /**
@@ -40,6 +52,7 @@ public class Aanestys {
      * @return
      */
     public boolean lisaaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
+        aanestamatta.remove(aanestaja);
         Aani aani = new Aani(aanestaja, aanestetty);
         for (Aani aani1 : aanet) {
             if (aani1.getAanestaja().equals(aani.getAanestaja())){

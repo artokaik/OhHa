@@ -7,7 +7,8 @@ package mafia.sovelluslogiikka.peli;
 import java.util.ArrayList;
 
 /**
- *
+ * Saannot-luokka tuo peliin muunneltavuutta. Saannot-luokkaa laajennetaan mikäli aikaa jää.
+ * 
  * @author Arto
  */
 public class Saannot {

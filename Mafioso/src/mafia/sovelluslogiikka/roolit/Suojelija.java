@@ -6,7 +6,8 @@ import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
 /**
- *
+ *Suojelija-luokka toteuttaa rajapinnan rooli. Suojelija on hyvisten puolella oleva hahmo, joka voi joka yöllä suojella yhtä pelaajaa. Mikäli Mafiosot koittavat tappaa suojellun pelaajan, kukaan ei kuole yöllä.
+ * 
  * @author Arto
  */
 public class Suojelija implements Rooli{

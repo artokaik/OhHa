@@ -7,7 +7,7 @@ import mafia.kayttoliittyma.Ohjaus;
 /**
  * Yo-luokka toteuttaa Vaihe-rajapinnan. Yo-oliolla on kaksi ArrayList<Pelaaja> -muuttujaa, joista 'pelaajat' on lista mukana olevista pelaajista ja 'vuoroPelaamatta' lista pelaajista, joiden vuoroa ei yön aikana vielä ole pelattu.
  * 
- * 
+ * Yo-olio tuntee myös ammutun ja suojellun pelaajan.
  *
  * @author Arto
  */

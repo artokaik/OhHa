@@ -7,7 +7,8 @@ import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
 /**
- *
+ * Mafioso-luokka toteuttaa Rooli-rajapinnan. Mafiosot ovat pahiksia, jotka pyrkivät joka yö tappamaan yhden pelaajista.
+ * 
  * @author Arto
  */
 public class Mafioso implements Rooli{

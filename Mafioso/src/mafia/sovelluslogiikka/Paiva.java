@@ -74,7 +74,7 @@ public class Paiva implements Vaihe {
      * @return
      */
     public ArrayList<Pelaaja> aanestysKierros(int maara, ArrayList<Pelaaja> ehdokkaat) {
-        Aanestys aanestys = new Aanestys(ehdokkaat);
+        Aanestys aanestys = new Aanestys(pelaajat, ehdokkaat);
         aanestys.suorita(pelaajat, ehdokkaat);
         ehdokkaat = aanestys.haeTulokset(maara);
         aanestykset.add(aanestys);

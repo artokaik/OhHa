@@ -5,7 +5,8 @@ import mafia.sovelluslogiikka.Yo;
 
 
 /**
- *
+ *Etsivä-luokka toteuttaa rajapinnan rooli. Etsivä on hyvisten puolella oleva hahmo, joka ei tee yöllä mitään.
+ * 
  * @author Arto
  */
 public class Kansalainen implements Rooli{
