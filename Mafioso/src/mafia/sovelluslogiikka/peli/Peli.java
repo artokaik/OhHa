@@ -8,8 +8,10 @@ import mafia.sovelluslogiikka.Vaihe;
 import mafia.sovelluslogiikka.Yo;
 
 /**
- * Peli-luokka kuvaa yhtä peliä. Se tuntee pelaajat, säännöt, sekä pelin vaiheet. Pelin pelaa() -metodia suoritetaan koko pelin ajan, joten se on tavallaan koko ohjelman sydän.
- * 
+ * Peli-luokka kuvaa yhtä peliä. Se tuntee pelaajat, säännöt, sekä pelin
+ * vaiheet. Pelin pelaa() -metodia suoritetaan koko pelin ajan, joten se on
+ * tavallaan koko ohjelman sydän.
+ *
  * @author Arto
  */
 public class Peli {
@@ -20,7 +22,7 @@ public class Peli {
     private Saannot saannot;
 
     /**
-     * 
+     *
      */
     public Peli() {
         this.pelaajat = new ArrayList<Pelaaja>();
@@ -29,9 +31,10 @@ public class Peli {
         this.kaynnissaOlevaVaihe = null;
     }
 
-
     /**
-     * Lisää parametrina annetun pelaajan peliin, jos pelaaja ei jo ole pelissä. Palauttaa true, jos lisääminen onnistuu ja false jos ei onnistu.
+     * Lisää parametrina annetun pelaajan peliin, jos pelaaja ei jo ole pelissä.
+     * Palauttaa true, jos lisääminen onnistuu ja false jos ei onnistu.
+     *
      * @param pelaaja
      * @return
      */
@@ -43,7 +46,9 @@ public class Peli {
     }
 
     /**
-     * Poistaa parametrina annetun pelaajan pelistä. Jos poisto onnistuu, palauttaa true, muuten false.
+     * Poistaa parametrina annetun pelaajan pelistä. Jos poisto onnistuu,
+     * palauttaa true, muuten false.
+     *
      * @param pelaaja
      * @return
      */
@@ -52,53 +57,29 @@ public class Peli {
     }
 
     /**
+     * Palauttaa true, jos parametrina annetussa pelaajalistassa on vähintään
+     * yksi pahis, mutta kuitenkin enemmän hyviksiä kuin pahiksia. Muuten
+     * palauttaa false.
      *
-     */
-    public void pelaa() {
-        Vaihe seuraavaVaihe = new Yo((ArrayList<Pelaaja>) pelaajat.clone());
-        if (saannot.getPaivaEnsin()) {
-            seuraavaVaihe = new Paiva((ArrayList<Pelaaja>) pelaajat.clone());
-        }
-        while (jatkuuko(seuraavaVaihe.getPelaajat())) {
-            seuraavaVaihe = pelaaYksiVaihe(seuraavaVaihe);
-        }
-        this.julistaVoittaja(seuraavaVaihe.getPelaajat());
-    }
-
-    /**
-     * Suorittaa käynnissä olevan vaiheen pelaa(Saannot saannot) -metodin, lisää vaiheen pelin vaihelistaan, pyytää ohjausoliota tulostamaan vaiheen tapahtumat ja pyytää käynnissä olevaa vaihetta luomaan seuraavan vaiheen, joka on metodin paluuarvo.
-     * @param vaihe
-     * @return
-     */
-    public Vaihe pelaaYksiVaihe(Vaihe vaihe) {
-        kaynnissaOlevaVaihe = vaihe;
-        vaihe.pelaa(saannot);
-        vaiheet.add(vaihe);
-        Ohjaus ohjaus = new Ohjaus();
-        ohjaus.tulostaTapahtumat(vaihe);
-        return vaihe.luoSeuraavaVaihe();
-    }
-
-    /**
-     * Palauttaa true, jos parametrina annetussa pelaajalistassa on vähintään yksi pahis, mutta kuitenkin enemmän hyviksiä kuin pahiksia. Muuten palauttaa false.
      * @param hengissa
      * @return
      */
     public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
-        if(laskePahikset(hengissa)==0){
+        if (laskePahikset(hengissa) == 0) {
             return false;
-        } else if (laskePahikset(hengissa)>=laskeHyvikset(hengissa)){
+        } else if (laskePahikset(hengissa) >= laskeHyvikset(hengissa)) {
             return false;
         }
         return true;
     }
-    
+
     /**
      * Palauttaa hyvisten määrän parametrina annetussa pelaajalistassa.
+     *
      * @param hengissa
      * @return
      */
-    public int laskeHyvikset(ArrayList<Pelaaja> hengissa){
+    public int laskeHyvikset(ArrayList<Pelaaja> hengissa) {
         int hyvistenMaara = 0;
         for (Pelaaja pelaaja : hengissa) {
             if (!pelaaja.getRooli().onkoPahis()) {
@@ -107,12 +88,14 @@ public class Peli {
         }
         return hyvistenMaara;
     }
-        /**
+
+    /**
      * Palauttaa pahisten määrän parametrina annetussa pelaajalistassa.
+     *
      * @param hengissa
      * @return
      */
-    public int laskePahikset(ArrayList<Pelaaja> hengissa){
+    public int laskePahikset(ArrayList<Pelaaja> hengissa) {
         int pahistenMaara = 0;
         for (Pelaaja pelaaja : hengissa) {
             if (pelaaja.getRooli().onkoPahis()) {
@@ -121,21 +104,33 @@ public class Peli {
         }
         return pahistenMaara;
     }
-    
 
     /**
+     * Palauttaa true jos hyvisten voittoehto täyttyy parametrina annetulla
+     * pelaajalistalla. Muuten palauttaa false
      *
      * @param hengissa
      */
-    public void julistaVoittaja(ArrayList<Pelaaja> hengissa) {
-        Ohjaus ohjaus = new Ohjaus();
+    public boolean voittikoHyvikset(ArrayList<Pelaaja> hengissa) {
         for (Pelaaja pelaaja : hengissa) {
             if (pelaaja.getRooli().onkoPahis()) {
-                ohjaus.julistaVoittaja("Pahikset");
-                return;
+                return false;
             }
         }
-        ohjaus.julistaVoittaja("Hyvikset");
+        return true;
+    }
+
+    /**
+     * Palauttaa true jos pahisten voittoehto täyttyy parametrina annetulla
+     * pelaajalistalla. Muuten palauttaa false
+     *
+     * @param hengissa
+     */
+    public boolean voittikoPahikset(ArrayList<Pelaaja> hengissa) {
+        if (laskeHyvikset(hengissa) > laskePahikset(hengissa)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -212,3 +207,43 @@ public class Peli {
         this.saannot = saannot;
     }
 }
+//    /**
+//     *
+//     */
+//    public void pelaa() {
+//        Vaihe seuraavaVaihe = new Yo((ArrayList<Pelaaja>) pelaajat.clone());
+//        if (saannot.getPaivaEnsin()) {
+//            seuraavaVaihe = new Paiva((ArrayList<Pelaaja>) pelaajat.clone());
+//        }
+//        while (jatkuuko(seuraavaVaihe.getPelaajat())) {
+//            seuraavaVaihe = pelaaYksiVaihe(seuraavaVaihe);
+//        }
+//        this.julistaVoittaja(seuraavaVaihe.getPelaajat());
+//    }
+//    /**
+//     * Suorittaa käynnissä olevan vaiheen pelaa(Saannot saannot) -metodin, lisää vaiheen pelin vaihelistaan, pyytää ohjausoliota tulostamaan vaiheen tapahtumat ja pyytää käynnissä olevaa vaihetta luomaan seuraavan vaiheen, joka on metodin paluuarvo.
+//     * @param vaihe
+//     * @return
+//     */
+//    public Vaihe pelaaYksiVaihe(Vaihe vaihe) {
+//        kaynnissaOlevaVaihe = vaihe;
+//        vaihe.pelaa(saannot);
+//        vaiheet.add(vaihe);
+//        Ohjaus ohjaus = new Ohjaus();
+//        ohjaus.tulostaTapahtumat(vaihe);
+//        return vaihe.luoSeuraavaVaihe();
+//    }
+//    /**
+//     *
+//     * @param hengissa
+//     */
+//    public void julistaVoittaja(ArrayList<Pelaaja> hengissa) {
+//        Ohjaus ohjaus = new Ohjaus();
+//        for (Pelaaja pelaaja : hengissa) {
+//            if (pelaaja.getRooli().onkoPahis()) {
+//                ohjaus.julistaVoittaja("Pahikset");
+//                return;
+//            }
+//        }
+//        ohjaus.julistaVoittaja("Hyvikset");
+//    }

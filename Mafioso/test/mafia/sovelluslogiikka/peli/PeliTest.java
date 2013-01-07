@@ -28,7 +28,6 @@ public class PeliTest {
 
     Peli peli;
 
-
     /**
      *
      */
@@ -157,17 +156,17 @@ public class PeliTest {
     @Test
     public void PoistaOlemassaolevaPelaajaPalauttaaTrue() {
         Pelaaja pelaaja = new Pelaaja("Arto");
-        peli.lisaaPelaaja(pelaaja);  
+        peli.lisaaPelaaja(pelaaja);
         assertEquals(true, peli.poistaPelaaja(new Pelaaja("Arto")));
     }
-    
+
     /**
      *
      */
     @Test
     public void PoistaOlematonPelaajaPalauttaaFalse() {
         Pelaaja pelaaja = new Pelaaja("Arto");
-        peli.lisaaPelaaja(pelaaja);  
+        peli.lisaaPelaaja(pelaaja);
         assertEquals(false, peli.poistaPelaaja(new Pelaaja("Matti")));
     }
 
@@ -191,7 +190,7 @@ public class PeliTest {
      *
      */
     @Test
-    public void yhdenMafiosonJaKahdenHyviksenPeliJatkuu() {
+    public void yhdenMafiosonJaKahdenHyviksenPeliJatkuueikaKumpikaanVoita() {
         Pelaaja pelaaja = new Pelaaja("Arto");
         pelaaja.setRooli(new Mafioso());
         Pelaaja pelaaja2 = new Pelaaja("Matti");
@@ -202,13 +201,16 @@ public class PeliTest {
         peli.lisaaPelaaja(pelaaja2);
         peli.lisaaPelaaja(pelaaja3);
         assertEquals(true, peli.jatkuuko(peli.getPelaajat()));
+        assertFalse(peli.voittikoHyvikset(peli.getPelaajat()));
+        assertFalse(peli.voittikoPahikset(peli.getPelaajat()));
+
     }
 
     /**
      *
      */
     @Test
-    public void yhdenMafiosonJaYhdenHyviksenPeliEiJatku() {
+    public void yhdenMafiosonJaYhdenHyviksenPeliEiJatkujaMafiosotVoitti() {
         Pelaaja pelaaja = new Pelaaja("Arto");
         pelaaja.setRooli(new Mafioso());
         Pelaaja pelaaja2 = new Pelaaja("Matti");
@@ -216,6 +218,8 @@ public class PeliTest {
         peli.lisaaPelaaja(pelaaja);
         peli.lisaaPelaaja(pelaaja2);
         assertEquals(false, peli.jatkuuko(peli.getPelaajat()));
+        assertFalse(peli.voittikoHyvikset(peli.getPelaajat()));
+        assertTrue(peli.voittikoPahikset(peli.getPelaajat()));
     }
 
     /**
@@ -230,5 +234,7 @@ public class PeliTest {
         peli.lisaaPelaaja(pelaaja2);
         peli.lisaaPelaaja(pelaaja3);
         assertEquals(false, peli.jatkuuko(peli.getPelaajat()));
+        assertTrue(peli.voittikoHyvikset(peli.getPelaajat()));
+        assertFalse(peli.voittikoPahikset(peli.getPelaajat()));
     }
 }

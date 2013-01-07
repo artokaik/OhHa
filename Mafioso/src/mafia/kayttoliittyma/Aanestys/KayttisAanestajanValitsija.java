@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 import mafia.sovelluslogiikka.Aanestys;
+import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Pelaaja;
 
 /**
@@ -38,15 +39,14 @@ public class KayttisAanestajanValitsija implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
-
-
-
     }
 
     public void luoKomponentit(Container container) {
         container.setLayout(new GridLayout(aanestys.getAanestamatta().size() + 4, 1));
+        
         JLabel otsikko = new JLabel("Valitse äänestäjä");
         container.add(otsikko);
+        
         JLabel valittu = new JLabel();
         for (Pelaaja pelaaja : aanestys.getAanestamatta()) {
             JButton pelaajaNappi = new JButton(pelaaja.getNimi());
@@ -55,9 +55,10 @@ public class KayttisAanestajanValitsija implements Runnable {
             container.add(pelaajaNappi);
         }
         JLabel teksti = new JLabel("Valittu:");
+        
         JButton suljeNappi = new JButton("OK");
-//        KayttisSuljePelaajanValitsinToiminto sulje = new KayttisSuljePelaajanValitsinToiminto(this.frame);
-//        suljeNappi.addActionListener(sulje);
+        KayttisToimintoSuljeAanestys sulje = new KayttisToimintoSuljeAanestys(aanestys, this.frame);
+        suljeNappi.addActionListener(sulje);
 
         container.add(teksti);
         container.add(valittu);

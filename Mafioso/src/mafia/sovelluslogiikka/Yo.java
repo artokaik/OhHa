@@ -53,26 +53,6 @@ public class Yo implements Vaihe {
         return false;
     }
 
-    /**
-     *
-     * @param saannot
-     * @return
-     */
-    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
-        while (!vuoroPelaamatta.isEmpty()) {
-            pelaaYksiVuoro();
-        }
-        this.tapaAmmutut();
-        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
-        return hengissa;
-    }
-
-    public void pelaaYksiVuoro() {
-        Ohjaus ohjaus = new Ohjaus();
-        Pelaaja pelaaja = ohjaus.valitsePelaaja(vuoroPelaamatta);
-        pelaaja.toimiRoolinMukaan(this);
-        vuoroPelaamatta.remove(pelaaja);
-    }
 
     /**
      *
@@ -156,6 +136,10 @@ public class Yo implements Vaihe {
     public Pelaaja getAmmuttu() {
         return ammuttu;
     }
+
+}
+
+
 //    public Pelaaja haePelaaja(String nimi) {
 //        for (Pelaaja pelaaja : pelaajat) {
 //            if (pelaaja.getNimi().equals(nimi)) {
@@ -164,4 +148,25 @@ public class Yo implements Vaihe {
 //        }
 //        return null;
 //    }
-}
+
+//    /**
+//     *
+//     * @param saannot
+//     * @return
+//     */
+//    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
+//        while (!vuoroPelaamatta.isEmpty()) {
+//            pelaaYksiVuoro();
+//        }
+//        this.tapaAmmutut();
+//        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
+//        return hengissa;
+//    }
+
+//    public void pelaaYksiVuoro() {
+//        Ohjaus ohjaus = new Ohjaus();
+//        Pelaaja pelaaja = ohjaus.valitsePelaaja(vuoroPelaamatta);
+//        pelaaja.toimiRoolinMukaan(this);
+//        vuoroPelaamatta.remove(pelaaja);
+//    }
+

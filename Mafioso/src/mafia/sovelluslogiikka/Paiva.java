@@ -31,18 +31,6 @@ public class Paiva implements Vaihe {
 
     /**
      *
-     * @param saannot
-     * @return
-     */
-    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
-        lynkattavat = lynkkausAanestys(saannot);
-        tapaLynkattavat();
-        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
-        return hengissa;
-    }
-    
-    /**
-     *
      */
     public void tapaLynkattavat(){
         for (Pelaaja pelaaja : lynkattavat) {
@@ -50,37 +38,6 @@ public class Paiva implements Vaihe {
         }
     }
 
-    /**
-     *
-     * @param saannot
-     * @return
-     */
-    public ArrayList<Pelaaja> lynkkausAanestys(Saannot saannot) {
-        ArrayList<Pelaaja> ehdokkaat = (ArrayList<Pelaaja>) this.pelaajat.clone();
-        for (int i = 0; i < saannot.getAanestykset().size(); i++) {
-            int valittavienMaara = saannot.getAanestykset().get(i);
-            ehdokkaat = this.aanestysKierros(valittavienMaara, ehdokkaat);
-        }
-        while (ehdokkaat.size() > 1) {
-            ehdokkaat = this.aanestysKierros(1, ehdokkaat);
-        }
-        return ehdokkaat;
-    }
-
-    /**
-     *
-     * @param maara
-     * @param ehdokkaat
-     * @return
-     */
-    public ArrayList<Pelaaja> aanestysKierros(int maara, ArrayList<Pelaaja> ehdokkaat) {
-        Aanestys aanestys = new Aanestys(pelaajat, ehdokkaat);
-        aanestys.suorita(pelaajat, ehdokkaat);
-        ehdokkaat = aanestys.haeTulokset(maara);
-        aanestykset.add(aanestys);
-        return ehdokkaat;
-
-    }
     
     /**
      *
@@ -164,6 +121,22 @@ public class Paiva implements Vaihe {
         return pelaajat;
     }
     
+
+    
+}
+//
+//    /**
+//     *
+//     * @param saannot
+//     * @return
+//     */
+//    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
+//        lynkattavat = lynkkausAanestys(saannot);
+//        tapaLynkattavat();
+//        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
+//        return hengissa;
+//    }
+//    
 //    public Pelaaja haePelaaja(String nimi) {
 //        for (Pelaaja pelaaja : pelaajat) {
 //            if (pelaaja.getNimi().equals(nimi)) {
@@ -172,5 +145,35 @@ public class Paiva implements Vaihe {
 //        }
 //        return null;
 //    }
-    
-}
+
+//    /**
+//     *
+//     * @param saannot
+//     * @return
+//     */
+//    public ArrayList<Pelaaja> lynkkausAanestys(Saannot saannot) {
+//        ArrayList<Pelaaja> ehdokkaat = (ArrayList<Pelaaja>) this.pelaajat.clone();
+//        for (int i = 0; i < saannot.getAanestykset().size(); i++) {
+//            int valittavienMaara = saannot.getAanestykset().get(i);
+//            ehdokkaat = this.aanestysKierros(valittavienMaara, ehdokkaat);
+//        }
+//        while (ehdokkaat.size() > 1) {
+//            ehdokkaat = this.aanestysKierros(1, ehdokkaat);
+//        }
+//        return ehdokkaat;
+//    }
+//
+//    /**
+//     *
+//     * @param maara
+//     * @param ehdokkaat
+//     * @return
+//     */
+//    public ArrayList<Pelaaja> aanestysKierros(int maara, ArrayList<Pelaaja> ehdokkaat) {
+//        Aanestys aanestys = new Aanestys(pelaajat, ehdokkaat);
+//        aanestys.suorita(pelaajat, ehdokkaat);
+//        ehdokkaat = aanestys.haeTulokset(maara);
+//        aanestykset.add(aanestys);
+//        return ehdokkaat;
+//
+//    }

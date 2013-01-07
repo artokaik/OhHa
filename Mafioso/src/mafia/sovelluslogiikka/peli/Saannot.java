@@ -22,7 +22,6 @@ public class Saannot {
     public Saannot() {
         paivaEnsin = true;
         aanestykset = new ArrayList<Integer>();
-        aanestykset.add(2);
         aanestykset.add(1);
     }
 

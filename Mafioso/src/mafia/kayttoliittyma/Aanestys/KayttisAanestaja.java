@@ -26,11 +26,10 @@ public class KayttisAanestaja implements Runnable {
     private Pelaaja aanestaja;
     private KayttisKuuntelija kuuntelija;
 
-
     public KayttisAanestaja(Aanestys aanestys, Pelaaja aanestaja, KayttisKuuntelija kuuntelija) {
         this.aanestys = aanestys;
         this.aanestaja = aanestaja;
-        this.kuuntelija=kuuntelija;
+        this.kuuntelija = kuuntelija;
     }
 
     @Override
@@ -44,29 +43,32 @@ public class KayttisAanestaja implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
-        
+
 
 
     }
-    
 
     public void luoKomponentit(Container container) {
         ArrayList<Pelaaja> ehdokkaat = aanestys.getAanestettavat(aanestaja);
-        container.setLayout(new GridLayout(ehdokkaat.size()+4, 1));
+        container.setLayout(new GridLayout(ehdokkaat.size() + 4, 1));
         JLabel otsikko = new JLabel(aanestaja.getNimi() + ", ketä äänestät:");
         container.add(otsikko);
         JLabel valittu = new JLabel();
+
+        JButton suljeNappi = new JButton("OK");
+        KayttisSuljePelaajanValitsinToiminto sulje = new KayttisSuljePelaajanValitsinToiminto(aanestys, this.frame, aanestaja, kuuntelija);
+        suljeNappi.addActionListener(sulje);
+        suljeNappi.setEnabled(false);
+
         for (Pelaaja ehdokas : ehdokkaat) {
             JButton pelaajaNappi = new JButton(ehdokas.getNimi());
-            KayttisAanestysToiminto toiminto = new KayttisAanestysToiminto(aanestaja, ehdokas, valittu, kuuntelija);
+            KayttisToimintoValitseAanestettava toiminto = new KayttisToimintoValitseAanestettava(aanestaja, ehdokas, valittu, kuuntelija, suljeNappi);
             pelaajaNappi.addActionListener(toiminto);
             container.add(pelaajaNappi);
         }
         JLabel teksti = new JLabel("Valittu:");
-        JButton suljeNappi = new JButton("OK");
-        KayttisSuljePelaajanValitsinToiminto sulje = new KayttisSuljePelaajanValitsinToiminto(aanestys, this.frame, aanestaja,  kuuntelija);
-        suljeNappi.addActionListener(sulje);
-        
+
+
         container.add(teksti);
         container.add(valittu);
         container.add(suljeNappi);

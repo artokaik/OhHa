@@ -9,5 +9,7 @@ Tuntikirjanpito
 		dokumentointia			1h
 4.1.12		katselmointi			3h
 5.1.12		Testejä ja vähän koodausta	6h
-6.1.12		koodausta			1h
-		javadoc				1h
+6.1.12		koodausta (sovelluslogiikka)	1h
+		Käyttöliittymistä lukemista ja käyttöliittymän koodausta 6h
+		javadoc				2h
+		

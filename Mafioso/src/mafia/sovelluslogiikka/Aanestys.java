@@ -1,4 +1,3 @@
-
 package mafia.sovelluslogiikka;
 
 import java.util.ArrayList;
@@ -8,7 +7,9 @@ import java.util.HashMap;
 import mafia.kayttoliittyma.Ohjaus;
 
 /**
- *Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat (ArrayList<Pelaaja>) ja annetut äänet (ArrayList<Aani>).
+ * Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat
+ * (ArrayList<Pelaaja>) ja annetut äänet (ArrayList<Aani>).
+ *
  * @author Arto
  */
 public class Aanestys {
@@ -16,6 +17,7 @@ public class Aanestys {
     private ArrayList<Pelaaja> aanestamatta;
     private ArrayList<Aani> aanet;
     private ArrayList<Pelaaja> ehdokkaat;
+    private int jatkoonMenijat;
 
     /**
      *
@@ -25,13 +27,14 @@ public class Aanestys {
         this.aanestamatta = (ArrayList<Pelaaja>) aanestajat.clone();
         this.ehdokkaat = (ArrayList<Pelaaja>) ehdokkaat.clone();
         this.aanet = new ArrayList<Aani>();
+        this.jatkoonMenijat = 1;
     }
-
+    
     public ArrayList<Pelaaja> getAanestamatta() {
         return aanestamatta;
     }
     
-    public ArrayList<Pelaaja> getAanestettavat(Pelaaja pelaaja){
+    public ArrayList<Pelaaja> getAanestettavat(Pelaaja pelaaja) {
         ArrayList<Pelaaja> aanestettavat = (ArrayList<Pelaaja>) ehdokkaat.clone();
         aanestettavat.remove(pelaaja);
         return aanestettavat;
@@ -55,15 +58,14 @@ public class Aanestys {
         aanestamatta.remove(aanestaja);
         Aani aani = new Aani(aanestaja, aanestetty);
         for (Aani aani1 : aanet) {
-            if (aani1.getAanestaja().equals(aani.getAanestaja())){
+            if (aani1.getAanestaja().equals(aani.getAanestaja())) {
                 return false;
             }
         }
         aanet.add(aani);
         return true;
     }
-    
-    
+
     /**
      *
      * @param aanestaja
@@ -72,23 +74,23 @@ public class Aanestys {
      */
     public boolean vaihdaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
         for (Aani aani1 : aanet) {
-            if (aani1.getAanestaja().equals(aanestaja)){
+            if (aani1.getAanestaja().equals(aanestaja)) {
                 aani1.setAanestetty(aanestetty);
                 return true;
             }
         }
         return false;
     }
-    
+
     /**
      *
      * @param pelaaja
      * @return
      */
-    public int laskeAanimaara(Pelaaja pelaaja){
+    public int laskeAanimaara(Pelaaja pelaaja) {
         int maara = 0;
         for (Aani aani : aanet) {
-            if (aani.getAanestetty().equals(pelaaja)){
+            if (aani.getAanestetty().equals(pelaaja)) {
                 maara++;
             }
         }
@@ -111,7 +113,7 @@ public class Aanestys {
     public ArrayList<Pelaaja> getEhdokkaat() {
         return ehdokkaat;
     }
-
+    
     private HashMap<Pelaaja, Integer> laskeTulokset() {
         HashMap<Pelaaja, Integer> tulokset = new HashMap<Pelaaja, Integer>();
         for (Aani aani : aanet) {
@@ -129,7 +131,38 @@ public class Aanestys {
      * @param maara
      * @return
      */
+    public ArrayList<Pelaaja> haeTulokset() {
+        if (aanet.isEmpty()) {
+            return ehdokkaat;
+        }
+        HashMap<Pelaaja, Integer> tulokset = laskeTulokset();
+        int raja = this.laskeRaja(tulokset);
+        ArrayList<Pelaaja> jatkoon = new ArrayList<Pelaaja>();
+        for (Pelaaja ehdokas : ehdokkaat) {
+            if (tulokset.containsKey(ehdokas)) {
+                if (tulokset.get(ehdokas) >= raja) {
+                    jatkoon.add(ehdokas);
+                }
+            }
+        }
+        return jatkoon;
+    }
+    
+    private int laskeRaja(HashMap<Pelaaja, Integer> tulokset) {
+        Collection aanimaarat = tulokset.values();
+        ArrayList<Integer> aanimaaria = new ArrayList<Integer>();
+        for (Object object : aanimaarat) {
+            aanimaaria.add((Integer) object);
+        }
+        Collections.sort(aanimaaria);
+        int raja = aanimaaria.get(Math.max(0, aanimaaria.size() - jatkoonMenijat));
+        return raja;
+    }
+    
     public ArrayList<Pelaaja> haeTulokset(int maara) {
+        if (aanet.isEmpty()) {
+            return ehdokkaat;
+        }
         HashMap<Pelaaja, Integer> tulokset = laskeTulokset();
         int raja = this.laskeRaja(maara, tulokset);
         ArrayList<Pelaaja> jatkoon = new ArrayList<Pelaaja>();
@@ -142,7 +175,7 @@ public class Aanestys {
         }
         return jatkoon;
     }
-
+    
     private int laskeRaja(int maara, HashMap<Pelaaja, Integer> tulokset) {
         Collection aanimaarat = tulokset.values();
         ArrayList<Integer> aanimaaria = new ArrayList<Integer>();
@@ -166,14 +199,17 @@ public class Aanestys {
             aanet.add(aani);
         }
     }
-
+    
     @Override
     public String toString() {
+        if (aanestamatta.size() > 0) {
+            return "";
+        }
         String tuloste = ehdokkaat + "\nÄänestäjä: äänestetty";
         for (Aani aani : aanet) {
             tuloste += aani + "\n";
         }
         return tuloste;
-
+        
     }
 }

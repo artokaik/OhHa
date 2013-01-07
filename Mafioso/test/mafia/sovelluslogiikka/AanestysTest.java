@@ -56,7 +56,7 @@ public class AanestysTest {
     public void setUp() {
 
 
-        aanestys = new Aanestys(pelaajat);
+        aanestys = new Aanestys(pelaajat, pelaajat);
     }
 
     /**

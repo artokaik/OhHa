@@ -15,7 +15,7 @@ import mafia.sovelluslogiikka.Pelaaja;
  *
  * @author Arto
  */
-public class KayttisSuljePelaajanValitsinToiminto implements ActionListener{
+public class KayttisSuljePelaajanValitsinToiminto implements ActionListener {
 
     private JFrame frame;
     private KayttisKuuntelija kuuntelija;
@@ -26,13 +26,15 @@ public class KayttisSuljePelaajanValitsinToiminto implements ActionListener{
         this.aanestys = aanestys;
         this.frame = frame;
         this.kuuntelija = kuuntelija;
-       this.aanestaja=aanestaja;
+        this.aanestaja = aanestaja;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        aanestys.lisaaAani(aanestaja, kuuntelija.getPelaaja());
-        frame.dispose();
+        if (kuuntelija.getPelaaja() != null) {
+            aanestys.lisaaAani(aanestaja, kuuntelija.getPelaaja());
+            frame.dispose();
+        }
 
 
     }

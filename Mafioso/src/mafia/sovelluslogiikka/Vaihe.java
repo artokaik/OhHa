@@ -12,12 +12,12 @@ import java.util.ArrayList;
  */
 public interface Vaihe {
 
-    /**
-     *
-     * @param saannot
-     * @return
-     */
-    public ArrayList<Pelaaja> pelaa(Saannot saannot);
+//    /**
+//     *
+//     * @param saannot
+//     * @return
+//     */
+//    public ArrayList<Pelaaja> pelaa(Saannot saannot);
     /**
      *
      * @return

@@ -30,9 +30,7 @@ public class KayttisToimintoValitseAanestaja implements ActionListener{
         KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
         KayttisAanestaja aanestaminen = new KayttisAanestaja(aanestys,pelaaja,kuuntelija);
         aanestaminen.run();
-        nappi.setEnabled(false);
-        nappi.setVisible(false);
-        
+        nappi.setEnabled(false);        
         
     }
         
