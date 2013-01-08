@@ -24,4 +24,9 @@ public interface Rooli {
      * @return
      */
     public String getRoolinimi();
+        /**
+     *
+     * @return
+     */
+    public Rooli kopioi();
 }

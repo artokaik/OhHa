@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.Aanestys;
+package mafia.kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,16 +14,14 @@ import mafia.sovelluslogiikka.Pelaaja;
  *
  * @author Arto
  */
-public class KayttisToimintoValitseAanestettava implements ActionListener{
-    private Pelaaja aanestaja;
-    private Pelaaja aanestetty;
+public class ToimintoValitsePelaaja implements ActionListener{
+    private Pelaaja pelaaja;
     private JLabel valittu;
     private KayttisKuuntelija kuuntelija;
     private JButton okNappi;
     
-    public KayttisToimintoValitseAanestettava(Pelaaja aanestaja, Pelaaja aanestetty, JLabel valittu, KayttisKuuntelija kuuntelija, JButton ok){
-        this.aanestaja = aanestaja;
-        this.aanestetty=aanestetty;
+    public ToimintoValitsePelaaja(Pelaaja pelaaja, JLabel valittu, KayttisKuuntelija kuuntelija, JButton ok){
+        this.pelaaja = pelaaja;
         this.valittu=valittu;
         this.kuuntelija = kuuntelija;
         this.okNappi = ok;
@@ -32,9 +30,8 @@ public class KayttisToimintoValitseAanestettava implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.okNappi.setEnabled(true);
-        valittu.setText(aanestetty.getNimi());
-        kuuntelija.setPelaaja(aanestetty);
+        valittu.setText(pelaaja.getNimi());
+        kuuntelija.setPelaaja(pelaaja);
         
     }
-    
 }

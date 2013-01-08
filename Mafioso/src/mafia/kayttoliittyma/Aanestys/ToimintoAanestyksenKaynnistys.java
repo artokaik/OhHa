@@ -12,11 +12,11 @@ import mafia.sovelluslogiikka.Aanestys;
  *
  * @author Arto
  */
-public class KayttisToimintoAanestyksenKaynnistys implements ActionListener {
+public class ToimintoAanestyksenKaynnistys implements ActionListener {
     private Aanestys aanestys;
 
     
-    public KayttisToimintoAanestyksenKaynnistys(Aanestys aanestys) {
+    public ToimintoAanestyksenKaynnistys(Aanestys aanestys) {
         this.aanestys=aanestys;
     }
     

@@ -32,6 +32,10 @@ public class Etsiva implements Rooli {
         Ohjaus ohjaus = new Ohjaus();
         ohjaus.etsivaToimii(yo.getPelaajat());
     }
+    
+    public Etsiva kopioi(){
+        return new Etsiva();
+    }
 
     /**
      *
@@ -46,6 +50,11 @@ public class Etsiva implements Rooli {
      * @return
      */
     public String getRoolinimi() {
+        return this.roolinimi;
+    }
+    
+    @Override
+    public String toString() {
         return this.roolinimi;
     }
 }

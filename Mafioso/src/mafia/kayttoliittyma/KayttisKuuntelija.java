@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.Aanestys;
+package mafia.kayttoliittyma;
 
 import mafia.sovelluslogiikka.Pelaaja;
 

@@ -34,6 +34,6 @@ public class PeliRakentajaTest {
     @Test
     public void asetaPelaaja(){
         rakentaja.lisaaPelaaja(new Pelaaja("Arto"));
-        assertEquals(1, rakentaja.getPelaajat());
+        assertEquals(1, rakentaja.getPelaajat().size());
     }
 }

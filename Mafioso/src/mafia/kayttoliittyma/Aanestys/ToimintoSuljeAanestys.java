@@ -14,12 +14,12 @@ import mafia.sovelluslogiikka.Pelaaja;
  *
  * @author Arto
  */
-public class KayttisToimintoSuljeAanestys implements ActionListener{
+public class ToimintoSuljeAanestys implements ActionListener{
     
     private JFrame frame;
     private Aanestys aanestys;
 
-    public KayttisToimintoSuljeAanestys(Aanestys aanestys, JFrame frame) {
+    public ToimintoSuljeAanestys(Aanestys aanestys, JFrame frame) {
         this.aanestys = aanestys;
         this.frame = frame;
     }

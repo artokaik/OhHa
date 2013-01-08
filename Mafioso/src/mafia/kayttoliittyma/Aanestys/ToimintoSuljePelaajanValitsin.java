@@ -4,6 +4,7 @@
  */
 package mafia.kayttoliittyma.Aanestys;
 
+import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
@@ -15,14 +16,14 @@ import mafia.sovelluslogiikka.Pelaaja;
  *
  * @author Arto
  */
-public class KayttisSuljePelaajanValitsinToiminto implements ActionListener {
+public class ToimintoSuljePelaajanValitsin implements ActionListener {
 
     private JFrame frame;
     private KayttisKuuntelija kuuntelija;
     private Pelaaja aanestaja;
     private Aanestys aanestys;
 
-    public KayttisSuljePelaajanValitsinToiminto(Aanestys aanestys, JFrame frame, Pelaaja aanestaja, KayttisKuuntelija kuuntelija) {
+    public ToimintoSuljePelaajanValitsin(Aanestys aanestys, JFrame frame, Pelaaja aanestaja, KayttisKuuntelija kuuntelija) {
         this.aanestys = aanestys;
         this.frame = frame;
         this.kuuntelija = kuuntelija;

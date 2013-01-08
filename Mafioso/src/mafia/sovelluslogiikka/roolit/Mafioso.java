@@ -1,4 +1,3 @@
-
 package mafia.sovelluslogiikka.roolit;
 
 import java.util.ArrayList;
@@ -7,51 +6,57 @@ import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
 /**
- * Mafioso-luokka toteuttaa Rooli-rajapinnan. Mafiosot ovat pahiksia, jotka pyrkivät joka yö tappamaan yhden pelaajista.
- * 
+ * Mafioso-luokka toteuttaa Rooli-rajapinnan. Mafiosot ovat pahiksia, jotka
+ * pyrkivät joka yö tappamaan yhden pelaajista.
+ *
  * @author Arto
  */
-public class Mafioso implements Rooli{
+public class Mafioso implements Rooli {
+
     private final String roolinimi = "Mafioso";
     private final boolean pahis = true;
 
     /**
      *
      */
-    public Mafioso(){
+    public Mafioso() {
     }
-    
+
     /**
      *
      * @param yo
      */
-    public void toimi(Yo yo){
+    public void toimi(Yo yo) {
         Ohjaus ohjaus = new Ohjaus();
         Pelaaja tapettava = ohjaus.mafiosoToimii(getHyvikset(yo.getPelaajat()), yo);
         yo.asetaTapettava(tapettava);
     }
-    
+
     /**
      *
      * @return
      */
-    public boolean onkoPahis(){
+    public boolean onkoPahis() {
         return pahis;
     }
     
+    public Mafioso kopioi(){
+        return new Mafioso();
+    }
+
     /**
      *
      * @return
      */
-    public String getRoolinimi(){
+    public String getRoolinimi() {
         return this.roolinimi;
     }
-    
-    private ArrayList<Pelaaja> getHyvikset(ArrayList<Pelaaja> pelaajat){
+
+    private ArrayList<Pelaaja> getHyvikset(ArrayList<Pelaaja> pelaajat) {
         ArrayList<Pelaaja> hyvikset = (ArrayList<Pelaaja>) pelaajat.clone();
         ArrayList<Pelaaja> poistettavat = new ArrayList<Pelaaja>();
         for (Pelaaja pelaaja : hyvikset) {
-            if (pelaaja.getRooli().onkoPahis()){
+            if (pelaaja.getRooli().onkoPahis()) {
                 poistettavat.add(pelaaja);
             }
         }
@@ -59,5 +64,10 @@ public class Mafioso implements Rooli{
             hyvikset.remove(pelaaja);
         }
         return hyvikset;
+    }
+
+    @Override
+    public String toString() {
+        return this.roolinimi;
     }
 }

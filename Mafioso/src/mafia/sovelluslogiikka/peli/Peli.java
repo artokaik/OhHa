@@ -9,8 +9,7 @@ import mafia.sovelluslogiikka.Yo;
 
 /**
  * Peli-luokka kuvaa yhtä peliä. Se tuntee pelaajat, säännöt, sekä pelin
- * vaiheet. Pelin pelaa() -metodia suoritetaan koko pelin ajan, joten se on
- * tavallaan koko ohjelman sydän.
+ * vaiheet. 
  *
  * @author Arto
  */
@@ -30,7 +29,33 @@ public class Peli {
         this.saannot = new Saannot();
         this.kaynnissaOlevaVaihe = null;
     }
+    
+        public Peli(ArrayList<Pelaaja> pelaajat) {
+        this.pelaajat = pelaajat;
+        this.vaiheet = new ArrayList<Vaihe>();
+        this.saannot = new Saannot();
+        this.kaynnissaOlevaVaihe = null;
+    }
 
+        /**
+     * Palauttaa pelin seuraavan vaiheen.
+     *
+     * @param pelaaja
+     * @return
+     */
+        
+        public Vaihe seuraavaVaihe(){
+            if(vaiheet.isEmpty()){
+                if(saannot.getPaivaEnsin()){
+                    return new Paiva(pelaajat);
+                } else {
+                    return new Yo(pelaajat);
+                }
+            }
+            Vaihe nykyinenVaihe = vaiheet.get(vaiheet.size()-1);
+            return nykyinenVaihe.luoSeuraavaVaihe();
+        }
+    
     /**
      * Lisää parametrina annetun pelaajan peliin, jos pelaaja ei jo ole pelissä.
      * Palauttaa true, jos lisääminen onnistuu ja false jos ei onnistu.

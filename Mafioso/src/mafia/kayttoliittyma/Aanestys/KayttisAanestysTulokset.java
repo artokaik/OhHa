@@ -36,7 +36,7 @@ public class KayttisAanestysTulokset {
         } else if (aanestys.haeTulokset().size()>1) {
             seuraava = new JButton("Jatka seuraavaan äänestykseen");
             Aanestys uusiKierros = new Aanestys(paiva.getPelaajat(), aanestys.haeTulokset());
-            KayttisToimintoAanestyksenKaynnistys kaynnista = new KayttisToimintoAanestyksenKaynnistys(uusiKierros);
+            ToimintoAanestyksenKaynnistys kaynnista = new ToimintoAanestyksenKaynnistys(uusiKierros);
             seuraava.addActionListener(kaynnista);
             panel.add(seuraava);
         } else {

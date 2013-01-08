@@ -4,6 +4,7 @@
  */
 package mafia.kayttoliittyma.Aanestys;
 
+import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -14,12 +15,12 @@ import mafia.sovelluslogiikka.Pelaaja;
  *
  * @author Arto
  */
-public class KayttisToimintoValitseAanestaja implements ActionListener{
+public class ToimintoValitseAanestaja implements ActionListener{
     private Pelaaja pelaaja;
     private Aanestys aanestys;
     private JButton nappi; 
     
-    public KayttisToimintoValitseAanestaja(Aanestys aanestys, Pelaaja pelaaja, JButton nappi){
+    public ToimintoValitseAanestaja(Aanestys aanestys, Pelaaja pelaaja, JButton nappi){
         this.aanestys = aanestys;
         this.pelaaja = pelaaja;
         this.nappi = nappi;
