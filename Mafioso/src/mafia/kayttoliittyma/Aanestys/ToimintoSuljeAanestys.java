@@ -14,19 +14,24 @@ import mafia.sovelluslogiikka.Pelaaja;
  *
  * @author Arto
  */
-public class ToimintoSuljeAanestys implements ActionListener{
-    
+public class ToimintoSuljeAanestys implements ActionListener {
+
     private JFrame frame;
     private Aanestys aanestys;
+    private KayttisAanestysTulokset tulokset;
 
-    public ToimintoSuljeAanestys(Aanestys aanestys, JFrame frame) {
+    public ToimintoSuljeAanestys(Aanestys aanestys, JFrame frame, KayttisAanestysTulokset tulokset) {
         this.aanestys = aanestys;
         this.frame = frame;
+        this.tulokset = tulokset;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (aanestys.getAanestamatta().isEmpty()) {
+            tulokset.luo(aanestys);
+            tulokset.getPanel().updateUI();
+
             frame.dispose();
         }
     }

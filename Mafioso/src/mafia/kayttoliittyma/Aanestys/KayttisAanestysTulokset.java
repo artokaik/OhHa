@@ -25,24 +25,28 @@ public class KayttisAanestysTulokset {
         panel = new JPanel();
     }
     
-    public void paivita(Aanestys aanestys){
-        panel = new JPanel();
+    public void luo(Aanestys aanestys){
         panel.setLayout(new GridLayout(3, 1));
-        JLabel tuloksetKentta = new JLabel(aanestys.toString());
-        panel.add(tuloksetKentta);
+        JLabel tuloksetKentta = new JLabel(aanestys.toString());       
         JButton seuraava = new JButton();
         if(aanestys.getAanestamatta().size()>0){
-            
+            seuraava = new JButton("Jatka äänestykseen");
+            ToimintoAanestyksenKaynnistys kaynnista = new ToimintoAanestyksenKaynnistys(aanestys, this);
+            seuraava.addActionListener(kaynnista);
         } else if (aanestys.haeTulokset().size()>1) {
             seuraava = new JButton("Jatka seuraavaan äänestykseen");
             Aanestys uusiKierros = new Aanestys(paiva.getPelaajat(), aanestys.haeTulokset());
-            ToimintoAanestyksenKaynnistys kaynnista = new ToimintoAanestyksenKaynnistys(uusiKierros);
+            ToimintoAanestyksenKaynnistys kaynnista = new ToimintoAanestyksenKaynnistys(uusiKierros, this);
             seuraava.addActionListener(kaynnista);
-            panel.add(seuraava);
         } else {
             seuraava = new JButton("Jatka seuraavaan yöhön");
         }
+        panel.add(tuloksetKentta);
         panel.add(seuraava);
+    }
+
+    public Paiva getPaiva() {
+        return paiva;
     }
 
     public JPanel getPanel() {

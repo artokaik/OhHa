@@ -20,16 +20,15 @@ import mafia.sovelluslogiikka.peli.Peli;
  *
  * @author Arto
  */
-public class KayttisPeli implements Runnable{
+public class KayttisPeli implements Runnable {
+
     private JFrame frame;
     private Peli peli;
-    
-    public KayttisPeli(Peli peli){
+
+    public KayttisPeli(Peli peli) {
         this.peli = peli;
     }
-    
-    
-    
+
     @Override
     public void run() {
         frame = new JFrame("Mafioso-peli");
@@ -47,17 +46,17 @@ public class KayttisPeli implements Runnable{
     public void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
         JPanel keskusta = new JPanel();
-        if(peli.getSaannot().getPaivaEnsin()){
+        JButton uusiVaihe = new JButton("Käynnistä seuraava vaihe");
+        if (peli.getSaannot().getPaivaEnsin()) {
             Paiva paiva = new Paiva(peli.getPelaajat());
             KayttisAanestysTulokset tulokset = new KayttisAanestysTulokset(paiva);
-            Aanestys aanestys = new Aanestys(peli.getPelaajat(),peli.getPelaajat());
-            tulokset.paivita(aanestys);
+            Aanestys aanestys = new Aanestys(peli.getPelaajat(), peli.getPelaajat());
+            tulokset.luo(aanestys);
             keskusta = tulokset.getPanel();
-        }    
-         
+        }
+
         container.add(keskusta, BorderLayout.CENTER);
-        JButton uusiVaihe = new JButton("Käynnistä seuraava vaihe");
-        
+        container.add(uusiVaihe, BorderLayout.SOUTH);
+
     }
-    
 }

@@ -52,12 +52,15 @@ public class KayttisAanestaja implements Runnable {
     public void luoKomponentit(Container container) {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
+        
         JButton suljeNappi = new JButton("Sulje");
         ToimintoSuljePelaajanValitsin sulje = new ToimintoSuljePelaajanValitsin(aanestys, this.frame, aanestaja, kuuntelija);
         suljeNappi.addActionListener(sulje);
         suljeNappi.setEnabled(false);
+        
         KayttisPelaajanValitsija valitsija = new KayttisPelaajanValitsija(aanestys.getAanestettavat(aanestaja), suljeNappi, kuuntelija);
         JPanel valitsijaPanel = valitsija.getPanel();
+        
         container.add(valitsijaPanel);
         container.add(suljeNappi);
     }

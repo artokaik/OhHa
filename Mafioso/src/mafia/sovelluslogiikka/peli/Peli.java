@@ -90,9 +90,9 @@ public class Peli {
      * @return
      */
     public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
-        if (laskePahikset(hengissa) == 0) {
-            return false;
-        } else if (laskePahikset(hengissa) >= laskeHyvikset(hengissa)) {
+        int pahikset = laskePahikset(hengissa);
+        int hyvikset = laskeHyvikset(hengissa);
+        if ( pahikset == 0 || pahikset >= hyvikset) {
             return false;
         }
         return true;

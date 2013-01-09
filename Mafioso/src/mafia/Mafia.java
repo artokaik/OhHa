@@ -1,9 +1,6 @@
 package mafia;
 
-import java.util.ArrayList;
-import mafia.kayttoliittyma.Aanestys.KayttisAanestajanValitsija;
-import mafia.sovelluslogiikka.Aanestys;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.kayttoliittyma.Kayttis;
 
 /**
  *
@@ -17,33 +14,34 @@ public class Mafia {
      */
     public static void main(String[] args) {
         
-        
+          Kayttis kayttis = new Kayttis();
+          kayttis.run();
 //        KayttisPeliRakentajaMain rakentaja = new KayttisPeliRakentajaMain();
 //        rakentaja.run();
 
 //        System.out.println("huomio!");
-        ArrayList<Pelaaja> pelaajat = new ArrayList<Pelaaja>();
-        Pelaaja a = new Pelaaja("Arto");
-        Pelaaja b = new Pelaaja("Ossi");
-        Pelaaja c = new Pelaaja("Iina");
-        Pelaaja d = new Pelaaja("d");
-        Pelaaja e = new Pelaaja("e");
-        Pelaaja f = new Pelaaja("f");
-        Pelaaja g = new Pelaaja("g");
-        Pelaaja h = new Pelaaja("h");
-        Pelaaja i = new Pelaaja("i");
-        pelaajat.add(a);
-        pelaajat.add(b);
-        pelaajat.add(c);
-        pelaajat.add(d);
-        pelaajat.add(e);
-        pelaajat.add(f);
-        pelaajat.add(g);
-        pelaajat.add(h);
-        pelaajat.add(i);
-        Aanestys aanestys = new Aanestys(pelaajat,pelaajat);
-        KayttisAanestajanValitsija valinta = new KayttisAanestajanValitsija(aanestys);
-        valinta.run();
+//        ArrayList<Pelaaja> pelaajat = new ArrayList<Pelaaja>();
+//        Pelaaja a = new Pelaaja("Arto");
+//        Pelaaja b = new Pelaaja("Ossi");
+//        Pelaaja c = new Pelaaja("Iina");
+//        Pelaaja d = new Pelaaja("d");
+//        Pelaaja e = new Pelaaja("e");
+//        Pelaaja f = new Pelaaja("f");
+//        Pelaaja g = new Pelaaja("g");
+//        Pelaaja h = new Pelaaja("h");
+//        Pelaaja i = new Pelaaja("i");
+//        pelaajat.add(a);
+//        pelaajat.add(b);
+//        pelaajat.add(c);
+//        pelaajat.add(d);
+//        pelaajat.add(e);
+//        pelaajat.add(f);
+//        pelaajat.add(g);
+//        pelaajat.add(h);
+//        pelaajat.add(i);
+//        Aanestys aanestys = new Aanestys(pelaajat,pelaajat);
+//        KayttisAanestajanValitsija valinta = new KayttisAanestajanValitsija(aanestys);
+//        valinta.run();
 
 //
 //        TekstiPelinLuoja luoja = new TekstiPelinLuoja();

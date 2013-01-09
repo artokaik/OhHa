@@ -60,15 +60,12 @@ public class Aanestys {
      * @return
      */
     public boolean lisaaAani(Pelaaja aanestaja, Pelaaja aanestetty) {
-        aanestamatta.remove(aanestaja);
-        Aani aani = new Aani(aanestaja, aanestetty);
-        for (Aani aani1 : aanet) {
-            if (aani1.getAanestaja().equals(aani.getAanestaja())) {
-                return false;
-            }
+        if(aanestamatta.remove(aanestaja)){
+            Aani aani = new Aani(aanestaja, aanestetty);
+            aanet.add(aani);
+            return true;
         }
-        aanet.add(aani);
-        return true;
+        return false;
     }
 
     /**
@@ -201,7 +198,7 @@ public class Aanestys {
         if (aanestamatta.size() > 0) {
             return "";
         }
-        String tuloste = ehdokkaat + "\nÄänestäjä: äänestetty";
+        String tuloste = ehdokkaat + "\nÄänestäjä: äänestetty\n";
         for (Aani aani : aanet) {
             tuloste += aani + "\n";
         }

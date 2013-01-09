@@ -22,9 +22,11 @@ public class KayttisAanestajanValitsija implements Runnable {
 
     private JFrame frame;
     private Aanestys aanestys;
+    private KayttisAanestysTulokset tulokset;
 
-    public KayttisAanestajanValitsija(Aanestys aanestys){
+    public KayttisAanestajanValitsija(Aanestys aanestys, KayttisAanestysTulokset tulokset){
         this.aanestys = aanestys;    
+        this.tulokset = tulokset;
     }
 
     @Override
@@ -57,7 +59,7 @@ public class KayttisAanestajanValitsija implements Runnable {
         JLabel teksti = new JLabel("Valittu:");
         
         JButton suljeNappi = new JButton("OK");
-        ToimintoSuljeAanestys sulje = new ToimintoSuljeAanestys(aanestys, this.frame);
+        ToimintoSuljeAanestys sulje = new ToimintoSuljeAanestys(aanestys, this.frame, tulokset);
         suljeNappi.addActionListener(sulje);
 
         container.add(teksti);

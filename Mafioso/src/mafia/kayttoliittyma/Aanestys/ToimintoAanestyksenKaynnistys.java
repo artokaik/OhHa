@@ -14,15 +14,17 @@ import mafia.sovelluslogiikka.Aanestys;
  */
 public class ToimintoAanestyksenKaynnistys implements ActionListener {
     private Aanestys aanestys;
+    private KayttisAanestysTulokset tulokset;
 
     
-    public ToimintoAanestyksenKaynnistys(Aanestys aanestys) {
+    public ToimintoAanestyksenKaynnistys(Aanestys aanestys, KayttisAanestysTulokset tulokset) {
         this.aanestys=aanestys;
+        this.tulokset = tulokset;
     }
     
         @Override
     public void actionPerformed(ActionEvent ae) {
-        KayttisAanestajanValitsija valitsija = new KayttisAanestajanValitsija(aanestys);
+        KayttisAanestajanValitsija valitsija = new KayttisAanestajanValitsija(aanestys, tulokset);
         valitsija.run();
         
     }
