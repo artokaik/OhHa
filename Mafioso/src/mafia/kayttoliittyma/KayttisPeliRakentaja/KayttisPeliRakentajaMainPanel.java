@@ -25,40 +25,39 @@ import mafia.sovelluslogiikka.roolit.Roolilista;
  *
  * @author Arto
  */
-public class KayttisPeliRakentajaMainPanel {
+public class KayttisPeliRakentajaMainPanel extends JPanel{
 
-    private JPanel jpanel;
+
     private ArrayList<Rooli> roolit;
     private PeliRakentaja rakentaja;
 
 
-    public KayttisPeliRakentajaMainPanel() {
+    public KayttisPeliRakentajaMainPanel() {  
         Roolilista roolilista = new Roolilista();
         roolit = roolilista.getRoolit();
         rakentaja = new PeliRakentaja();
-        jpanel = new JPanel();
     }
 
 
     public JPanel luo() {
-        
+
         luoKomponentit();
 
-        return jpanel;
+        return this;
     }
 
     public void luoKomponentit() {
-        jpanel.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
         JPanel vasen = luoVasen();
-        jpanel.add(vasen, BorderLayout.WEST);
+        this.add(vasen, BorderLayout.WEST);
         JPanel keskusta = luoKeskusta();
-        jpanel.add(keskusta, BorderLayout.CENTER);
+        this.add(keskusta, BorderLayout.CENTER);
         JPanel oikea = luoOikea();
-        jpanel.add(oikea, BorderLayout.EAST);
+        this.add(oikea, BorderLayout.EAST);
         JPanel ylin = luoYlin();
-        jpanel.add(ylin, BorderLayout.NORTH);
+        this.add(ylin, BorderLayout.NORTH);
         JPanel alin = luoAlin();
-        jpanel.add(alin, BorderLayout.SOUTH);
+        this.add(alin, BorderLayout.SOUTH);
     }
 
     public JPanel luoVasen() {

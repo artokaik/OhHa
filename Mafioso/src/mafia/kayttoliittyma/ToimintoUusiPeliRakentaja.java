@@ -16,9 +16,9 @@ import mafia.kayttoliittyma.KayttisPeliRakentaja.KayttisPeliRakentajaMainPanel;
  * @author Arto
  */
 public class ToimintoUusiPeliRakentaja implements ActionListener{
-    private Kayttis kayttis;
+    private KayttisPanel kayttis;
     
-    public ToimintoUusiPeliRakentaja(Kayttis kayttis){
+    public ToimintoUusiPeliRakentaja(KayttisPanel kayttis){
         this.kayttis=kayttis;
     }
     
@@ -26,8 +26,7 @@ public class ToimintoUusiPeliRakentaja implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
             KayttisPeliRakentajaMainPanel rakentaja = new KayttisPeliRakentajaMainPanel();
             JPanel panel = rakentaja.luo();
-            Container container = kayttis.getFrame().getContentPane();
-            container.add(panel, BorderLayout.CENTER);
-            container.revalidate();
+            
+            kayttis.korvaaKeskusta(panel);
     }
 }

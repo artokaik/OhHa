@@ -11,13 +11,13 @@ import javax.swing.JPanel;
  *
  * @author Arto
  */
-public class KayttisMainMenu {
-    private JPanel panel;
-    private Kayttis kayttis;
+public class MainMenuPanel extends JPanel{
+   
+    private KayttisPanel kayttis;
     
-    public KayttisMainMenu(Kayttis kayttis){
-        panel = new JPanel();
-        panel.add(teeUusiPeliNappi());
+    public MainMenuPanel(KayttisPanel kayttis){
+        
+        this.add(teeUusiPeliNappi());
         this.kayttis = kayttis;
     }
     
@@ -28,8 +28,6 @@ public class KayttisMainMenu {
         return nappi;
     }
 
-    public JPanel getPanel() {
-        return panel;
-    }
+
     
 }

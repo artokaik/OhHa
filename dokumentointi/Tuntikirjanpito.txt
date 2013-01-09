@@ -2,14 +2,21 @@ Tuntikirjanpito
 
 17.12.12	Aloitusluento, Github-sŠŠtšŠ 	2h
 18.12.12	Koodausta ja yksikkštestaamista	5h
-		Suunnittelua				1h
+		Suunnittelua			1h
 28.12.12	Koodausta, suunnittelua		4h
-1.1.12		Koodausta, testausta		6h
-3.1.12		koodausta			8h
+1.1.13		Koodausta, testausta		6h
+3.1.13		koodausta			8h
 		dokumentointia			1h
-4.1.12		katselmointi			3h
-5.1.12		TestejŠ ja vŠhŠn koodausta	6h
-6.1.12		koodausta (sovelluslogiikka)	1h
+4.1.13		katselmointi			3h
+5.1.13		TestejŠ ja vŠhŠn koodausta	6h
+6.1.13		koodausta (sovelluslogiikka)	1h
 		KŠyttšliittymistŠ lukemista ja kŠyttšliittymŠn koodausta 6h
 		javadoc				2h
+7.1.13		kŠyttiksen kanssa sŠŠtšŠ	1h
+		javadoc				1h
+		testejŠ				1h
+8.1.13		K€yttiksen koodauste		5h
+9.1.13		testejŠ				2h
+		kŠyttiksen kanssa tappelua	4h
+		dokumentointia 			1h
 		

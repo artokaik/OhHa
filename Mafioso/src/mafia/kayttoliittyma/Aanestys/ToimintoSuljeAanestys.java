@@ -30,7 +30,8 @@ public class ToimintoSuljeAanestys implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (aanestys.getAanestamatta().isEmpty()) {
             tulokset.luo(aanestys);
-            tulokset.getPanel().updateUI();
+            tulokset.getPanel().revalidate();
+            tulokset.getPanel().repaint();
 
             frame.dispose();
         }

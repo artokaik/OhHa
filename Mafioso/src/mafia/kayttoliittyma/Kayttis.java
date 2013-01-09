@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import mafia.kayttoliittyma.KayttisPeliRakentaja.KayttisPeliRakentajaMainPanel;
 
 /**
  *
@@ -18,20 +19,8 @@ import javax.swing.WindowConstants;
 public class Kayttis implements Runnable {
 
     private JFrame frame;
-    private JPanel vasen;
-    private JPanel oikea;
-    private JPanel keskusta;
-    private JPanel ylin;
-    private JPanel alin;
 
     public Kayttis() {
-        vasen = new JPanel();
-        oikea = new JPanel();
-        ylin = new JPanel();
-        alin = new JPanel();
-        keskusta = new JPanel();
-
-
     }
 
     @Override
@@ -45,71 +34,19 @@ public class Kayttis implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
-        KayttisMainMenu menu = new KayttisMainMenu(this);
-        keskusta = menu.getPanel();
-        frame.getContentPane().add(keskusta, BorderLayout.CENTER);
-        keskusta.revalidate();
+
+
     }
 
     public void luoKomponentit(Container container) {
-        container.setLayout(new BorderLayout());
-        container.add(vasen, BorderLayout.WEST);
-        container.add(keskusta, BorderLayout.CENTER);
-        container.add(oikea, BorderLayout.EAST);
-        container.add(ylin, BorderLayout.NORTH);
-        container.add(alin, BorderLayout.SOUTH);
-    }
+        KayttisPanel panel = new KayttisPanel();
+        container.add(panel);
 
-    public JFrame getFrame() {
-        return frame;
-    }
 
-    public JPanel getVasen() {
-        return vasen;
     }
-
-    public JPanel getOikea() {
-        return oikea;
-    }
-
-    public JPanel getKeskusta() {
-        return keskusta;
-    }
-
-    public JPanel getYlin() {
-        return ylin;
-    }
-
-    public JPanel getAlin() {
-        return alin;
-    }
-
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-
-    public void setVasen(JPanel vasen) {
-        this.vasen = vasen;
-        vasen.revalidate();
-    }
-
-    public void setOikea(JPanel oikea) {
-        this.oikea = oikea;
-        oikea.revalidate();
-    }
-
-    public void setKeskusta(JPanel keskusta) {
-        this.keskusta = keskusta;
-        keskusta.revalidate();
-    }
-
-    public void setYlin(JPanel ylin) {
-        this.ylin = ylin;
-        ylin.revalidate();
-    }
-
-    public void setAlin(JPanel alin) {
-        this.alin = alin;
-        alin.revalidate();
+    
+    public void korvaaKeskusta(JPanel panel){
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        frame.revalidate();
     }
 }

@@ -58,6 +58,22 @@ public class KayttisPelaajanValitsija {
     public JPanel getPanel() {
         return panel;
     }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
+
+    public void setValittavana(ArrayList<Pelaaja> valittavana) {
+        this.valittavana = valittavana;
+    }
+
+    public void setKuuntelija(KayttisKuuntelija kuuntelija) {
+        this.kuuntelija = kuuntelija;
+    }
+
+    public void setValitseNappi(JButton valitseNappi) {
+        this.valitseNappi = valitseNappi;
+    }
     
     
 }
