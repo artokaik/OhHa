@@ -24,13 +24,13 @@ public class Paiva implements Vaihe {
      * @param pelaajat
      */
     public Paiva(ArrayList<Pelaaja> pelaajat) {
-        this.pelaajat = pelaajat;
+        this.pelaajat = (ArrayList<Pelaaja>) pelaajat.clone();
         this.aanestykset = new ArrayList<Aanestys>();
         lynkattavat = new ArrayList<Pelaaja>();
     }
 
     /**
-     *
+     * Poistaa lynkattaviksi asetetut pelaajat pelaaja-listasta.
      */
     public void tapaLynkattavat(){
         for (Pelaaja pelaaja : lynkattavat) {
@@ -40,7 +40,7 @@ public class Paiva implements Vaihe {
 
     
     /**
-     *
+     * Palauttaa Yo-olion, johon on lisätty kaikki hengissä olevat pelaajat.
      * @return
      */
     public Yo luoSeuraavaVaihe(){
@@ -63,7 +63,7 @@ public class Paiva implements Vaihe {
     }
 
     /**
-     *
+     * Palayttaa lynkatut pelaajat Stringinä.
      * @return
      */
     public String kerroTapahtumat() {

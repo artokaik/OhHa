@@ -34,12 +34,11 @@ public class PaivaTest {
     Paiva paiva;
 
     public PaivaTest() {
-
     }
 
     @Before
     public void setUp() {
-                peli = new Peli();
+        peli = new Peli();
         mafioso = new Mafioso();
         kansalainen = new Kansalainen();
         etsiva = new Etsiva();
@@ -68,12 +67,21 @@ public class PaivaTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void paivaLuominenOnnistuu(){
+    public void paivaLuominenOnnistuu() {
         assertTrue(paiva.getAanestykset().isEmpty());
         assertTrue(paiva.getLynkattu().isEmpty());
-        assertEquals(6, paiva.getPelaajat().size());          
+        assertEquals(6, paiva.getPelaajat().size());
     }
-    
+
+    @Test
+    public void luoSeuraavaVaiheToimii() {
+        Yo yo = paiva.luoSeuraavaVaihe();
+        assertEquals(null, yo.getAmmuttu());
+        assertEquals(paiva.getPelaajat(), yo.getPelaajat());
+        yo.asetaTapettava(pekka);
+        yo.tapaAmmutut();
+        assertFalse(paiva.getPelaajat().equals(yo.getPelaajat()));
+    }
 }

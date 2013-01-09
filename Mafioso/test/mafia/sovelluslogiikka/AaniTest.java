@@ -20,6 +20,7 @@ public class AaniTest {
     Aani aani;
     Pelaaja arto;
     Pelaaja matti;
+    Pelaaja antti;
 
     /**
      *
@@ -30,32 +31,13 @@ public class AaniTest {
     /**
      *
      */
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    /**
-     *
-     */
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    /**
-     *
-     */
     @Before
     public void setUp() {
         arto = new Pelaaja("Arto");
         matti = new Pelaaja("Matti");
+        antti = new Pelaaja("Antti");
     }
 
-    /**
-     *
-     */
-    @After
-    public void tearDown() {
-    }
 
     /**
      *
@@ -73,5 +55,19 @@ public class AaniTest {
     public void AanestettyOikein() {
         aani = new Aani(arto, matti);
         assertEquals(matti, aani.getAanestetty());
+    }
+    
+    @Test
+    public void aanenVaihtoToimii() {
+        aani = new Aani(arto, matti);
+        aani.setAanestetty(antti);
+        assertEquals(antti, aani.getAanestetty());
+    }
+    
+        @Test
+    public void aanestajanVaihtoToimii() {
+        aani = new Aani(arto, matti);
+        aani.setAanestaja(antti);
+        assertEquals(antti, aani.getAanestaja());
     }
 }

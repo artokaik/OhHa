@@ -87,6 +87,9 @@ public boolean lisaaRooli(Rooli rooli){
      * @return
      */
     public Peli teePeli(){
+        if(!onkoValmis()){
+            return null;
+        }
         Peli peli = new Peli();
         peli.setPelaajat(arvoRoolit());
         peli.setSaannot(saannot);

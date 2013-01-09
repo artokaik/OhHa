@@ -12,7 +12,7 @@ public class Aani {
     
     /**
      *
-     * @param aanestaja
+     * @param aanestaja 
      * @param aanestetty
      */
     public Aani(Pelaaja aanestaja, Pelaaja aanestetty){

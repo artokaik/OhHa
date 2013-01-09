@@ -7,8 +7,8 @@ import java.util.HashMap;
 import mafia.kayttoliittyma.Ohjaus;
 
 /**
- * Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat
- * (ArrayList<Pelaaja>) ja annetut äänet (ArrayList<Aani>).
+ * Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat 
+ * (ArrayList<Pelaaja>), pelaajat, jotka eivät vielä ole äänestäneet ja annetut äänet (ArrayList<Aani>).
  *
  * @author Arto
  */
@@ -34,6 +34,11 @@ public class Aanestys {
         return aanestamatta;
     }
     
+    /**
+     * Pelauttaa ehdokkaat ilman parametrina annettua pelaaja. Toisin sanoen ehdokkaat, joita parametrina annettu pelaaja voi äänestää.
+     * @param pelaaja
+     * @return
+     */
     public ArrayList<Pelaaja> getAanestettavat(Pelaaja pelaaja) {
         ArrayList<Pelaaja> aanestettavat = (ArrayList<Pelaaja>) ehdokkaat.clone();
         aanestettavat.remove(pelaaja);
@@ -49,7 +54,7 @@ public class Aanestys {
     }
 
     /**
-     *
+     * Mikäli äänestäjä ei ole jo äänestänyt tässä äänestyksessä, lisää äänen ja palauttaa true. Muuten palauttaa false;
      * @param aanestaja
      * @param aanestetty
      * @return
@@ -67,7 +72,7 @@ public class Aanestys {
     }
 
     /**
-     *
+     * Vaihtaa parametrina annetun äänestäjän antaman äänen parametrina annetulle pelaajalle. Palauttaa true jos onnistuu, muuten false.
      * @param aanestaja
      * @param aanestetty
      * @return
@@ -83,7 +88,7 @@ public class Aanestys {
     }
 
     /**
-     *
+     * Palauttaa parametrina annetun pelaajan saamien äänten lukumäärän.
      * @param pelaaja
      * @return
      */
@@ -96,15 +101,7 @@ public class Aanestys {
         }
         return maara;
     }
-//
-//    public Pelaaja haeEhdokas(String nimi) {
-//        for (Pelaaja pelaaja : ehdokkaat) {
-//            if (pelaaja.getNimi().equals(nimi)) {
-//                return pelaaja;
-//            }
-//        }
-//        return null;
-//    }
+
 
     /**
      *
@@ -113,7 +110,10 @@ public class Aanestys {
     public ArrayList<Pelaaja> getEhdokkaat() {
         return ehdokkaat;
     }
-    
+     /**
+     * Palauttaa pelaajien äänimäärät HashMap<Pelaaja, Integer> -oliona.
+     * @return
+     */
     private HashMap<Pelaaja, Integer> laskeTulokset() {
         HashMap<Pelaaja, Integer> tulokset = new HashMap<Pelaaja, Integer>();
         for (Aani aani : aanet) {
@@ -127,7 +127,7 @@ public class Aanestys {
     }
 
     /**
-     *
+     * Palauttaa ArrayListin pelaajista jotka menevät äänestyksestä jatkoon.
      * @param maara
      * @return
      */
@@ -148,18 +148,7 @@ public class Aanestys {
         return jatkoon;
     }
     
-    private int laskeRaja(HashMap<Pelaaja, Integer> tulokset) {
-        Collection aanimaarat = tulokset.values();
-        ArrayList<Integer> aanimaaria = new ArrayList<Integer>();
-        for (Object object : aanimaarat) {
-            aanimaaria.add((Integer) object);
-        }
-        Collections.sort(aanimaaria);
-        int raja = aanimaaria.get(Math.max(0, aanimaaria.size() - jatkoonMenijat));
-        return raja;
-    }
-    
-    public ArrayList<Pelaaja> haeTulokset(int maara) {
+        public ArrayList<Pelaaja> haeTulokset(int maara) {
         if (aanet.isEmpty()) {
             return ehdokkaat;
         }
@@ -176,6 +165,24 @@ public class Aanestys {
         return jatkoon;
     }
     
+        /**
+     * Palauttaa äänimäärän, joka tarvitaan jatkoon menemiseen.
+     * @param tulokset
+     * @return
+     */
+    private int laskeRaja(HashMap<Pelaaja, Integer> tulokset) {
+        Collection aanimaarat = tulokset.values();
+        ArrayList<Integer> aanimaaria = new ArrayList<Integer>();
+        for (Object object : aanimaarat) {
+            aanimaaria.add((Integer) object);
+        }
+        Collections.sort(aanimaaria);
+        int raja = aanimaaria.get(Math.max(0, aanimaaria.size() - jatkoonMenijat));
+        return raja;
+    }
+    
+
+    
     private int laskeRaja(int maara, HashMap<Pelaaja, Integer> tulokset) {
         Collection aanimaarat = tulokset.values();
         ArrayList<Integer> aanimaaria = new ArrayList<Integer>();
@@ -187,18 +194,7 @@ public class Aanestys {
         return raja;
     }
 
-    /**
-     *
-     * @param aanestajat
-     * @param ehdokkaat
-     */
-    public void suorita(ArrayList<Pelaaja> aanestajat, ArrayList<Pelaaja> ehdokkaat) {
-        Ohjaus ohjaus = new Ohjaus();
-        for (Pelaaja pelaaja : aanestajat) {
-            Aani aani = ohjaus.aanesta(pelaaja, ehdokkaat);
-            aanet.add(aani);
-        }
-    }
+//
     
     @Override
     public String toString() {
@@ -213,3 +209,24 @@ public class Aanestys {
         
     }
 }
+//
+//    public Pelaaja haeEhdokas(String nimi) {
+//        for (Pelaaja pelaaja : ehdokkaat) {
+//            if (pelaaja.getNimi().equals(nimi)) {
+//                return pelaaja;
+//            }
+//        }
+//        return null;
+//    }
+    /**
+//     *
+//     * @param aanestajat
+//     * @param ehdokkaat
+//     */
+//    public void suorita(ArrayList<Pelaaja> aanestajat, ArrayList<Pelaaja> ehdokkaat) {
+//        Ohjaus ohjaus = new Ohjaus();
+//        for (Pelaaja pelaaja : aanestajat) {
+//            Aani aani = ohjaus.aanesta(pelaaja, ehdokkaat);
+//            aanet.add(aani);
+//        }
+//    }

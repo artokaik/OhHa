@@ -23,7 +23,7 @@ public class Yo implements Vaihe {
      * @param pelaajat
      */
     public Yo(ArrayList<Pelaaja> pelaajat) {
-        this.pelaajat = pelaajat;
+        this.pelaajat = (ArrayList<Pelaaja>) pelaajat.clone();
         this.vuoroPelaamatta = (ArrayList<Pelaaja>) pelaajat.clone();
     }
 
