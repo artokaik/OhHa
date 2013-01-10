@@ -7,7 +7,7 @@ package mafia.kayttoliittyma.KayttisPeliRakentaja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.kayttoliittyma.KayttisPeliPanel;
+import mafia.kayttoliittyma.PeliPanel;
 import mafia.sovelluslogiikka.peli.Peli;
 import mafia.sovelluslogiikka.peli.PeliRakentaja;
 
@@ -28,7 +28,7 @@ public class ToimintoPelinAloitus implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (rakentaja.onkoValmis()) {
             Peli peli = rakentaja.teePeli();
-            KayttisPeliPanel peliKayttis = new KayttisPeliPanel(peli, kayttis);
+            PeliPanel peliKayttis = new PeliPanel(peli, kayttis);
             peliKayttis.aseta();
             kayttis.korvaaKeskusta(peliKayttis);
 

@@ -18,12 +18,12 @@ import mafia.sovelluslogiikka.peli.Peli;
  *
  * @author Arto
  */
-public class KayttisPeliPanel extends JPanel {
+public class PeliPanel extends JPanel {
 
     private Peli peli;
     private Kayttis kayttis;
 
-    public KayttisPeliPanel(Peli peli, Kayttis kayttis) {
+    public PeliPanel(Peli peli, Kayttis kayttis) {
         this.peli = peli;
         this.kayttis = kayttis;
         this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
