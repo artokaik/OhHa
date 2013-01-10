@@ -1,6 +1,7 @@
 package mafia.sovelluslogiikka.roolit;
 
-import mafia.kayttoliittyma.Ohjaus;
+import java.util.ArrayList;
+import mafia.turhat.kayttoliittyma.Ohjaus;
 import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
@@ -25,11 +26,33 @@ public class Suojelija implements Rooli {
     /**
      *
      * @param yo
+     * @return
      */
-    public void toimi(Yo yo) {
-        Ohjaus ohjaus = new Ohjaus();
-        Pelaaja suojeltu = ohjaus.suojelijaToimii(yo.getPelaajat());
-        yo.asetaSuojeltu(suojeltu);
+    public String getRooliSelitys(Yo yo) {
+        return "Olet suojelija, ketä haluat suojella mafiosoilta?";
+    }
+
+    /**
+     *
+     * @param yo
+     * @param valittu
+     * @return  
+     */
+    public String toimi(Yo yo, Pelaaja valittu) {
+        String tuloste = "Suojeltu pelaaja on " + valittu.getNimi();
+        yo.asetaSuojeltu(valittu);
+        return tuloste;
+    }
+
+    /**
+     *
+     * @param pelaajat
+     * @param itse
+     * @return
+     */
+    public ArrayList<Pelaaja> getVaihtoehdot(ArrayList<Pelaaja> pelaajat, Pelaaja itse) {
+        ArrayList<Pelaaja> vaihtoehdot = (ArrayList<Pelaaja>) pelaajat.clone();
+        return vaihtoehdot;
     }
 
     /**
@@ -47,8 +70,8 @@ public class Suojelija implements Rooli {
     public String getRoolinimi() {
         return this.roolinimi;
     }
-    
-    public Suojelija kopioi(){
+
+    public Suojelija kopioi() {
         return new Suojelija();
     }
 

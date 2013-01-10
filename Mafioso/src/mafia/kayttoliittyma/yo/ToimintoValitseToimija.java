@@ -2,35 +2,37 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.Aanestys;
+package mafia.kayttoliittyma.yo;
 
 import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import mafia.sovelluslogiikka.Aanestys;
+import mafia.kayttoliittyma.Kayttis;
 import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.Yo;
 
 /**
  *
  * @author Arto
  */
-public class ToimintoValitseAanestaja implements ActionListener{
+public class ToimintoValitseToimija implements ActionListener{
+    private Yo yo;
     private Pelaaja pelaaja;
-    private Aanestys aanestys;
     private JButton nappi; 
+    private Kayttis kayttis;
     
-    public ToimintoValitseAanestaja(Aanestys aanestys, Pelaaja pelaaja, JButton nappi){
-        this.aanestys = aanestys;
+    public ToimintoValitseToimija(Yo yo, Pelaaja pelaaja, JButton nappi, Kayttis kayttis){
+        this.kayttis = kayttis;
+        this.yo = yo;
         this.pelaaja = pelaaja;
         this.nappi = nappi;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
-        KayttisAanestaja aanestaminen = new KayttisAanestaja(aanestys,pelaaja,kuuntelija);
-        aanestaminen.run();
+        YoVuoroPanel panel = new YoVuoroPanel(kayttis, yo, pelaaja);
+        kayttis.korvaaKeskusta(panel);
         nappi.setEnabled(false);        
         
     }

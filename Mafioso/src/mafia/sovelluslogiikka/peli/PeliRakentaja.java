@@ -41,6 +41,7 @@ public class PeliRakentaja {
     
     /**
      * Palauttaa true jos pelaajien ja roolien määrä on sama tai pelaajien määrä on 2 tai alle.
+     * @return 
      */
     public boolean onkoValmis() {
         if (pelaajat.size()<=2){
@@ -62,7 +63,12 @@ public boolean lisaaRooli(Rooli rooli){
         return roolit.add(rooli);
     }
     
-        public boolean poistaRooli(Rooli rooli){    
+        /**
+     *
+     * @param rooli
+     * @return
+     */
+    public boolean poistaRooli(Rooli rooli){    
         return roolit.remove(rooli);
     }
     
@@ -78,6 +84,11 @@ public boolean lisaaRooli(Rooli rooli){
         return this.pelaajat.add(pelaaja);
     }
     
+    /**
+     *
+     * @param pelaaja
+     * @return
+     */
     public boolean poistaPelaaja(Pelaaja pelaaja){
         return this.pelaajat.remove(pelaaja);
     }
@@ -112,6 +123,7 @@ public boolean lisaaRooli(Rooli rooli){
         for (int i = 0; i < pelinPelaajat.size(); i++) {
             pelinPelaajat.get(i).setRooli(roolit.get(i));
         }
+        Collections.sort(pelinPelaajat);
         return pelinPelaajat;
     }
     

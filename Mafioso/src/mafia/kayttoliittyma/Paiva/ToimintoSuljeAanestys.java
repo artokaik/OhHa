@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.Aanestys;
+package mafia.kayttoliittyma.Paiva;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,9 +18,9 @@ public class ToimintoSuljeAanestys implements ActionListener {
 
     private JFrame frame;
     private Aanestys aanestys;
-    private KayttisAanestysTulokset tulokset;
+    private PaivaMainPanel tulokset;
 
-    public ToimintoSuljeAanestys(Aanestys aanestys, JFrame frame, KayttisAanestysTulokset tulokset) {
+    public ToimintoSuljeAanestys(Aanestys aanestys, JFrame frame, PaivaMainPanel tulokset) {
         this.aanestys = aanestys;
         this.frame = frame;
         this.tulokset = tulokset;
@@ -30,8 +30,8 @@ public class ToimintoSuljeAanestys implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (aanestys.getAanestamatta().isEmpty()) {
             tulokset.luo(aanestys);
-            tulokset.getPanel().revalidate();
-            tulokset.getPanel().repaint();
+            tulokset.revalidate();
+            tulokset.repaint();
 
             frame.dispose();
         }

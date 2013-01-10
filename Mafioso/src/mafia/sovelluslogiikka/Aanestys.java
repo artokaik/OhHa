@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import mafia.kayttoliittyma.Ohjaus;
+import mafia.turhat.kayttoliittyma.Ohjaus;
 
 /**
  * Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat 
@@ -21,6 +21,7 @@ public class Aanestys {
 
     /**
      *
+     * @param aanestajat 
      * @param ehdokkaat
      */
     public Aanestys(ArrayList<Pelaaja> aanestajat, ArrayList<Pelaaja> ehdokkaat) {
@@ -30,6 +31,10 @@ public class Aanestys {
         this.jatkoonMenijat = 1;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pelaaja> getAanestamatta() {
         return aanestamatta;
     }
@@ -125,7 +130,6 @@ public class Aanestys {
 
     /**
      * Palauttaa ArrayListin pelaajista jotka menevät äänestyksestä jatkoon.
-     * @param maara
      * @return
      */
     public ArrayList<Pelaaja> haeTulokset() {
@@ -145,7 +149,12 @@ public class Aanestys {
         return jatkoon;
     }
     
-        public ArrayList<Pelaaja> haeTulokset(int maara) {
+        /**
+     *
+     * @param maara
+     * @return
+     */
+    public ArrayList<Pelaaja> haeTulokset(int maara) {
         if (aanet.isEmpty()) {
             return ehdokkaat;
         }
@@ -198,10 +207,12 @@ public class Aanestys {
         if (aanestamatta.size() > 0) {
             return "";
         }
-        String tuloste = ehdokkaat + "\nÄänestäjä: äänestetty\n";
+        String tuloste = ehdokkaat + "\n" + "Äänestäjä: äänestetty"+"\n";
         for (Aani aani : aanet) {
             tuloste += aani + "\n";
         }
+        
+        tuloste += "Valittu: " + haeTulokset();
         return tuloste;
         
     }

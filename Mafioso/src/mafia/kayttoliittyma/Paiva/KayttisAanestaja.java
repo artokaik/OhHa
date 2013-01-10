@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.Aanestys;
+package mafia.kayttoliittyma.Paiva;
 
 import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.Container;
@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import mafia.kayttoliittyma.KayttisPelaajanValitsija;
+import mafia.kayttoliittyma.PelaajanValitsijaPanel;
 import mafia.sovelluslogiikka.Aanestys;
 import mafia.sovelluslogiikka.Pelaaja;
 
@@ -31,6 +31,7 @@ public class KayttisAanestaja implements Runnable {
         this.aanestys = aanestys;
         this.aanestaja = aanestaja;
         this.kuuntelija = kuuntelija;
+        
     }
 
     @Override
@@ -58,10 +59,10 @@ public class KayttisAanestaja implements Runnable {
         suljeNappi.addActionListener(sulje);
         suljeNappi.setEnabled(false);
         
-        KayttisPelaajanValitsija valitsija = new KayttisPelaajanValitsija(aanestys.getAanestettavat(aanestaja), suljeNappi, kuuntelija);
-        JPanel valitsijaPanel = valitsija.getPanel();
+        PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(aanestys.getAanestettavat(aanestaja), suljeNappi, kuuntelija);
         
-        container.add(valitsijaPanel);
+        
+        container.add(valitsija);
         container.add(suljeNappi);
     }
 //    public void luoKomponentit(Container container) {

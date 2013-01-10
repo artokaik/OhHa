@@ -1,6 +1,8 @@
 
 package mafia.sovelluslogiikka.roolit;
 
+import java.util.ArrayList;
+import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
 /**
@@ -12,8 +14,10 @@ public interface Rooli {
     /**
      *
      * @param yo
+     * @param valittu
+     * @return  
      */
-    public void toimi(Yo yo);
+    public String toimi(Yo yo, Pelaaja valittu);
     /**
      *
      * @return
@@ -29,4 +33,19 @@ public interface Rooli {
      * @return
      */
     public Rooli kopioi();
+    
+    /**
+     *
+     * @param pelaajat
+     * @param itse
+     * @return
+     */
+    public ArrayList<Pelaaja> getVaihtoehdot(ArrayList<Pelaaja> pelaajat, Pelaaja itse);
+    
+    /**
+     *
+     * @param yo
+     * @return
+     */
+    public String getRooliSelitys(Yo yo);
 }

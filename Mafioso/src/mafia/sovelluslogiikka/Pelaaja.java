@@ -8,7 +8,7 @@ import mafia.sovelluslogiikka.roolit.Rooli;
  *Pelaajalla on muuttujina nimi (String) ja rooli. Yhdessä pelissä ei voi olla kahta samannimistä pelaajaa, sillä pelaajat erotetaan toisistaan nimen avulla. Siksi equals-metodi on toteutettu siten, että kaksi pelaajaa tunnistetaan samoiksi mikäli näiden nimet ovat samoja. 
  * @author Arto
  */
-public class Pelaaja {
+public class Pelaaja implements Comparable{
     private String nimi;
     private Rooli rooli;
     private boolean elossa;
@@ -66,7 +66,7 @@ public class Pelaaja {
      * @param yo
      */
     public void toimiRoolinMukaan(Yo yo){
-        this.rooli.toimi(yo);
+        this.rooli.toimi(yo, this);
     }
     
     @Override
@@ -87,5 +87,11 @@ public class Pelaaja {
             return true;
         }
         return false;
+    }
+    
+    @Override
+    public int compareTo(Object object){
+        Pelaaja verrattava = (Pelaaja) object;
+        return this.nimi.compareTo(verrattava.getNimi());
     }
 }

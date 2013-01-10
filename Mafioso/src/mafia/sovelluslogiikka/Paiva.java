@@ -28,6 +28,15 @@ public class Paiva implements Vaihe {
         this.aanestykset = new ArrayList<Aanestys>();
         lynkattavat = new ArrayList<Pelaaja>();
     }
+    
+    /**
+     *
+     * @param aanestys
+     * @return
+     */
+    public boolean lisaaAanestys(Aanestys aanestys){
+        return this.aanestykset.add(aanestys);
+    }
 
     /**
      * Poistaa lynkattaviksi asetetut pelaajat pelaaja-listasta.

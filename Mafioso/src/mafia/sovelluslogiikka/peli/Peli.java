@@ -1,7 +1,7 @@
 package mafia.sovelluslogiikka.peli;
 
 import java.util.ArrayList;
-import mafia.kayttoliittyma.Ohjaus;
+import mafia.turhat.kayttoliittyma.Ohjaus;
 import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Vaihe;
@@ -30,7 +30,11 @@ public class Peli {
         this.kaynnissaOlevaVaihe = null;
     }
     
-        public Peli(ArrayList<Pelaaja> pelaajat) {
+        /**
+     *
+     * @param pelaajat
+     */
+    public Peli(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
         this.vaiheet = new ArrayList<Vaihe>();
         this.saannot = new Saannot();
@@ -40,7 +44,6 @@ public class Peli {
         /**
      * Palauttaa pelin seuraavan vaiheen.
      *
-     * @param pelaaja
      * @return
      */
         
@@ -89,7 +92,7 @@ public class Peli {
      * @param hengissa
      * @return
      */
-    public boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
+    public static boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
         int pahikset = laskePahikset(hengissa);
         int hyvikset = laskeHyvikset(hengissa);
         if ( pahikset == 0 || pahikset >= hyvikset) {
@@ -104,7 +107,7 @@ public class Peli {
      * @param hengissa
      * @return
      */
-    public int laskeHyvikset(ArrayList<Pelaaja> hengissa) {
+    public static int laskeHyvikset(ArrayList<Pelaaja> hengissa) {
         int hyvistenMaara = 0;
         for (Pelaaja pelaaja : hengissa) {
             if (!pelaaja.getRooli().onkoPahis()) {
@@ -120,7 +123,7 @@ public class Peli {
      * @param hengissa
      * @return
      */
-    public int laskePahikset(ArrayList<Pelaaja> hengissa) {
+    public static int laskePahikset(ArrayList<Pelaaja> hengissa) {
         int pahistenMaara = 0;
         for (Pelaaja pelaaja : hengissa) {
             if (pelaaja.getRooli().onkoPahis()) {
@@ -135,8 +138,9 @@ public class Peli {
      * pelaajalistalla. Muuten palauttaa false
      *
      * @param hengissa
+     * @return  
      */
-    public boolean voittikoHyvikset(ArrayList<Pelaaja> hengissa) {
+    public static boolean voittikoHyvikset(ArrayList<Pelaaja> hengissa) {
         for (Pelaaja pelaaja : hengissa) {
             if (pelaaja.getRooli().onkoPahis()) {
                 return false;
@@ -150,8 +154,9 @@ public class Peli {
      * pelaajalistalla. Muuten palauttaa false
      *
      * @param hengissa
+     * @return  
      */
-    public boolean voittikoPahikset(ArrayList<Pelaaja> hengissa) {
+    public static boolean voittikoPahikset(ArrayList<Pelaaja> hengissa) {
         if (laskeHyvikset(hengissa) > laskePahikset(hengissa)) {
             return false;
         }
@@ -165,6 +170,23 @@ public class Peli {
         tuloste += "Pelaajat: " + pelaajat + "\n";
         tuloste += saannot;
         return tuloste;
+    }
+    
+    /**
+     *
+     * @param hengissa
+     * @return
+     */
+    public static String kerroLopputulos(ArrayList<Pelaaja> hengissa){
+        String tulokset = "";
+        if (voittikoHyvikset(hengissa)){
+            tulokset = "Hyvikset voittivat!\n";
+        } else if (voittikoPahikset(hengissa)){
+            tulokset = "Pahikset voittivat!\n";         
+        } else {
+            tulokset = "Tasapeli!\n";
+        }
+        return tulokset;
     }
 
     //Getterit ja setterit:

@@ -13,6 +13,9 @@ import java.util.ArrayList;
 public class Roolilista {
     private ArrayList<Rooli> roolit;
 
+    /**
+     *
+     */
     public Roolilista() {
         roolit = new ArrayList<Rooli>();
         roolit.add(new Etsiva());
@@ -21,6 +24,10 @@ public class Roolilista {
         roolit.add(new Suojelija());
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Rooli> getRoolit() {
         return roolit;
     }

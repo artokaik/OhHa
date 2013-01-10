@@ -2,31 +2,31 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma;
+package mafia.kayttoliittyma.mainMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
-import mafia.kayttoliittyma.KayttisPeliRakentaja.KayttisPeliRakentajaMainPanel;
+import mafia.kayttoliittyma.Kayttis;
+import mafia.kayttoliittyma.KayttisPeliRakentaja.PeliRakentajaMainPanel;
 
 /**
  *
  * @author Arto
  */
 public class ToimintoUusiPeliRakentaja implements ActionListener{
-    private KayttisPanel kayttis;
+    private Kayttis kayttis;
     
-    public ToimintoUusiPeliRakentaja(KayttisPanel kayttis){
+    public ToimintoUusiPeliRakentaja(Kayttis kayttis){
         this.kayttis=kayttis;
     }
     
         @Override
     public void actionPerformed(ActionEvent ae) {
-            KayttisPeliRakentajaMainPanel rakentaja = new KayttisPeliRakentajaMainPanel();
-            JPanel panel = rakentaja.luo();
-            
+            PeliRakentajaMainPanel rakentaja = new PeliRakentajaMainPanel(kayttis);
+            JPanel panel = rakentaja.luo();          
             kayttis.korvaaKeskusta(panel);
     }
 }

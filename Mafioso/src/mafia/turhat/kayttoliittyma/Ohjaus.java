@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma;
+package mafia.turhat.kayttoliittyma;
 
 import java.util.*;
 import mafia.sovelluslogiikka.*;

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.Aanestys;
+package mafia.kayttoliittyma.Paiva;
 
 import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;

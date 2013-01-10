@@ -5,18 +5,17 @@
 package mafia.kayttoliittyma.KayttisPeliRakentaja;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import javax.swing.ListSelectionModel;
+import mafia.kayttoliittyma.Kayttis;
 import mafia.sovelluslogiikka.peli.PeliRakentaja;
 import mafia.sovelluslogiikka.roolit.Rooli;
 import mafia.sovelluslogiikka.roolit.Roolilista;
@@ -25,17 +24,20 @@ import mafia.sovelluslogiikka.roolit.Roolilista;
  *
  * @author Arto
  */
-public class KayttisPeliRakentajaMainPanel extends JPanel{
+public class PeliRakentajaMainPanel extends JPanel{
 
 
     private ArrayList<Rooli> roolit;
     private PeliRakentaja rakentaja;
+    private Kayttis kayttis;
 
 
-    public KayttisPeliRakentajaMainPanel() {  
+    public PeliRakentajaMainPanel(Kayttis kayttis) {
+        this.kayttis = kayttis;
         Roolilista roolilista = new Roolilista();
         roolit = roolilista.getRoolit();
         rakentaja = new PeliRakentaja();
+        this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
     }
 
 
@@ -83,7 +85,7 @@ public class KayttisPeliRakentajaMainPanel extends JPanel{
     public JPanel luoAlin(){
         JPanel panel = new JPanel();
         JButton aloita = new JButton("Aloita peli");
-        ToimintoPelinAloitus aloitus = new ToimintoPelinAloitus(rakentaja);
+        ToimintoPelinAloitus aloitus = new ToimintoPelinAloitus(rakentaja, kayttis);
         aloita.addActionListener(aloitus);
         panel.add(aloita);
         
@@ -93,6 +95,7 @@ public class KayttisPeliRakentajaMainPanel extends JPanel{
 
     private JPanel luoRoolienValitsija() {
         JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(250,400));
 
         panel.setLayout(new GridLayout(3, 2));
         JList roolilista = luoRooliluettelo();
@@ -108,7 +111,12 @@ public class KayttisPeliRakentajaMainPanel extends JPanel{
         ToimintoRoolinPoistaja poistaja = new ToimintoRoolinPoistaja(valitutRoolit, rakentaja, maara);
         poista.addActionListener(poistaja);
         roolilista.setLayoutOrientation(JList.VERTICAL);
+        roolilista.setSelectedIndex(0);
+        roolilista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         valitutRoolit.setLayoutOrientation(JList.VERTICAL);
+        valitutRoolit.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         JScrollPane roolitScroller = new JScrollPane(roolilista);
         JScrollPane valitutScroller = new JScrollPane(valitutRoolit);
 
@@ -125,6 +133,7 @@ public class KayttisPeliRakentajaMainPanel extends JPanel{
 
     private JPanel luoPelaajienValitsija() {
         JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(250,400));
 
         panel.setLayout(new GridLayout(3, 2));
 
@@ -142,6 +151,7 @@ public class KayttisPeliRakentajaMainPanel extends JPanel{
         poista.addActionListener(poistaja);
 
         pelaajat.setLayoutOrientation(JList.VERTICAL);
+        pelaajat.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JScrollPane valitutScroller = new JScrollPane(pelaajat);
 

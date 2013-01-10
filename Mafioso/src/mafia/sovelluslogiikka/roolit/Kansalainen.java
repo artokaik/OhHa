@@ -1,5 +1,7 @@
 package mafia.sovelluslogiikka.roolit;
 
+import java.util.ArrayList;
+import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
 /**
@@ -22,8 +24,32 @@ public class Kansalainen implements Rooli {
     /**
      *
      * @param yo
+     * @return
+     */
+    public String getRooliSelitys(Yo yo) {
+        return "Olet Kansalainen, et tee mitään, paina OK";
+    }
+
+    /**
+     *
+     * @param yo
      */
     public void toimi(Yo yo) {
+    }
+
+    public String toimi(Yo yo, Pelaaja valittu) {
+        return "Et tehnyt mitään koska olit tavallinen kansalainen";
+    }
+
+    /**
+     *
+     * @param pelaajat
+     * @param itse
+     * @return
+     */
+    public ArrayList<Pelaaja> getVaihtoehdot(ArrayList<Pelaaja> pelaajat, Pelaaja itse) {
+        ArrayList<Pelaaja> vaihtoehdot = new ArrayList<Pelaaja>();
+        return vaihtoehdot;
     }
 
     /**
@@ -41,8 +67,8 @@ public class Kansalainen implements Rooli {
     public String getRoolinimi() {
         return this.roolinimi;
     }
-    
-    public Kansalainen kopioi(){
+
+    public Kansalainen kopioi() {
         return new Kansalainen();
     }
 

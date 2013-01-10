@@ -4,7 +4,8 @@
  */
 package mafia.sovelluslogiikka.roolit;
 
-import mafia.kayttoliittyma.Ohjaus;
+import java.util.ArrayList;
+import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
 
@@ -23,15 +24,44 @@ public class Etsiva implements Rooli {
      */
     public Etsiva() {
     }
+    
+    /**
+     *
+     * @param yo
+     * @return
+     */
+    public String getRooliSelitys(Yo yo){
+        return "Olet etsivä, valitse pelaaja jonka haluat tarkastaa?";
+    }
 
     /**
      *
      * @param yo
+     * @param pelaaja 
+     * @return  
      */
-    public void toimi(Yo yo) {
-        Ohjaus ohjaus = new Ohjaus();
-        ohjaus.etsivaToimii(yo.getPelaajat());
+    public String toimi(Yo yo, Pelaaja pelaaja) {
+        String tuloste = "";
+        if(pelaaja.getRooli().onkoPahis()){
+            tuloste += pelaaja.getNimi() + " on pahis!";
+        } else {
+            tuloste += pelaaja.getNimi() + " ei ole pahis!";
+        }
+        return tuloste;
     }
+    
+    /**
+     *
+     * @param pelaajat
+     * @param itse
+     * @return
+     */
+    public ArrayList<Pelaaja> getVaihtoehdot(ArrayList<Pelaaja> pelaajat, Pelaaja itse){
+        ArrayList<Pelaaja> vaihtoehdot = (ArrayList<Pelaaja>) pelaajat.clone();
+        vaihtoehdot.remove(itse);
+        return vaihtoehdot;
+    }
+    
     
     public Etsiva kopioi(){
         return new Etsiva();
