@@ -25,8 +25,7 @@ public class ToimintoUusiPeliRakentaja implements ActionListener{
     
         @Override
     public void actionPerformed(ActionEvent ae) {
-            PeliRakentajaMainPanel rakentaja = new PeliRakentajaMainPanel(kayttis);
-            JPanel panel = rakentaja.luo();          
-            kayttis.korvaaKeskusta(panel);
+            PeliRakentajaMainPanel rakentaja = new PeliRakentajaMainPanel(kayttis);      
+            kayttis.korvaaKeskusta(rakentaja);
     }
 }

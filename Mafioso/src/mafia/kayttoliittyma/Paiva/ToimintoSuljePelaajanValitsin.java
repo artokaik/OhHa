@@ -20,31 +20,30 @@ import mafia.sovelluslogiikka.Pelaaja;
 public class ToimintoSuljePelaajanValitsin implements ActionListener {
 
     private KayttisKuuntelija kuuntelija;
-    private Pelaaja aanestaja;
-    private Aanestys aanestys;
+    private Ohjaus ohjaus;
     private PaivaMainPanel tulokset;
     private Kayttis kayttis;
 
-    public ToimintoSuljePelaajanValitsin(Aanestys aanestys, Pelaaja aanestaja, KayttisKuuntelija kuuntelija, PaivaMainPanel tulokset, Kayttis kayttis) {
-        this.aanestys = aanestys;
+    public ToimintoSuljePelaajanValitsin(Ohjaus ohjaus, KayttisKuuntelija kuuntelija, PaivaMainPanel tulokset, Kayttis kayttis) {
+
         this.kuuntelija = kuuntelija;
-        this.aanestaja = aanestaja;
+        this.ohjaus = ohjaus;
         this.tulokset = tulokset;
-        this.kayttis=kayttis;
+        this.kayttis = kayttis;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (kuuntelija.getPelaaja() != null) {
-            Ohjaus.lisaaAani(aanestys, aanestaja, kuuntelija.getPelaaja());
-            if (Ohjaus.haeAanestamatta(aanestys).size() > 0) {
+            ohjaus.lisaaAani( kuuntelija.getPelaaja());
+            if (ohjaus.haeAanestamatta().size() > 0) {
                 kuuntelija = new KayttisKuuntelija();
-                ToimintoValitseAanestaja valitseAanestaja = new ToimintoValitseAanestaja(aanestys, kuuntelija, tulokset, kayttis);
-                PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(Ohjaus.haeAanestamatta(aanestys), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
+                ToimintoValitseAanestaja valitseAanestaja = new ToimintoValitseAanestaja(kuuntelija, tulokset, kayttis, ohjaus);
+                PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(ohjaus.haeAanestamatta(), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
                 kayttis.korvaaKeskusta(valitsija);
             } else {
-                
-                tulokset.luo(aanestys);
+
+                tulokset.luo(ohjaus.getAanestys());
                 tulokset.revalidate();
                 tulokset.repaint();
                 kayttis.korvaaKeskusta(tulokset);

@@ -8,7 +8,7 @@ import mafia.sovelluslogiikka.Yo;
 
 /**
  * Peli-luokka kuvaa yhtä peliä. Se tuntee pelaajat, säännöt, sekä pelin
- * vaiheet. 
+ * vaiheet.
  *
  * @author Arto
  */
@@ -16,7 +16,7 @@ public class Peli {
 
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Vaihe> vaiheet;
-    private Vaihe kaynnissaOlevaVaihe;
+//    private Vaihe kaynnissaOlevaVaihe;
     private Saannot saannot;
 
     /**
@@ -26,10 +26,10 @@ public class Peli {
         this.pelaajat = new ArrayList<Pelaaja>();
         this.vaiheet = new ArrayList<Vaihe>();
         this.saannot = new Saannot();
-        this.kaynnissaOlevaVaihe = null;
+
     }
-    
-        /**
+
+    /**
      *
      * @param pelaajat
      */
@@ -37,27 +37,44 @@ public class Peli {
         this.pelaajat = pelaajat;
         this.vaiheet = new ArrayList<Vaihe>();
         this.saannot = new Saannot();
-        this.kaynnissaOlevaVaihe = null;
+
     }
 
-        /**
+    /**
      * Palauttaa pelin seuraavan vaiheen.
      *
      * @return
      */
-        
-        public Vaihe seuraavaVaihe(){
-            if(vaiheet.isEmpty()){
-                if(saannot.getPaivaEnsin()){
-                    return new Paiva(pelaajat);
-                } else {
-                    return new Yo(pelaajat);
-                }
+    public Vaihe seuraavaanVaiheseen() {
+        Vaihe uusiVaihe = null;
+        if (vaiheet.isEmpty()) {
+            if (saannot.getPaivaEnsin()) {
+                uusiVaihe = new Paiva(pelaajat);
+            } else {
+                uusiVaihe = new Yo(pelaajat);
             }
-            Vaihe nykyinenVaihe = vaiheet.get(vaiheet.size()-1);
-            return nykyinenVaihe.luoSeuraavaVaihe();
+        } else {
+            Vaihe nykyinenVaihe = vaiheet.get(vaiheet.size() - 1);
+            uusiVaihe = nykyinenVaihe.luoSeuraavaVaihe();
         }
+        vaiheet.add(uusiVaihe);
+        return uusiVaihe;
+
+    }
     
+    public Vaihe haeNykyinenVaihe(){
+        if (vaiheet.isEmpty()){
+            return null;
+        } else {
+            return vaiheet.get(vaiheet.size()-1);
+        }
+    }
+    
+    public ArrayList<Pelaaja> elossa(){
+        return this.haeNykyinenVaihe().getPelaajat();
+    }
+    
+
     /**
      * Lisää parametrina annetun pelaajan peliin, jos pelaaja ei jo ole pelissä.
      * Palauttaa true, jos lisääminen onnistuu ja false jos ei onnistu.
@@ -94,7 +111,7 @@ public class Peli {
     public static boolean jatkuuko(ArrayList<Pelaaja> hengissa) {
         int pahikset = laskePahikset(hengissa);
         int hyvikset = laskeHyvikset(hengissa);
-        if ( pahikset == 0 || pahikset >= hyvikset) {
+        if (pahikset == 0 || pahikset >= hyvikset) {
             return false;
         }
         return true;
@@ -137,7 +154,7 @@ public class Peli {
      * pelaajalistalla. Muuten palauttaa false
      *
      * @param hengissa
-     * @return  
+     * @return
      */
     public static boolean voittikoHyvikset(ArrayList<Pelaaja> hengissa) {
         for (Pelaaja pelaaja : hengissa) {
@@ -153,7 +170,7 @@ public class Peli {
      * pelaajalistalla. Muuten palauttaa false
      *
      * @param hengissa
-     * @return  
+     * @return
      */
     public static boolean voittikoPahikset(ArrayList<Pelaaja> hengissa) {
         if (laskeHyvikset(hengissa) > laskePahikset(hengissa)) {
@@ -170,18 +187,18 @@ public class Peli {
         tuloste += saannot;
         return tuloste;
     }
-    
+
     /**
      *
      * @param hengissa
      * @return
      */
-    public static String kerroLopputulos(ArrayList<Pelaaja> hengissa){
+    public static String kerroLopputulos(ArrayList<Pelaaja> hengissa) {
         String tulokset = "";
-        if (voittikoHyvikset(hengissa)){
+        if (voittikoHyvikset(hengissa)) {
             tulokset = "Hyvikset voittivat!\n";
-        } else if (voittikoPahikset(hengissa)){
-            tulokset = "Pahikset voittivat!\n";         
+        } else if (voittikoPahikset(hengissa)) {
+            tulokset = "Pahikset voittivat!\n";
         } else {
             tulokset = "Tasapeli!\n";
         }
@@ -215,14 +232,6 @@ public class Peli {
 
     /**
      *
-     * @return
-     */
-    public Vaihe getKaynnissaOlevaVaihe() {
-        return this.kaynnissaOlevaVaihe;
-    }
-
-    /**
-     *
      * @param pelaajat
      */
     public void setPelaajat(ArrayList<Pelaaja> pelaajat) {
@@ -235,14 +244,6 @@ public class Peli {
      */
     public void setVaiheet(ArrayList<Vaihe> vaiheet) {
         this.vaiheet = vaiheet;
-    }
-
-    /**
-     *
-     * @param kaynnissaOlevaVaihe
-     */
-    public void setKaynnissaOlevaVaihe(Vaihe kaynnissaOlevaVaihe) {
-        this.kaynnissaOlevaVaihe = kaynnissaOlevaVaihe;
     }
 
     /**

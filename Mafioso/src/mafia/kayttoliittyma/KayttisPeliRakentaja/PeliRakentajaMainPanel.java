@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import mafia.kayttoliittyma.Kayttis;
+import mafia.kayttoliittyma.kerroRoolit.ToimintoKerroRoolit;
 import mafia.sovelluslogiikka.peli.PeliRakentaja;
 import mafia.sovelluslogiikka.roolit.Rooli;
 import mafia.sovelluslogiikka.roolit.Roolilista;
@@ -38,17 +39,7 @@ public class PeliRakentajaMainPanel extends JPanel{
         roolit = roolilista.getRoolit();
         rakentaja = new PeliRakentaja();
         this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
-    }
-
-
-    public JPanel luo() {
-
-        luoKomponentit();
-
-        return this;
-    }
-
-    public void luoKomponentit() {
+        
         this.setLayout(new BorderLayout());
         JPanel vasen = luoVasen();
         this.add(vasen, BorderLayout.WEST);
@@ -85,8 +76,8 @@ public class PeliRakentajaMainPanel extends JPanel{
     public JPanel luoAlin(){
         JPanel panel = new JPanel();
         JButton aloita = new JButton("Aloita peli");
-        ToimintoPelinAloitus aloitus = new ToimintoPelinAloitus(rakentaja, kayttis);
-        aloita.addActionListener(aloitus);
+        ToimintoKerroRoolit valmis = new ToimintoKerroRoolit(rakentaja, kayttis);
+        aloita.addActionListener(valmis);
         panel.add(aloita);
         
         

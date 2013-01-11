@@ -10,28 +10,28 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.sovelluslogiikka.Paiva;
+import mafia.sovelluslogiikka.Ohjaus;
 
 /**
  *
  * @author Arto
  */
 public class PaivanTapahtumatPanel extends JPanel {
-    private Paiva paiva;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
     
-    public PaivanTapahtumatPanel(Paiva paiva, Kayttis kayttis){
-        this.paiva = paiva;
+    public PaivanTapahtumatPanel(Ohjaus ohjaus, Kayttis kayttis){
+        this.ohjaus = ohjaus;
         this.kayttis = kayttis;
         
         this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
         
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        JLabel tapahtumat = new JLabel(paiva.kerroTapahtumat());
+        JLabel tapahtumat = new JLabel(ohjaus.kerroTuoreetTapahtumat());
         this.add(tapahtumat);
         
         JButton jatka = new JButton("Jatka");
-        ToimintoSeuraavaanYohon toiminto = new ToimintoSeuraavaanYohon(paiva, kayttis);
+        ToimintoSeuraavaanYohon toiminto = new ToimintoSeuraavaanYohon(ohjaus, kayttis);
         jatka.addActionListener(toiminto);
        
         this.add(jatka);

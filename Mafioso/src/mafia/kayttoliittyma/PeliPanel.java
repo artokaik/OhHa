@@ -21,25 +21,18 @@ import mafia.sovelluslogiikka.peli.Peli;
  */
 public class PeliPanel extends JPanel {
 
-    private Peli peli;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
 
-    public PeliPanel(Peli peli, Kayttis kayttis) {
-        this.peli = peli;
+    public PeliPanel(Ohjaus ohjaus, Kayttis kayttis) {
+        this.ohjaus = ohjaus;
         this.kayttis = kayttis;
         this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
-    }
 
-    public void aseta() {
         
-        luoKomponentit();
-
-    }
-
-    public void luoKomponentit() {
         this.setLayout(new BorderLayout());
         JPanel keskusta = new JPanel();
-        if (peli.getSaannot().getPaivaEnsin()) {
+        if (ohjaus.getSaannot().getPaivaEnsin()) {
             keskusta = teePaiva();
         } else {
             keskusta = teeYo();
@@ -49,18 +42,19 @@ public class PeliPanel extends JPanel {
     }
 
     public JPanel teePaiva() {
-        Paiva paiva = new Paiva(peli.getPelaajat());
-        PaivaMainPanel tulokset = new PaivaMainPanel(paiva, kayttis);
-        Aanestys aanestys = new Aanestys(peli.getPelaajat(), peli.getPelaajat());
-        tulokset.luo(aanestys);
+        Paiva paiva = new Paiva(ohjaus.getKaikkiPelaajat());
+        ohjaus.setPaiva(paiva);
+        PaivaMainPanel tulokset = new PaivaMainPanel(ohjaus, kayttis);
+        ohjaus.luoEnsimmainenAanestys();
+        tulokset.luo(ohjaus.getAanestys());
         return tulokset;
     }
     
         public JPanel teeYo() {
-              Yo yo = new Yo(peli.getPelaajat());
+              Yo yo = new Yo(ohjaus.getKaikkiPelaajat());
               KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
               ToimintoValitseToimija toiminto = new ToimintoValitseToimija(yo,kuuntelija, kayttis);
-              PelaajanValitsijaPanel yoPanel = new PelaajanValitsijaPanel(Ohjaus.haePelaajat(yo), toiminto, kuuntelija, "Valitse vuorossa oleva pelaaja");
+              PelaajanValitsijaPanel yoPanel = new PelaajanValitsijaPanel(ohjaus.getKaikkiPelaajat(), toiminto, kuuntelija, "Valitse vuorossa oleva pelaaja");
         return yoPanel;
     }
 }

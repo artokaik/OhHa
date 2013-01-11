@@ -20,21 +20,21 @@ import mafia.sovelluslogiikka.Yo;
  * @author Arto
  */
 public class ToimintoSeuraavaanYohon  implements ActionListener{
-    private Paiva paiva;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
     
-    public ToimintoSeuraavaanYohon(Paiva paiva,  Kayttis kayttis){
+    public ToimintoSeuraavaanYohon(Ohjaus ohjaus,  Kayttis kayttis){
         this.kayttis = kayttis;
-        this.paiva = paiva;
+        this.ohjaus = ohjaus;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Yo yo = (Yo) Ohjaus.luoSeuraavaVaihe(paiva);
-        if(Ohjaus.jatkuuko(yo)){
+        Yo yo = (Yo) ohjaus.siirrySeuraavaanVaiheeseen();
+        if(ohjaus.jatkuuko()){
               KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
               ToimintoValitseToimija toiminto = new ToimintoValitseToimija(yo,kuuntelija, kayttis);
-              PelaajanValitsijaPanel seuraavaYo = new PelaajanValitsijaPanel(Ohjaus.haePelaajat(yo), toiminto, kuuntelija, "Valitse vuorossa oleva pelaaja");
+              PelaajanValitsijaPanel seuraavaYo = new PelaajanValitsijaPanel(ohjaus.elossaOlevat(), toiminto, kuuntelija, "Valitse vuorossa oleva pelaaja");
 //            YoMainPanel seuraavaYo = new YoMainPanel(kayttis, yo);
 //            seuraavaYo.luoKomponentit();
             kayttis.korvaaKeskusta(seuraavaYo);

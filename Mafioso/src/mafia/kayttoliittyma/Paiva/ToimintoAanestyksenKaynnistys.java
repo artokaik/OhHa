@@ -19,13 +19,13 @@ import mafia.sovelluslogiikka.Ohjaus;
  */
 public class ToimintoAanestyksenKaynnistys implements ActionListener {
 
-    private Aanestys aanestys;
+    private Ohjaus ohjaus;
     private PaivaMainPanel tulokset;
     private JButton nappi;
     private Kayttis kayttis;
 
-    public ToimintoAanestyksenKaynnistys(Aanestys aanestys, PaivaMainPanel tulokset, JButton nappi, Kayttis kayttis) {
-        this.aanestys = aanestys;
+    public ToimintoAanestyksenKaynnistys(Ohjaus ohjaus, PaivaMainPanel tulokset, JButton nappi, Kayttis kayttis) {
+        this.ohjaus = ohjaus;
         this.tulokset = tulokset;
         this.nappi = nappi;
         this.kayttis = kayttis;
@@ -34,8 +34,8 @@ public class ToimintoAanestyksenKaynnistys implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
-        ToimintoValitseAanestaja valitseAanestaja = new ToimintoValitseAanestaja(aanestys, kuuntelija, tulokset, kayttis);
-        PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(Ohjaus.haeAanestamatta(aanestys), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
+        ToimintoValitseAanestaja valitseAanestaja = new ToimintoValitseAanestaja(kuuntelija, tulokset, kayttis, ohjaus);
+        PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(ohjaus.haeAanestamatta(), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
         kayttis.korvaaKeskusta(valitsija);
         nappi.setEnabled(false);
 

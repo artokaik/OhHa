@@ -8,30 +8,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.PeliPanel;
-import mafia.sovelluslogiikka.peli.Peli;
-import mafia.sovelluslogiikka.peli.PeliRakentaja;
+import mafia.sovelluslogiikka.Ohjaus;
 
 /**
- *
+ * 
  * @author Arto
  */
 public class ToimintoPelinAloitus implements ActionListener {
 
-    private PeliRakentaja rakentaja;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
 
-    public ToimintoPelinAloitus(PeliRakentaja rakentaja, Kayttis kayttis) {
-        this.rakentaja = rakentaja;
+    public ToimintoPelinAloitus(Ohjaus ohjaus, Kayttis kayttis) {
+        this.ohjaus= ohjaus;
         this.kayttis=kayttis;
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if (rakentaja.onkoValmis()) {
-            Peli peli = rakentaja.teePeli();
-            PeliPanel peliKayttis = new PeliPanel(peli, kayttis);
-            peliKayttis.aseta();
+
+            PeliPanel peliKayttis = new PeliPanel(ohjaus, kayttis);
             kayttis.korvaaKeskusta(peliKayttis);
 
         }
     }
-}
+

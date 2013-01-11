@@ -18,18 +18,18 @@ import mafia.sovelluslogiikka.Yo;
  * @author Arto
  */
 public class ToimintoLopetaPaiva implements ActionListener{
-    private Paiva paiva;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
     
-    public ToimintoLopetaPaiva(Paiva paiva,  Kayttis kayttis){
+    public ToimintoLopetaPaiva(Ohjaus ohjaus,  Kayttis kayttis){
         this.kayttis = kayttis;
-        this.paiva = paiva;
+        this.ohjaus = ohjaus;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Ohjaus.tapaLynkatut(paiva);
-        PaivanTapahtumatPanel tapahtumat = new PaivanTapahtumatPanel(paiva, kayttis);
+        ohjaus.tapaLynkatut();
+        PaivanTapahtumatPanel tapahtumat = new PaivanTapahtumatPanel(ohjaus, kayttis);
         kayttis.korvaaKeskusta(tapahtumat);
         
     }
