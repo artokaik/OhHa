@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="Arto-MacBook-Air.local" name="mafia.sovelluslogiikka.peli.PeliTest" tests="16" time="0.184" timestamp="2013-01-11T18:42:26">
+<testsuite errors="0" failures="0" hostname="Arto-MacBook-Air.local" name="mafia.sovelluslogiikka.peli.PeliTest" tests="17" time="0.2" timestamp="2013-01-11T19:41:35">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -63,7 +63,7 @@
     <property name="manifest.available+main.class" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mafia.sovelluslogiikka.peli.PeliTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/test/results/TEST-mafia.sovelluslogiikka.peli.PeliTest.xml crashfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junitvmwatcher6317892380798776938.properties propsfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junit777902758498669676.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mafia.sovelluslogiikka.peli.PeliTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/test/results/TEST-mafia.sovelluslogiikka.peli.PeliTest.xml crashfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junitvmwatcher6673644409468369846.properties propsfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junit3219881882614124645.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -435,27 +435,23 @@
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
     <property name="ant.file.Mafia-impl" value="/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/nbproject/build-impl.xml" />
   </properties>
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="alussaEiPelaajia" time="0.007" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaYksiPelaaja" time="0.003" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaYksiPelaaja" time="0.008" />
   <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaYksiPelaajaPalauttaaTrue" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaKaksiPelaajaa" time="0.001" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaasamaPelaajaKahdesti" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaKaksiSamanNimistaPelaajaa" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaKaksiPelaajaa" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaasamaPelaajaKahdesti" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaKaksiSamanNimistaPelaajaa" time="0.0" />
   <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaKaksiSamanNimistaPelaajaaPalauttaaFalse" time="0.001" />
   <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="lisaaKaksiPelaajaaJaPoistaYksi" time="0.001" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="PoistaOlemassaolevaPelaajaPalauttaaTrue" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="PoistaOlematonPelaajaPalauttaaFalse" time="0.001" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="peliAlkaaPaivalla" time="0.001" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="tyhjaPelieiJatku" time="0.001" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="seuraavaVaiheToimiiJokaToinenPaiva" time="0.02">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at mafia.sovelluslogiikka.peli.Yo.&lt;init&gt;(Yo.java:27)
-	at mafia.sovelluslogiikka.peli.PeliTest.seuraavaVaiheToimiiJokaToinenPaiva(PeliTest.java:190)
-</error>
-  </testcase>
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="yhdenMafiosonJaKahdenHyviksenPeliJatkuueikaKumpikaanVoita" time="0.004" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="yhdenMafiosonJaYhdenHyviksenPeliEiJatkujaMafiosotVoitti" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="KahdenHyviksenPeliEiJatkuu" time="0.003" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="PoistaOlemassaolevaPelaajaPalauttaaTrue" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="PoistaOlematonPelaajaPalauttaaFalse" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="peliAlkaaPaivalla" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="tyhjaPelieiJatku" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="yhdenMafiosonJaKahdenHyviksenPeliJatkuueikaKumpikaanVoita" time="0.003" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="yhdenMafiosonJaYhdenHyviksenPeliEiJatkujaMafiosotVoitti" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="KahdenHyviksenPeliEiJatkuu" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="seuraavaVaiheToimiiJokaToinenPaiva" time="0.003" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="seuraavaVaiheToimiiPelaajatSiirtyvät" time="0.005" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliTest" name="alussaEiPelaajia" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

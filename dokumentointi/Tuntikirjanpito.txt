@@ -23,5 +23,5 @@ Tuntikirjanpito
 11.1.13		KŠyttiksen koodin hiomista	3h
 		demotilaisuus			1,5h
 		javadoc				2h
-		
+		kaavioita ym dokumentointia	1h
 		
