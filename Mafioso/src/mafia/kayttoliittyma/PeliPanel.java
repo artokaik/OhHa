@@ -8,8 +8,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
-import mafia.kayttoliittyma.yo.YoMainPanel;
+import mafia.kayttoliittyma.yo.ToimintoValitseToimija;
 import mafia.sovelluslogiikka.Aanestys;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Yo;
 import mafia.sovelluslogiikka.peli.Peli;
@@ -56,9 +57,10 @@ public class PeliPanel extends JPanel {
     }
     
         public JPanel teeYo() {
-        Yo yo = new Yo(peli.getPelaajat());
-        YoMainPanel yoPanel = new YoMainPanel(kayttis,yo);
-        yoPanel.luoKomponentit();
+              Yo yo = new Yo(peli.getPelaajat());
+              KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
+              ToimintoValitseToimija toiminto = new ToimintoValitseToimija(yo,kuuntelija, kayttis);
+              PelaajanValitsijaPanel yoPanel = new PelaajanValitsijaPanel(Ohjaus.haePelaajat(yo), toiminto, kuuntelija, "Valitse vuorossa oleva pelaaja");
         return yoPanel;
     }
 }

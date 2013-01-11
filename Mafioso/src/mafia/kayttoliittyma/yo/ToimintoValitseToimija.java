@@ -4,11 +4,13 @@
  */
 package mafia.kayttoliittyma.yo;
 
-import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import mafia.kayttoliittyma.Kayttis;
+import mafia.kayttoliittyma.KayttisKuuntelija;
+import mafia.kayttoliittyma.PelaajanValitsijaPanel;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
@@ -16,26 +18,31 @@ import mafia.sovelluslogiikka.Yo;
  *
  * @author Arto
  */
-public class ToimintoValitseToimija implements ActionListener{
+public class ToimintoValitseToimija implements ActionListener {
+
     private Yo yo;
-    private Pelaaja pelaaja;
-    private JButton nappi; 
+    private KayttisKuuntelija kuuntelija;
     private Kayttis kayttis;
-    
-    public ToimintoValitseToimija(Yo yo, Pelaaja pelaaja, JButton nappi, Kayttis kayttis){
+
+    public ToimintoValitseToimija(Yo yo, KayttisKuuntelija kuuntelija, Kayttis kayttis) {
         this.kayttis = kayttis;
         this.yo = yo;
-        this.pelaaja = pelaaja;
-        this.nappi = nappi;
+        this.kuuntelija = kuuntelija;
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        YoVuoroPanel panel = new YoVuoroPanel(kayttis, yo, pelaaja);
-        kayttis.korvaaKeskusta(panel);
-        nappi.setEnabled(false);        
-        
+        if (!Ohjaus.haePelaamatta(yo).isEmpty()) {
+            KayttisKuuntelija kuuntelija2 = new KayttisKuuntelija();
+            ToimintoVahvistaValinta valitunVahvistus = new ToimintoVahvistaValinta(kuuntelija.getPelaaja(), yo, kuuntelija2, kayttis);
+            PelaajanValitsijaPanel valitsijaPanel = new PelaajanValitsijaPanel(Ohjaus.getValittavanaYolla(kuuntelija.getPelaaja(), yo), valitunVahvistus, kuuntelija2, Ohjaus.getRooliSelitys(kuuntelija.getPelaaja(), yo));
+            kayttis.korvaaKeskusta(valitsijaPanel);
+        } else {
+            Ohjaus.tapaAmmutut(yo);
+            YonTapahtumatPanel tapahtumat = new YonTapahtumatPanel(yo, kayttis);
+            kayttis.korvaaKeskusta(tapahtumat);
+        }
+
     }
-        
-        
-    }
+}

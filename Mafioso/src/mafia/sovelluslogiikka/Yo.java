@@ -1,8 +1,6 @@
 package mafia.sovelluslogiikka;
 
-import mafia.sovelluslogiikka.peli.Saannot;
 import java.util.ArrayList;
-import mafia.turhat.kayttoliittyma.Ohjaus;
 
 /**
  * Yo-luokka toteuttaa Vaihe-rajapinnan. Yo-oliolla on kaksi ArrayList<Pelaaja> -muuttujaa, joista 'pelaajat' on lista mukana olevista pelaajista ja 'vuoroPelaamatta' lista pelaajista, joiden vuoroa ei yön aikana vielä ole pelattu.

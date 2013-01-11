@@ -2,7 +2,7 @@
 // * To change this template, choose Tools | Templates
 // * and open the template in the editor.
 // */
-//package mafia.kayttoliittyma.yo;
+//package mafia.kayttoliittyma.Paiva;
 //
 //import java.awt.Dimension;
 //import java.awt.GridLayout;
@@ -10,53 +10,48 @@
 //import javax.swing.JLabel;
 //import javax.swing.JPanel;
 //import mafia.kayttoliittyma.Kayttis;
-//import mafia.kayttoliittyma.KayttisKuuntelija;
-//import mafia.sovelluslogiikka.Ohjaus;
+//import mafia.sovelluslogiikka.Aanestys;
 //import mafia.sovelluslogiikka.Pelaaja;
-//import mafia.sovelluslogiikka.Yo;
 //
 ///**
 // *
 // * @author Arto
 // */
-//public class YoMainPanel extends JPanel {
+//public class AanestajanValitsijaPanel extends JPanel {
 //
+//    private Aanestys aanestys;
+//    private PaivaMainPanel tulokset;
 //    private Kayttis kayttis;
-//    private Yo yo;
 //
-//
-//    public YoMainPanel(Kayttis kayttis, Yo yo){
+//    public AanestajanValitsijaPanel(Aanestys aanestys, PaivaMainPanel tulokset, Kayttis kayttis){
+//        this.aanestys = aanestys;    
+//        this.tulokset = tulokset;
 //        this.kayttis = kayttis;
-//        this.yo = yo;
 //        this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
-//
 //    }
 //
 //
+//
 //    public void luoKomponentit() {
-//        this.setLayout(new GridLayout(Ohjaus.haePelaajat(yo).size() + 4, 1));
+//        this.setLayout(new GridLayout(aanestys.getAanestamatta().size() + 4, 1));
 //        
-//        JLabel otsikko = new JLabel("Valitse vuorossa oleva pelaaja");
+//        JLabel otsikko = new JLabel("Valitse äänestäjä");
 //        this.add(otsikko);
 //        
 //        JLabel valittu = new JLabel();
-//        for (Pelaaja pelaaja : yo.getPelaajat()) {
+//        for (Pelaaja pelaaja : aanestys.getAanestamatta()) {
 //            JButton pelaajaNappi = new JButton(pelaaja.getNimi());
-//            ToimintoValitseToimija toiminto = new ToimintoValitseToimija(yo,pelaaja,pelaajaNappi, kayttis);
+//            ToimintoValitseAanestaja toiminto = new ToimintoValitseAanestaja(aanestys,pelaaja,pelaajaNappi);
 //            pelaajaNappi.addActionListener(toiminto);
-//            if(!yo.getVuoroPelaamatta().contains(pelaaja)){
-//                pelaajaNappi.setEnabled(false);
-//            }
 //            this.add(pelaajaNappi);
 //        }
+//        JLabel teksti = new JLabel("Valittu:");
 //        
 //        JButton suljeNappi = new JButton("OK");
-//        ToimintoLopetaYo sulje = new ToimintoLopetaYo(yo, kayttis);
+//        ToimintoLopetaAanestys sulje = new ToimintoLopetaAanestys(aanestys, this, tulokset, kayttis);
 //        suljeNappi.addActionListener(sulje);
-//        if(!yo.getVuoroPelaamatta().isEmpty()){
-//            suljeNappi.setEnabled(false);
-//        }
-//        
+//
+//        this.add(teksti);
 //        this.add(valittu);
 //        this.add(suljeNappi);
 //

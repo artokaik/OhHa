@@ -20,7 +20,7 @@ public class Saannot {
      *
      */
     public Saannot() {
-        paivaEnsin = false;
+        paivaEnsin = true;
         aanestykset = new ArrayList<Integer>();
         aanestykset.add(1);
     }

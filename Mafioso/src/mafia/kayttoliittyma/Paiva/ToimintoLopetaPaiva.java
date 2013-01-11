@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Yo;
 
@@ -27,8 +28,7 @@ public class ToimintoLopetaPaiva implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        paiva.tapaLynkattavat();
-        Yo yo = paiva.luoSeuraavaVaihe();
+        Ohjaus.tapaLynkatut(paiva);
         PaivanTapahtumatPanel tapahtumat = new PaivanTapahtumatPanel(paiva, kayttis);
         kayttis.korvaaKeskusta(tapahtumat);
         

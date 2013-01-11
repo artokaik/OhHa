@@ -4,18 +4,14 @@
  */
 package mafia.kayttoliittyma;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-import mafia.kayttoliittyma.Paiva.ToimintoSuljePelaajanValitsin;
-import mafia.kayttoliittyma.Paiva.ToimintoValitseAanestettava;
-import mafia.sovelluslogiikka.Aanestys;
 import mafia.sovelluslogiikka.Pelaaja;
 
 /**
@@ -24,22 +20,22 @@ import mafia.sovelluslogiikka.Pelaaja;
  */
 public class PelaajanValitsijaPanel extends JPanel{
 
-    private ArrayList<Pelaaja> valittavana;
-    private KayttisKuuntelija kuuntelija;
-    private JButton valitseNappi;
 
-    public PelaajanValitsijaPanel(ArrayList<Pelaaja> pelaajat, JButton valitseNappi, KayttisKuuntelija kuuntelija) {
-        valittavana = pelaajat;
-        this.valitseNappi = valitseNappi;
-        this.kuuntelija = kuuntelija; 
-        luo();
-    }
+    private ActionListener okNapinToiminto;
 
-    public void luo() {
-        
-        this.setLayout(new GridLayout(valittavana.size() + 2, 1));
+    public PelaajanValitsijaPanel(ArrayList<Pelaaja> valittavana, ActionListener okNapinToiminto, KayttisKuuntelija kuuntelija, String otsikko) { 
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.setPreferredSize(new Dimension(500,400));
+        
+        JLabel otsikkoLabel = new JLabel(otsikko);
+        this.add(otsikkoLabel);
+        
         JLabel valittu = new JLabel();
+        JButton valitseNappi = new JButton("OK");
+        valitseNappi.addActionListener(okNapinToiminto);
+        if(!valittavana.isEmpty()){
+            valitseNappi.setEnabled(false);
+        }
         for (Pelaaja pelaaja : valittavana) {
             JButton pelaajaNappi = new JButton(pelaaja.getNimi());
             ToimintoValitsePelaaja toiminto = new ToimintoValitsePelaaja(pelaaja, valittu, kuuntelija, valitseNappi);
@@ -49,21 +45,10 @@ public class PelaajanValitsijaPanel extends JPanel{
         JLabel teksti = new JLabel("Valittu:");
         this.add(teksti);
         this.add(valittu);
+        this.add(valitseNappi);
     }
 
-    
 
-    public void setValittavana(ArrayList<Pelaaja> valittavana) {
-        this.valittavana = valittavana;
-    }
-
-    public void setKuuntelija(KayttisKuuntelija kuuntelija) {
-        this.kuuntelija = kuuntelija;
-    }
-
-    public void setValitseNappi(JButton valitseNappi) {
-        this.valitseNappi = valitseNappi;
-    }
     
     
 }

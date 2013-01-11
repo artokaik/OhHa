@@ -7,9 +7,10 @@ package mafia.kayttoliittyma.Paiva;
 import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
-import javax.swing.JFrame;
+import mafia.kayttoliittyma.Kayttis;
+import mafia.kayttoliittyma.PelaajanValitsijaPanel;
 import mafia.sovelluslogiikka.Aanestys;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Pelaaja;
 
 /**
@@ -18,23 +19,37 @@ import mafia.sovelluslogiikka.Pelaaja;
  */
 public class ToimintoSuljePelaajanValitsin implements ActionListener {
 
-    private JFrame frame;
     private KayttisKuuntelija kuuntelija;
     private Pelaaja aanestaja;
     private Aanestys aanestys;
+    private PaivaMainPanel tulokset;
+    private Kayttis kayttis;
 
-    public ToimintoSuljePelaajanValitsin(Aanestys aanestys, JFrame frame, Pelaaja aanestaja, KayttisKuuntelija kuuntelija) {
+    public ToimintoSuljePelaajanValitsin(Aanestys aanestys, Pelaaja aanestaja, KayttisKuuntelija kuuntelija, PaivaMainPanel tulokset, Kayttis kayttis) {
         this.aanestys = aanestys;
-        this.frame = frame;
         this.kuuntelija = kuuntelija;
         this.aanestaja = aanestaja;
+        this.tulokset = tulokset;
+        this.kayttis=kayttis;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (kuuntelija.getPelaaja() != null) {
-            aanestys.lisaaAani(aanestaja, kuuntelija.getPelaaja());
-            frame.dispose();
+            Ohjaus.lisaaAani(aanestys, aanestaja, kuuntelija.getPelaaja());
+            if (Ohjaus.haeAanestamatta(aanestys).size() > 0) {
+                kuuntelija = new KayttisKuuntelija();
+                ToimintoValitseAanestaja valitseAanestaja = new ToimintoValitseAanestaja(aanestys, kuuntelija, tulokset, kayttis);
+                PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(Ohjaus.haeAanestamatta(aanestys), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
+                kayttis.korvaaKeskusta(valitsija);
+            } else {
+                
+                tulokset.luo(aanestys);
+                tulokset.revalidate();
+                tulokset.repaint();
+                kayttis.korvaaKeskusta(tulokset);
+            }
+
         }
 
 

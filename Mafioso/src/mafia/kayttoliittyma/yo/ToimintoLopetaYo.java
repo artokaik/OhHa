@@ -7,7 +7,7 @@ package mafia.kayttoliittyma.yo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Yo;
 
@@ -26,8 +26,7 @@ public class ToimintoLopetaYo implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        yo.tapaAmmutut();
-        Paiva paiva = yo.luoSeuraavaVaihe();
+        Ohjaus.tapaAmmutut(yo);
         YonTapahtumatPanel tapahtumat = new YonTapahtumatPanel(yo, kayttis);
         kayttis.korvaaKeskusta(tapahtumat);
         

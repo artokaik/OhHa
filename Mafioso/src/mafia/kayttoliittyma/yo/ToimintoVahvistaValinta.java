@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.KayttisKuuntelija;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 
@@ -31,7 +32,8 @@ public class ToimintoVahvistaValinta implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String tapahtuma = vuorossa.getRooli().toimi(yo, valittu.getPelaaja());
+        Ohjaus.poistaPelaajaVuorolistalta(yo, vuorossa);
+        String tapahtuma = Ohjaus.toimi(vuorossa, valittu.getPelaaja(), yo);
         VahvistaTapahtunutPanel vahvistus = new VahvistaTapahtunutPanel(tapahtuma, yo, kayttis);
         kayttis.korvaaKeskusta(vahvistus);
         yo.poistaPelaamattomista(vuorossa);

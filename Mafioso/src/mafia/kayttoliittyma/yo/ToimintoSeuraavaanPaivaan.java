@@ -10,6 +10,7 @@ import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
 import mafia.kayttoliittyma.PelinLopetusPanel;
 import mafia.sovelluslogiikka.Aanestys;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Yo;
 import mafia.sovelluslogiikka.peli.Peli;
@@ -29,14 +30,13 @@ public class ToimintoSeuraavaanPaivaan  implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Paiva paiva = yo.luoSeuraavaVaihe();
-        if(Peli.jatkuuko(paiva.getPelaajat())){
+        Paiva paiva = (Paiva) Ohjaus.luoSeuraavaVaihe(yo);
+        if(Ohjaus.jatkuuko(paiva)){
             PaivaMainPanel seuraavaPaiva = new PaivaMainPanel(paiva, kayttis);
-            seuraavaPaiva.luo(new Aanestys(paiva.getPelaajat(), paiva.getPelaajat()));
+            seuraavaPaiva.luo(Ohjaus.ensimmainenAanestys(paiva));
             kayttis.korvaaKeskusta(seuraavaPaiva);
         } else {
-            PelinLopetusPanel lopetus = new PelinLopetusPanel(paiva,kayttis);
-           
+            PelinLopetusPanel lopetus = new PelinLopetusPanel(paiva,kayttis);          
             kayttis.korvaaKeskusta(lopetus);
         }
         

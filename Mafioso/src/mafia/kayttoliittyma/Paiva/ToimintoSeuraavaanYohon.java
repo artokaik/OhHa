@@ -8,11 +8,12 @@ import mafia.kayttoliittyma.yo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
+import mafia.kayttoliittyma.KayttisKuuntelija;
+import mafia.kayttoliittyma.PelaajanValitsijaPanel;
 import mafia.kayttoliittyma.PelinLopetusPanel;
+import mafia.sovelluslogiikka.Ohjaus;
 import mafia.sovelluslogiikka.Paiva;
 import mafia.sovelluslogiikka.Yo;
-import mafia.sovelluslogiikka.peli.Peli;
 
 /**
  *
@@ -29,10 +30,13 @@ public class ToimintoSeuraavaanYohon  implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Yo yo = paiva.luoSeuraavaVaihe();
-        if(Peli.jatkuuko(yo.getPelaajat())){
-            YoMainPanel seuraavaYo = new YoMainPanel(kayttis, yo);
-            seuraavaYo.luoKomponentit();
+        Yo yo = (Yo) Ohjaus.luoSeuraavaVaihe(paiva);
+        if(Ohjaus.jatkuuko(yo)){
+              KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
+              ToimintoValitseToimija toiminto = new ToimintoValitseToimija(yo,kuuntelija, kayttis);
+              PelaajanValitsijaPanel seuraavaYo = new PelaajanValitsijaPanel(Ohjaus.haePelaajat(yo), toiminto, kuuntelija, "Valitse vuorossa oleva pelaaja");
+//            YoMainPanel seuraavaYo = new YoMainPanel(kayttis, yo);
+//            seuraavaYo.luoKomponentit();
             kayttis.korvaaKeskusta(seuraavaYo);
         } else {
             PelinLopetusPanel lopetus = new PelinLopetusPanel(yo,kayttis);

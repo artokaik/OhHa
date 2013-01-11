@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import mafia.kayttoliittyma.Kayttis;
+import mafia.kayttoliittyma.KayttisKuuntelija;
+import mafia.kayttoliittyma.PelaajanValitsijaPanel;
 import mafia.sovelluslogiikka.Aanestys;
+import mafia.sovelluslogiikka.Ohjaus;
 
 /**
  *
@@ -30,13 +33,13 @@ public class ToimintoAanestyksenKaynnistys implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        AanestajanValitsijaPanel valitsija = new AanestajanValitsijaPanel(aanestys, tulokset, kayttis);
-        valitsija.luoKomponentit();
+        KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
+        ToimintoValitseAanestaja valitseAanestaja = new ToimintoValitseAanestaja(aanestys, kuuntelija, tulokset, kayttis);
+        PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(Ohjaus.haeAanestamatta(aanestys), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
         kayttis.korvaaKeskusta(valitsija);
         nappi.setEnabled(false);
 
     }
-
 //    @Override
 //    public void actionPerformed(ActionEvent ae) {
 //        KayttisAanestajanValitsija valitsija = new KayttisAanestajanValitsija(aanestys, tulokset);

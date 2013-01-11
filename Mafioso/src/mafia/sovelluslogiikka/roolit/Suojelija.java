@@ -1,7 +1,6 @@
 package mafia.sovelluslogiikka.roolit;
 
 import java.util.ArrayList;
-import mafia.turhat.kayttoliittyma.Ohjaus;
 import mafia.sovelluslogiikka.Pelaaja;
 import mafia.sovelluslogiikka.Yo;
 

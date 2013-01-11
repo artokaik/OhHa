@@ -4,34 +4,39 @@
  */
 package mafia.kayttoliittyma.Paiva;
 
-import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import mafia.kayttoliittyma.Kayttis;
+import mafia.kayttoliittyma.KayttisKuuntelija;
+import mafia.kayttoliittyma.PelaajanValitsijaPanel;
 import mafia.sovelluslogiikka.Aanestys;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.Ohjaus;
 
 /**
  *
  * @author Arto
  */
 public class ToimintoValitseAanestaja implements ActionListener{
-    private Pelaaja pelaaja;
+    private KayttisKuuntelija aanestaja;
     private Aanestys aanestys;
-    private JButton nappi; 
+    private PaivaMainPanel tulokset;
+    private Kayttis kayttis;
+
     
-    public ToimintoValitseAanestaja(Aanestys aanestys, Pelaaja pelaaja, JButton nappi){
+    public ToimintoValitseAanestaja(Aanestys aanestys, KayttisKuuntelija aanestaja, PaivaMainPanel tulokset, Kayttis kayttis){
         this.aanestys = aanestys;
-        this.pelaaja = pelaaja;
-        this.nappi = nappi;
+        this.aanestaja = aanestaja;
+        this.tulokset=tulokset;
+        this.kayttis=kayttis;
+
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
         KayttisKuuntelija kuuntelija = new KayttisKuuntelija();
-        KayttisAanestaja aanestaminen = new KayttisAanestaja(aanestys,pelaaja,kuuntelija);
-        aanestaminen.run();
-        nappi.setEnabled(false);        
+        ToimintoSuljePelaajanValitsin annaAani = new ToimintoSuljePelaajanValitsin(aanestys,aanestaja.getPelaaja(),kuuntelija, tulokset, kayttis);
+        PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(Ohjaus.haeEhdokkaat(aanestys, aanestaja.getPelaaja()), annaAani, kuuntelija,  "Valitse äänestettävä");
+        kayttis.korvaaKeskusta(valitsija);
         
     }
         
