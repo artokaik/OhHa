@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
 import mafia.sovelluslogiikka.Ohjaus;
-import mafia.sovelluslogiikka.Paiva;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.peli.Paiva;
+import mafia.sovelluslogiikka.peli.Yo;
 
 /**
  *
@@ -21,6 +21,11 @@ public class ToimintoLopetaPaiva implements ActionListener{
     private Ohjaus ohjaus;
     private Kayttis kayttis;
     
+    /**
+     *
+     * @param ohjaus
+     * @param kayttis
+     */
     public ToimintoLopetaPaiva(Ohjaus ohjaus,  Kayttis kayttis){
         this.kayttis = kayttis;
         this.ohjaus = ohjaus;

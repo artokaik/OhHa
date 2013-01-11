@@ -2,8 +2,8 @@
 package mafia.sovelluslogiikka.roolit;
 
 import java.util.ArrayList;
-import mafia.sovelluslogiikka.Pelaaja;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Yo;
 
 /**
  *

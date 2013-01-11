@@ -4,7 +4,8 @@
  */
 package mafia.sovelluslogiikka.peli;
 
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.PeliRakentaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 import mafia.sovelluslogiikka.roolit.Etsiva;
 import mafia.sovelluslogiikka.roolit.Kansalainen;
 import mafia.sovelluslogiikka.roolit.Mafioso;

@@ -1,15 +1,17 @@
-package mafia.sovelluslogiikka.peli;
+package mafia.sovelluslogiikka;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Peli;
+import mafia.sovelluslogiikka.peli.Saannot;
 import mafia.sovelluslogiikka.roolit.Rooli;
 
 /**
  * PeliRakentaja on luokka, jota käytetään pelin luomiseen.
- * PeliRakentaja-luokkia voidaan tallentaa ja käyttää uudestaan, jolloin uuden
- * pelin luominen samoilla pelaajilla, rooleilla ja säännöillä on nopeaa. Roolit
- * kuitenkin arvotaan pelaajille aina uudestaan.
+ * PeliRakentaja-luokkia voidaan periaatteessa tallentaa ja käyttää uudestaan,
+ * jolloin uuden pelin luominen samoilla pelaajilla, rooleilla ja säännöillä on
+ * nopeaa. Roolit kuitenkin arvotaan pelaajille aina uudestaan.
  *
  * @author Arto
  */
@@ -18,33 +20,26 @@ public class PeliRakentaja {
     private Saannot saannot;
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Rooli> roolit;
-//    private int pelaajienMaara;
 
     /**
      *
      * @param pelaajia
      */
-    public PeliRakentaja(int pelaajia) {
+    public PeliRakentaja() {
         saannot = new Saannot();
         pelaajat = new ArrayList<Pelaaja>();
         roolit = new ArrayList<Rooli>();
-//        pelaajienMaara = pelaajia;
+
     }
 
     /**
+     * Palauttaa true jos pelaajien ja roolien määrä on sama tai pelaajien määrä
+     * on 2 tai alle.
      *
-     */
-    public PeliRakentaja() {
-        this(0);
-    }
-    
-    
-    /**
-     * Palauttaa true jos pelaajien ja roolien määrä on sama tai pelaajien määrä on 2 tai alle.
-     * @return 
+     * @return
      */
     public boolean onkoValmis() {
-        if (pelaajat.size()<=2){
+        if (pelaajat.size() <= 2) {
             return false;
         }
         if (pelaajat.size() == roolit.size()) {
@@ -53,69 +48,69 @@ public class PeliRakentaja {
         return false;
     }
 
-//
-/**
- *
- * @param rooli
- * @return
- */
-public boolean lisaaRooli(Rooli rooli){
-        return roolit.add(rooli);
-    }
-    
-        /**
+    /**
+     * Lisää parametrina annetun roolin roolilistaan. Palauttaa true jos onnistuu, muuten false.
      *
      * @param rooli
      * @return
      */
-    public boolean poistaRooli(Rooli rooli){    
+    public boolean lisaaRooli(Rooli rooli) {
+        return roolit.add(rooli);
+    }
+
+    /**
+     * Poistaa parametrina annetun roolin roolilistalta. Palauttaa true jos onnistuu, muuten false.
+     * @param rooli
+     * @return
+     */
+    public boolean poistaRooli(Rooli rooli) {
         return roolit.remove(rooli);
     }
-    
+
     /**
-     *
+     * Lisää parametrina annetun pelaajan pelaajalistaan. Palauttaa false jos pelaaja on jo listalla tai lisäys ei muuten onnistu, true jos lisäys onnistuu.
      * @param pelaaja
      * @return
      */
-    public boolean lisaaPelaaja(Pelaaja pelaaja){
-        if(this.pelaajat.contains(pelaaja)){
+    public boolean lisaaPelaaja(Pelaaja pelaaja) {
+        if (this.pelaajat.contains(pelaaja)) {
             return false;
-        }      
+        }
         return this.pelaajat.add(pelaaja);
     }
-    
+
     /**
-     *
+     * Poistaa pelaajan pelaajalistalta. Palauttaa true jos onnistuu, false jos epäonnistuu.
      * @param pelaaja
      * @return
      */
-    public boolean poistaPelaaja(Pelaaja pelaaja){
+    public boolean poistaPelaaja(Pelaaja pelaaja) {
         return this.pelaajat.remove(pelaaja);
     }
-    
+
     /**
-     *
+     * Luo uuden pelin, arpoo roolilistassa olevat roolit pelaajalistassa oleville pelaajille ja lisää nämä peliin. Palauttaa luodun pelin tai null jos peli ei ole valmis luotavaksi.
      * @return
      */
-    public Peli teePeli(){
-        if(!onkoValmis()){
+    public Peli teePeli() {
+        if (!onkoValmis()) {
             return null;
         }
         Peli peli = new Peli();
         peli.setPelaajat(arvoRoolit());
         peli.setSaannot(saannot);
-        if(peli.getPelaajat()==null){
+        if (peli.getPelaajat() == null) {
             return null;
         }
         return peli;
     }
-    
+
     /**
-     *
+     * Arpoo roolilistassa olevat roolit pelaajalistassa oleville pelaajille ja palauttaa listan pelaajista aakkosjärjestyksessä.
      * @return
      */
-    public ArrayList<Pelaaja> arvoRoolit(){
-        if(pelaajat.size()!=roolit.size()){
+    public ArrayList<Pelaaja> arvoRoolit() {
+        if (pelaajat.size() != roolit.size()) {
             return null;
         }
         ArrayList<Pelaaja> pelinPelaajat = (ArrayList<Pelaaja>) pelaajat.clone();
@@ -126,13 +121,10 @@ public boolean lisaaRooli(Rooli rooli){
         Collections.sort(pelinPelaajat);
         return pelinPelaajat;
     }
-    
-    
-    
+
     //Settereitä ja gettereitä:
-    
     /**
-     *
+     * 
      * @param saannot
      */
     public void setSaannot(Saannot saannot) {
@@ -154,14 +146,6 @@ public boolean lisaaRooli(Rooli rooli){
     public void setRoolit(ArrayList<Rooli> roolit) {
         this.roolit = roolit;
     }
-
-//    /**
-//     *
-//     * @param pelaajienMaara
-//     */
-//    public void setPelaajienMaara(int pelaajienMaara) {
-//        this.pelaajienMaara = pelaajienMaara;
-//    }
 
     /**
      *
@@ -187,18 +171,4 @@ public boolean lisaaRooli(Rooli rooli){
         return roolit;
     }
 
-//    /**
-//     *
-//     * @return
-//     */
-//    public int getPelaajienMaara() {
-//        return pelaajienMaara;
-//    }
-        /**
-//     *
-//     */
-//    public void lisaaPelaajienMaaraaYhdella(){
-//        pelaajienMaara++;
-//    }
-    
 }

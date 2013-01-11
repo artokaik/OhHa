@@ -4,6 +4,9 @@
  */
 package mafia.sovelluslogiikka;
 
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Paiva;
+import mafia.sovelluslogiikka.peli.Yo;
 import mafia.sovelluslogiikka.peli.Peli;
 import mafia.sovelluslogiikka.roolit.Etsiva;
 import mafia.sovelluslogiikka.roolit.Kansalainen;
@@ -80,7 +83,7 @@ public class PaivaTest {
         Yo yo = paiva.luoSeuraavaVaihe();
         assertEquals(null, yo.getAmmuttu());
         assertEquals(paiva.getPelaajat(), yo.getPelaajat());
-        yo.asetaTapettava(pekka);
+        yo.asetaAmmuttu(pekka);
         yo.tapaAmmutut();
         assertFalse(paiva.getPelaajat().equals(yo.getPelaajat()));
     }

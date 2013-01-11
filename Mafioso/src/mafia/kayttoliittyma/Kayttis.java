@@ -23,6 +23,9 @@ public class Kayttis implements Runnable {
     private Dimension keskustaMitat;
 
 
+    /**
+     *
+     */
     public Kayttis() {
         keskusta = new JPanel();
         keskustaMitat = new Dimension (550,520);
@@ -43,6 +46,10 @@ public class Kayttis implements Runnable {
 
     }
 
+    /**
+     *
+     * @param container
+     */
     public void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
         MainMenuPanel menu = new MainMenuPanel(this);
@@ -51,7 +58,11 @@ public class Kayttis implements Runnable {
 
 
     }
-        public void korvaaKeskusta(JPanel panel){
+        /**
+     *
+     * @param panel
+     */
+    public void korvaaKeskusta(JPanel panel){
         keskusta.removeAll();
         keskusta = new JPanel();
         
@@ -66,10 +77,18 @@ public class Kayttis implements Runnable {
 //        frame.revalidate();
 //    }
 
+    /**
+     *
+     * @return
+     */
     public JFrame getFrame() {
         return frame;
     }
 
+    /**
+     *
+     * @return
+     */
     public Dimension getKeskustaMitat() {
         return keskustaMitat;
     }

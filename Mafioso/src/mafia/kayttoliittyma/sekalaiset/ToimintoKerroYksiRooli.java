@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.kerroRoolit;
+package mafia.kayttoliittyma.sekalaiset;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +19,12 @@ public class ToimintoKerroYksiRooli implements ActionListener{
     private Kayttis kayttis;
     private KayttisKuuntelija kuuntelija;
     
+    /**
+     *
+     * @param ohjaus
+     * @param kayttis
+     * @param kuuntelija
+     */
     public ToimintoKerroYksiRooli(Ohjaus ohjaus, Kayttis kayttis, KayttisKuuntelija kuuntelija){
         this.ohjaus=ohjaus;
         this.kayttis=kayttis;
@@ -26,6 +32,7 @@ public class ToimintoKerroYksiRooli implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae){
-        
+        KerroRooliPanel panel = new KerroRooliPanel(kuuntelija.getPelaaja(), kayttis, ohjaus);
+        kayttis.korvaaKeskusta(panel);
     }
 }

@@ -2,19 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma.KayttisPeliRakentaja;
+package mafia.kayttoliittyma.sekalaiset;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.kayttoliittyma.sekalaiset.PeliPanel;
 import mafia.sovelluslogiikka.Ohjaus;
 
 /**
- * 
+ *
  * @author Arto
  */
-public class ToimintoPelinAloitus implements ActionListener {
+public class ToimintoTakaisinRoolienKertojaan implements ActionListener {
 
     private Ohjaus ohjaus;
     private Kayttis kayttis;
@@ -24,16 +23,17 @@ public class ToimintoPelinAloitus implements ActionListener {
      * @param ohjaus
      * @param kayttis
      */
-    public ToimintoPelinAloitus(Ohjaus ohjaus, Kayttis kayttis) {
-        this.ohjaus= ohjaus;
-        this.kayttis=kayttis;
+    public ToimintoTakaisinRoolienKertojaan(Ohjaus ohjaus, Kayttis kayttis) {
+        this.ohjaus = ohjaus;
+        this.kayttis = kayttis;
+
     }
 
     public void actionPerformed(ActionEvent ae) {
 
-            PeliPanel peliKayttis = new PeliPanel(ohjaus, kayttis);
-            kayttis.korvaaKeskusta(peliKayttis);
 
-        }
+        RoolienKertojaPanel roolienKertoja = new RoolienKertojaPanel(ohjaus, kayttis);
+        kayttis.korvaaKeskusta(roolienKertoja);
+
     }
-
+}

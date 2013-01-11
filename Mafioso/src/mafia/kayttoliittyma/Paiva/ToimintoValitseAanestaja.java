@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.KayttisKuuntelija;
-import mafia.kayttoliittyma.PelaajanValitsijaPanel;
+import mafia.kayttoliittyma.pelaajanvalitsija.PelaajanValitsijaPanel;
 import mafia.sovelluslogiikka.Ohjaus;
 
 /**
@@ -23,6 +23,13 @@ public class ToimintoValitseAanestaja implements ActionListener{
     private Ohjaus ohjaus;
 
     
+    /**
+     *
+     * @param aanestaja
+     * @param tulokset
+     * @param kayttis
+     * @param ohjaus
+     */
     public ToimintoValitseAanestaja( KayttisKuuntelija aanestaja, PaivaMainPanel tulokset, Kayttis kayttis, Ohjaus ohjaus){
 //        this.aanestys = aanestys;
         this.aanestaja = aanestaja;

@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.sovelluslogiikka.Aanestys;
+import mafia.sovelluslogiikka.sekalaista.Aanestys;
 import mafia.sovelluslogiikka.Ohjaus;
-import mafia.sovelluslogiikka.Paiva;
+import mafia.sovelluslogiikka.peli.Paiva;
 
 /**
  *
@@ -23,12 +23,21 @@ public class PaivaMainPanel extends JPanel{
     private Ohjaus ohjaus;
     private Kayttis kayttis;
 
+    /**
+     *
+     * @param ohjaus
+     * @param kayttis
+     */
     public PaivaMainPanel(Ohjaus ohjaus, Kayttis kayttis) {
         this.ohjaus = ohjaus;
         this.kayttis=kayttis;
         this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
     }
     
+    /**
+     *
+     * @param aanestys
+     */
     public void luo(Aanestys aanestys){
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         JLabel tuloksetKentta = new JLabel(aanestys.toString());       

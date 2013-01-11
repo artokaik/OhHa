@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma;
+package mafia.kayttoliittyma.mainMenu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.mainMenu.MainMenuPanel;
 
 /**
@@ -15,6 +16,10 @@ import mafia.kayttoliittyma.mainMenu.MainMenuPanel;
 public class ToimintoAvaaMainMenu implements ActionListener{
     private Kayttis kayttis;
     
+    /**
+     *
+     * @param kayttis
+     */
     public ToimintoAvaaMainMenu(Kayttis kayttis){
        this.kayttis=kayttis;
     }

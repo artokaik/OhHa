@@ -5,7 +5,7 @@
 package mafia.sovelluslogiikka;
 
 import mafia.sovelluslogiikka.roolit.Mafioso;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -1,8 +1,8 @@
 package mafia.sovelluslogiikka.roolit;
 
 import java.util.ArrayList;
-import mafia.sovelluslogiikka.Pelaaja;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Yo;
 
 /**
  * Suojelija-luokka toteuttaa rajapinnan rooli. Suojelija on hyvisten puolella
@@ -27,16 +27,18 @@ public class Suojelija implements Rooli {
      * @param yo
      * @return
      */
+    @Override
     public String getRooliSelitys(Yo yo) {
         return "Olet suojelija, ketä haluat suojella mafiosoilta?";
     }
 
     /**
-     *
+     * Asettaa parametrina annetun pelaajan suojelluksi parametrina annettuna yönä ja palauttaa tiedon tästä Stringinä.
      * @param yo
      * @param valittu
      * @return  
      */
+    @Override
     public String toimi(Yo yo, Pelaaja valittu) {
         String tuloste = "Suojeltu pelaaja on " + valittu.getNimi();
         yo.asetaSuojeltu(valittu);
@@ -44,11 +46,12 @@ public class Suojelija implements Rooli {
     }
 
     /**
-     *
+     * Palauttaa kopion parametrina annetusta listasta.
      * @param pelaajat
      * @param itse
      * @return
      */
+    @Override
     public ArrayList<Pelaaja> getVaihtoehdot(ArrayList<Pelaaja> pelaajat, Pelaaja itse) {
         ArrayList<Pelaaja> vaihtoehdot = (ArrayList<Pelaaja>) pelaajat.clone();
         return vaihtoehdot;

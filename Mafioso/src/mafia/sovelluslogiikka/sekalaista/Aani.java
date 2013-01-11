@@ -1,5 +1,5 @@
 
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.sekalaista;
 
 
 /**

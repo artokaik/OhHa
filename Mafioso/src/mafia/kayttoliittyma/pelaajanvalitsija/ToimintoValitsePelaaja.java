@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma;
+package mafia.kayttoliittyma.pelaajanvalitsija;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.kayttoliittyma.KayttisKuuntelija;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  *
@@ -20,6 +21,13 @@ public class ToimintoValitsePelaaja implements ActionListener{
     private KayttisKuuntelija kuuntelija;
     private JButton okNappi;
     
+    /**
+     *
+     * @param pelaaja
+     * @param valittu
+     * @param kuuntelija
+     * @param ok
+     */
     public ToimintoValitsePelaaja(Pelaaja pelaaja, JLabel valittu, KayttisKuuntelija kuuntelija, JButton ok){
         this.pelaaja = pelaaja;
         this.valittu=valittu;

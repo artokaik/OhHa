@@ -1,6 +1,7 @@
 
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.sekalaista;
 
+import mafia.sovelluslogiikka.peli.Yo;
 import mafia.sovelluslogiikka.roolit.Rooli;
 
 

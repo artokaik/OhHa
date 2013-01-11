@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import mafia.sovelluslogiikka.peli.PeliRakentaja;
+import mafia.sovelluslogiikka.PeliRakentaja;
 import mafia.sovelluslogiikka.roolit.Rooli;
 
 /**

@@ -5,8 +5,8 @@
 package mafia.sovelluslogiikka.roolit;
 
 import java.util.ArrayList;
-import mafia.sovelluslogiikka.Pelaaja;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Yo;
 
 
 /**
@@ -26,7 +26,7 @@ public class Etsiva implements Rooli {
     }
     
     /**
-     *
+     * Palauttaa roolin selityksen String-muuttujana. Vaatii parametrikseen Yo-olion, mutta ei tee parametrilla mitään.
      * @param yo
      * @return
      */
@@ -35,11 +35,12 @@ public class Etsiva implements Rooli {
     }
 
     /**
-     *
+     * Palauttaa tiedon siitä, onko parametrina annettu pelaaja hyvis vai pahis.
      * @param yo
      * @param pelaaja 
      * @return  
      */
+    @Override
     public String toimi(Yo yo, Pelaaja pelaaja) {
         String tuloste = "";
         if(pelaaja.getRooli().onkoPahis()){
@@ -51,26 +52,28 @@ public class Etsiva implements Rooli {
     }
     
     /**
-     *
+     * Ottaa parametrina annetusta pelaajalistasta kopion, poistaa kopiosta parametrina annetun pelaajan ja palauttaa näin saadun listan (listan pelaajista, jotka Etsivä voi tarkastaa)
      * @param pelaajat
      * @param itse
      * @return
      */
+    @Override
     public ArrayList<Pelaaja> getVaihtoehdot(ArrayList<Pelaaja> pelaajat, Pelaaja itse){
         ArrayList<Pelaaja> vaihtoehdot = (ArrayList<Pelaaja>) pelaajat.clone();
         vaihtoehdot.remove(itse);
         return vaihtoehdot;
     }
     
-    
+    @Override
     public Etsiva kopioi(){
         return new Etsiva();
     }
 
     /**
-     *
+     * 
      * @return
      */
+    @Override
     public boolean onkoPahis() {
         return pahis;
     }
@@ -79,6 +82,7 @@ public class Etsiva implements Rooli {
      *
      * @return
      */
+    @Override
     public String getRoolinimi() {
         return this.roolinimi;
     }

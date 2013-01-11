@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.Ohjaus;
 
 /**
  *
@@ -18,13 +18,19 @@ import mafia.sovelluslogiikka.Yo;
 public class VahvistaTapahtunutPanel extends JPanel {
     
     private String tapahtuma;
-    private Yo yo;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
     
 
-    public VahvistaTapahtunutPanel(String tapahtuma, Yo yo, Kayttis kayttis) {
+    /**
+     *
+     * @param tapahtuma
+     * @param ohjaus
+     * @param kayttis
+     */
+    public VahvistaTapahtunutPanel(String tapahtuma, Ohjaus ohjaus, Kayttis kayttis) {
         this.tapahtuma = tapahtuma;
-        this.yo = yo;
+        this.ohjaus = ohjaus;
         this.kayttis=kayttis;
         this.setPreferredSize(new Dimension(kayttis.getKeskustaMitat()));
         
@@ -32,7 +38,7 @@ public class VahvistaTapahtunutPanel extends JPanel {
         this.add(teksti);
         
         JButton seuraava = new JButton("Seuraava pelaaja");
-        ToimintoSeuraavaanPelaajaan toiminto = new ToimintoSeuraavaanPelaajaan(yo,kayttis);
+        ToimintoSeuraavaanPelaajaan toiminto = new ToimintoSeuraavaanPelaajaan(ohjaus,kayttis);
         seuraava.addActionListener(toiminto);
         this.add(seuraava);
     }

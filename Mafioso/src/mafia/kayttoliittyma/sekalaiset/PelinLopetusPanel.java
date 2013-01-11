@@ -2,13 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mafia.kayttoliittyma;
+package mafia.kayttoliittyma.sekalaiset;
 
+import mafia.kayttoliittyma.mainMenu.ToimintoAvaaMainMenu;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import mafia.sovelluslogiikka.Vaihe;
+import mafia.kayttoliittyma.Kayttis;
+import mafia.sovelluslogiikka.peli.Vaihe;
 import mafia.sovelluslogiikka.peli.Peli;
 
 /**
@@ -19,6 +21,11 @@ public class PelinLopetusPanel extends JPanel{
     private Vaihe vaihe;
     private Kayttis kayttis;
     
+    /**
+     *
+     * @param vaihe
+     * @param kayttis
+     */
     public PelinLopetusPanel(Vaihe vaihe, Kayttis kayttis){
         this.vaihe=vaihe;
         this.kayttis=kayttis;

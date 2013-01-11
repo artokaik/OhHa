@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  *
@@ -18,6 +18,10 @@ import mafia.sovelluslogiikka.Pelaaja;
 public class ToimintoSuljeOhjelma implements ActionListener{
     private Kayttis kayttis;
     
+    /**
+     *
+     * @param kayttis
+     */
     public ToimintoSuljeOhjelma(Kayttis kayttis){
         this.kayttis=kayttis;
     }

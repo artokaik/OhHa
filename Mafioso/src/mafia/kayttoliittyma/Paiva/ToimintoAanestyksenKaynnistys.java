@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.KayttisKuuntelija;
-import mafia.kayttoliittyma.PelaajanValitsijaPanel;
-import mafia.sovelluslogiikka.Aanestys;
+import mafia.kayttoliittyma.pelaajanvalitsija.PelaajanValitsijaPanel;
+import mafia.sovelluslogiikka.sekalaista.Aanestys;
 import mafia.sovelluslogiikka.Ohjaus;
 
 /**
@@ -24,6 +24,13 @@ public class ToimintoAanestyksenKaynnistys implements ActionListener {
     private JButton nappi;
     private Kayttis kayttis;
 
+    /**
+     *
+     * @param ohjaus
+     * @param tulokset
+     * @param nappi
+     * @param kayttis
+     */
     public ToimintoAanestyksenKaynnistys(Ohjaus ohjaus, PaivaMainPanel tulokset, JButton nappi, Kayttis kayttis) {
         this.ohjaus = ohjaus;
         this.tulokset = tulokset;

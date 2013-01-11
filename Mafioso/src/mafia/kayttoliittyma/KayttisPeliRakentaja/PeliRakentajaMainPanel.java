@@ -16,8 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.kayttoliittyma.kerroRoolit.ToimintoKerroRoolit;
-import mafia.sovelluslogiikka.peli.PeliRakentaja;
+import mafia.kayttoliittyma.sekalaiset.ToimintoKerroRoolit;
+import mafia.sovelluslogiikka.PeliRakentaja;
 import mafia.sovelluslogiikka.roolit.Rooli;
 import mafia.sovelluslogiikka.roolit.Roolilista;
 
@@ -33,6 +33,10 @@ public class PeliRakentajaMainPanel extends JPanel{
     private Kayttis kayttis;
 
 
+    /**
+     *
+     * @param kayttis
+     */
     public PeliRakentajaMainPanel(Kayttis kayttis) {
         this.kayttis = kayttis;
         Roolilista roolilista = new Roolilista();
@@ -53,26 +57,46 @@ public class PeliRakentajaMainPanel extends JPanel{
         this.add(alin, BorderLayout.SOUTH);
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel luoVasen() {
         JPanel panel = new JPanel();
         panel.add(luoRoolienValitsija());
         return panel;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel luoKeskusta() {
         JPanel panel = new JPanel();
         panel.add(luoPelaajienValitsija());
         return panel;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel luoOikea() {
         JPanel panel = new JPanel();
         return panel;
     }
+    /**
+     *
+     * @return
+     */
     public JPanel luoYlin(){
         JPanel panel = new JPanel();
         return panel;
     }  
+    /**
+     *
+     * @return
+     */
     public JPanel luoAlin(){
         JPanel panel = new JPanel();
         JButton aloita = new JButton("Aloita peli");

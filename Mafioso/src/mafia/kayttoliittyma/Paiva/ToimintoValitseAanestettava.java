@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  *
@@ -22,6 +22,14 @@ public class ToimintoValitseAanestettava implements ActionListener{
     private KayttisKuuntelija kuuntelija;
     private JButton okNappi;
     
+    /**
+     *
+     * @param aanestaja
+     * @param aanestetty
+     * @param valittu
+     * @param kuuntelija
+     * @param ok
+     */
     public ToimintoValitseAanestettava(Pelaaja aanestaja, Pelaaja aanestetty, JLabel valittu, KayttisKuuntelija kuuntelija, JButton ok){
         this.aanestaja = aanestaja;
         this.aanestetty=aanestetty;

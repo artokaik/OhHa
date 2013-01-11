@@ -1,6 +1,9 @@
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
+import mafia.sovelluslogiikka.peli.Paiva;
+import mafia.sovelluslogiikka.peli.Vaihe;
 import java.util.ArrayList;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  * Yo-luokka toteuttaa Vaihe-rajapinnan. Yo-oliolla on kaksi ArrayList<Pelaaja> -muuttujaa, joista 'pelaajat' on lista mukana olevista pelaajista ja 'vuoroPelaamatta' lista pelaajista, joiden vuoroa ei yön aikana vielä ole pelattu.
@@ -17,7 +20,7 @@ public class Yo implements Vaihe {
     private Pelaaja suojeltu;
 
     /**
-     *
+     * Konstruktori saa parametrinaan listan hengissä olevista pelaajista.
      * @param pelaajat
      */
     public Yo(ArrayList<Pelaaja> pelaajat) {
@@ -26,11 +29,11 @@ public class Yo implements Vaihe {
     }
 
     /**
-     *
+     * Asettaa parametrina annetun pelaajan ammutuksi mikäli pelaaja on yhä mukana pelissä.
      * @param pelaaja
      * @return
      */
-    public boolean asetaTapettava(Pelaaja pelaaja) {
+    public boolean asetaAmmuttu(Pelaaja pelaaja) {
         if (pelaajat.contains(pelaaja)) {
             ammuttu = pelaaja;
             return true;
@@ -39,7 +42,7 @@ public class Yo implements Vaihe {
     }
     
     /**
-     *
+     * Poistaa parametrina annetun pelaajan pelaamattomien pelaajien listasta.
      * @param pelaaja
      * @return
      */
@@ -48,7 +51,7 @@ public class Yo implements Vaihe {
     }
 
     /**
-     *
+     * Asettaa parametrina annetun pelaajan suojelluksi mikäli pelaaja on yhä mukana pelissä.
      * @param pelaaja
      * @return
      */
@@ -62,7 +65,7 @@ public class Yo implements Vaihe {
 
 
     /**
-     *
+     * Poistaa ammutun pelaajan pelaajalistasta mikäli tätä ei ole suojeltu.
      */
     public void tapaAmmutut() {
         if (suojeltu == null || !suojeltu.equals(ammuttu)) {
@@ -71,7 +74,7 @@ public class Yo implements Vaihe {
     }
 
     /**
-     *
+     * Palauttaa uuden Paivan hengissä olevilla pelaajilla.
      * @return
      */
     public Paiva luoSeuraavaVaihe() {
@@ -80,7 +83,7 @@ public class Yo implements Vaihe {
     }
 
     /**
-     *
+     * Palauttaa Stringinä yön tapahtumat (kuka kuoli/kuoliko kukaan).
      * @return
      */
     public String kerroTapahtumat() {
@@ -145,35 +148,4 @@ public class Yo implements Vaihe {
     }
 
 }
-
-
-//    public Pelaaja haePelaaja(String nimi) {
-//        for (Pelaaja pelaaja : pelaajat) {
-//            if (pelaaja.getNimi().equals(nimi)) {
-//                return pelaaja;
-//            }
-//        }
-//        return null;
-//    }
-
-//    /**
-//     *
-//     * @param saannot
-//     * @return
-//     */
-//    public ArrayList<Pelaaja> pelaa(Saannot saannot) {
-//        while (!vuoroPelaamatta.isEmpty()) {
-//            pelaaYksiVuoro();
-//        }
-//        this.tapaAmmutut();
-//        ArrayList<Pelaaja> hengissa = (ArrayList<Pelaaja>) pelaajat.clone();
-//        return hengissa;
-//    }
-
-//    public void pelaaYksiVuoro() {
-//        Ohjaus ohjaus = new Ohjaus();
-//        Pelaaja pelaaja = ohjaus.valitsePelaaja(vuoroPelaamatta);
-//        pelaaja.toimiRoolinMukaan(this);
-//        vuoroPelaamatta.remove(pelaaja);
-//    }
 

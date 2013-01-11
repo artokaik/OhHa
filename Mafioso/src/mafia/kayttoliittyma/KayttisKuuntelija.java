@@ -4,7 +4,7 @@
  */
 package mafia.kayttoliittyma;
 
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  *
@@ -13,15 +13,26 @@ import mafia.sovelluslogiikka.Pelaaja;
 public class KayttisKuuntelija {
     private Pelaaja pelaaja;
     
+    /**
+     *
+     */
     public KayttisKuuntelija(){
         pelaaja = null;
         
     }
 
+    /**
+     *
+     * @return
+     */
     public Pelaaja getPelaaja() {
         return pelaaja;
     }
 
+    /**
+     *
+     * @param pelaaja
+     */
     public void setPelaaja(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
     }

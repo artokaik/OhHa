@@ -1,5 +1,6 @@
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.sekalaista;
 
+import mafia.sovelluslogiikka.sekalaista.Aani;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -7,7 +8,7 @@ import java.util.HashMap;
 
 /**
  * Äänestys-luokka kuvaa yhtä äänestyskierrosta. Oliomuuttujina ovat ehdokkaat 
- * (ArrayList<Pelaaja>), pelaajat, jotka eivät vielä ole äänestäneet ja annetut äänet (ArrayList<Aani>).
+ * (ArrayList<Pelaaja>), pelaajat, jotka eivät vielä ole äänestäneet ja annetut äänet (ArrayList<Aani>). Neljäs oliomuuttuja on jatkoon menevien minimimäärä, joka oletusarvoisesti on 1.
  *
  * @author Arto
  */
@@ -31,7 +32,7 @@ public class Aanestys {
     }
     
     /**
-     *
+     * 
      * @return
      */
     public ArrayList<Pelaaja> getAanestamatta() {
@@ -58,7 +59,7 @@ public class Aanestys {
     }
 
     /**
-     * Mikäli äänestäjä ei ole jo äänestänyt tässä äänestyksessä, lisää äänen ja palauttaa true. Muuten palauttaa false;
+     * Mikäli äänestäjä ei ole jo äänestänyt tässä äänestyksessä, lisää äänen, poistaa pelaajan aanestamatta-listalta ja palauttaa true. Muuten palauttaa false;
      * @param aanestaja
      * @param aanestetty
      * @return
@@ -148,30 +149,10 @@ public class Aanestys {
         return jatkoon;
     }
     
-        /**
-     *
-     * @param maara
-     * @return
-     */
-    public ArrayList<Pelaaja> haeTulokset(int maara) {
-        if (aanet.isEmpty()) {
-            return ehdokkaat;
-        }
-        HashMap<Pelaaja, Integer> tulokset = laskeTulokset();
-        int raja = this.laskeRaja(maara, tulokset);
-        ArrayList<Pelaaja> jatkoon = new ArrayList<Pelaaja>();
-        for (Pelaaja ehdokas : ehdokkaat) {
-            if (tulokset.containsKey(ehdokas)) {
-                if (tulokset.get(ehdokas) >= raja) {
-                    jatkoon.add(ehdokas);
-                }
-            }
-        }
-        return jatkoon;
-    }
+
     
         /**
-     * Palauttaa äänimäärän, joka tarvitaan jatkoon menemiseen.
+     * Laskee parametrina annetuista tuloksista äänimäärän, joka tarvitaan jatkoon menemiseen. Palauttaa tuon äänimäärän.
      * @param tulokset
      * @return
      */
@@ -187,19 +168,7 @@ public class Aanestys {
     }
     
 
-    
-    private int laskeRaja(int maara, HashMap<Pelaaja, Integer> tulokset) {
-        Collection aanimaarat = tulokset.values();
-        ArrayList<Integer> aanimaaria = new ArrayList<Integer>();
-        for (Object object : aanimaarat) {
-            aanimaaria.add((Integer) object);
-        }
-        Collections.sort(aanimaaria);
-        int raja = aanimaaria.get(Math.max(0, aanimaaria.size() - maara));
-        return raja;
-    }
 
-//
     
     @Override
     public String toString() {
@@ -215,25 +184,11 @@ public class Aanestys {
         return tuloste;
         
     }
+
+    public void setJatkoonMenijat(int jatkoonMenijat) {
+        this.jatkoonMenijat = jatkoonMenijat;
+    }
 }
-//
-//    public Pelaaja haeEhdokas(String nimi) {
-//        for (Pelaaja pelaaja : ehdokkaat) {
-//            if (pelaaja.getNimi().equals(nimi)) {
-//                return pelaaja;
-//            }
-//        }
-//        return null;
-//    }
-    /**
-//     *
-//     * @param aanestajat
-//     * @param ehdokkaat
-//     */
-//    public void suorita(ArrayList<Pelaaja> aanestajat, ArrayList<Pelaaja> ehdokkaat) {
-//        Ohjaus ohjaus = new Ohjaus();
-//        for (Pelaaja pelaaja : aanestajat) {
-//            Aani aani = ohjaus.aanesta(pelaaja, ehdokkaat);
-//            aanet.add(aani);
-//        }
-//    }
+
+
+

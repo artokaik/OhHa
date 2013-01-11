@@ -4,6 +4,8 @@
  */
 package mafia.sovelluslogiikka;
 
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Aani;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

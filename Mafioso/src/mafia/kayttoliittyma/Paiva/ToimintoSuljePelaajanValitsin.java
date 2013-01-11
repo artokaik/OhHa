@@ -8,10 +8,10 @@ import mafia.kayttoliittyma.KayttisKuuntelija;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
-import mafia.kayttoliittyma.PelaajanValitsijaPanel;
-import mafia.sovelluslogiikka.Aanestys;
+import mafia.kayttoliittyma.pelaajanvalitsija.PelaajanValitsijaPanel;
+import mafia.sovelluslogiikka.sekalaista.Aanestys;
 import mafia.sovelluslogiikka.Ohjaus;
-import mafia.sovelluslogiikka.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  *
@@ -24,6 +24,13 @@ public class ToimintoSuljePelaajanValitsin implements ActionListener {
     private PaivaMainPanel tulokset;
     private Kayttis kayttis;
 
+    /**
+     *
+     * @param ohjaus
+     * @param kuuntelija
+     * @param tulokset
+     * @param kayttis
+     */
     public ToimintoSuljePelaajanValitsin(Ohjaus ohjaus, KayttisKuuntelija kuuntelija, PaivaMainPanel tulokset, Kayttis kayttis) {
 
         this.kuuntelija = kuuntelija;
@@ -42,7 +49,6 @@ public class ToimintoSuljePelaajanValitsin implements ActionListener {
                 PelaajanValitsijaPanel valitsija = new PelaajanValitsijaPanel(ohjaus.haeAanestamatta(), valitseAanestaja, kuuntelija, "Valitse äänestäjä");
                 kayttis.korvaaKeskusta(valitsija);
             } else {
-
                 tulokset.luo(ohjaus.getAanestys());
                 tulokset.revalidate();
                 tulokset.repaint();

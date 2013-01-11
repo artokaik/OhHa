@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.KayttisKuuntelija;
-import mafia.kayttoliittyma.PelaajanValitsijaPanel;
+import mafia.kayttoliittyma.pelaajanvalitsija.PelaajanValitsijaPanel;
 import mafia.sovelluslogiikka.Ohjaus;
-import mafia.sovelluslogiikka.Pelaaja;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Yo;
 
 /**
  *
@@ -20,27 +20,34 @@ import mafia.sovelluslogiikka.Yo;
  */
 public class ToimintoValitseToimija implements ActionListener {
 
-    private Yo yo;
+    private Ohjaus ohjaus;
     private KayttisKuuntelija kuuntelija;
     private Kayttis kayttis;
 
-    public ToimintoValitseToimija(Yo yo, KayttisKuuntelija kuuntelija, Kayttis kayttis) {
+    /**
+     *
+     * @param ohjaus
+     * @param kuuntelija
+     * @param kayttis
+     */
+    public ToimintoValitseToimija(Ohjaus ohjaus, KayttisKuuntelija kuuntelija, Kayttis kayttis) {
         this.kayttis = kayttis;
-        this.yo = yo;
+        this.ohjaus = ohjaus;
         this.kuuntelija = kuuntelija;
 
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (!Ohjaus.haePelaamatta(yo).isEmpty()) {
+        ohjaus.setToimija(kuuntelija.getPelaaja());
+        if (!ohjaus.haePelaamatta().isEmpty()) {
             KayttisKuuntelija kuuntelija2 = new KayttisKuuntelija();
-            ToimintoVahvistaValinta valitunVahvistus = new ToimintoVahvistaValinta(kuuntelija.getPelaaja(), yo, kuuntelija2, kayttis);
-            PelaajanValitsijaPanel valitsijaPanel = new PelaajanValitsijaPanel(Ohjaus.getValittavanaYolla(kuuntelija.getPelaaja(), yo), valitunVahvistus, kuuntelija2, Ohjaus.getRooliSelitys(kuuntelija.getPelaaja(), yo));
+            ToimintoVahvistaValinta valitunVahvistus = new ToimintoVahvistaValinta(ohjaus, kuuntelija2, kayttis);
+            PelaajanValitsijaPanel valitsijaPanel = new PelaajanValitsijaPanel(ohjaus.getValittavanaYolla(kuuntelija.getPelaaja()), valitunVahvistus, kuuntelija2, ohjaus.getRooliSelitys(kuuntelija.getPelaaja()));
             kayttis.korvaaKeskusta(valitsijaPanel);
         } else {
-            Ohjaus.tapaAmmutut(yo);
-            YonTapahtumatPanel tapahtumat = new YonTapahtumatPanel(yo, kayttis);
+            ohjaus.tapaAmmutut();
+            YonTapahtumatPanel tapahtumat = new YonTapahtumatPanel(ohjaus, kayttis);
             kayttis.korvaaKeskusta(tapahtumat);
         }
 

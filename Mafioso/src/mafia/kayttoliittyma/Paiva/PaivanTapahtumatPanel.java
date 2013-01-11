@@ -20,6 +20,11 @@ public class PaivanTapahtumatPanel extends JPanel {
     private Ohjaus ohjaus;
     private Kayttis kayttis;
     
+    /**
+     *
+     * @param ohjaus
+     * @param kayttis
+     */
     public PaivanTapahtumatPanel(Ohjaus ohjaus, Kayttis kayttis){
         this.ohjaus = ohjaus;
         this.kayttis = kayttis;

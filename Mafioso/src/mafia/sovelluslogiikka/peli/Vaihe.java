@@ -1,8 +1,9 @@
 
-package mafia.sovelluslogiikka;
+package mafia.sovelluslogiikka.peli;
 
 import mafia.sovelluslogiikka.peli.Saannot;
 import java.util.ArrayList;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 
 /**
@@ -12,27 +13,22 @@ import java.util.ArrayList;
  */
 public interface Vaihe {
 
-//    /**
-//     *
-//     * @param saannot
-//     * @return
-//     */
-//    public ArrayList<Pelaaja> pelaa(Saannot saannot);
     /**
-     *
+     * Palauttaa listan hengissä olevista pelaajista
      * @return
      */
     public ArrayList<Pelaaja> getPelaajat();
 //    public Pelaaja haePelaaja(String nimi);
     /**
-     *
+     * Palauttaa vaiheen tapahtumat tekstimuodossa (kuka tapettiin).
      * @return
      */
     public String kerroTapahtumat();
     /**
-     *
+     * Luo ja palauttaa seuraavan vaiheen (Yo palauttaa Paivan ja Paiva Yon)
      * @return
      */
     public Vaihe luoSeuraavaVaihe();
     
+
 }

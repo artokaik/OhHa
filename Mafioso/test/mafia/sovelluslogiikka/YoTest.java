@@ -1,5 +1,7 @@
 package mafia.sovelluslogiikka;
 
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.peli.Yo;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -109,7 +111,7 @@ public class YoTest {
      */
     @Test
     public void asetaTapettavaToimiiJosPelaajaOnOlemassa() {
-        yo.asetaTapettava(a);
+        yo.asetaAmmuttu(a);
         assertEquals(a, yo.getAmmuttu()); 
     }
 
@@ -120,9 +122,9 @@ public class YoTest {
     public void asetaTapettavaEiToimiJosPelaajaEiOleOlemassa() {
         Pelaaja x = new Pelaaja("x");
         Pelaaja y = new Pelaaja("y");
-        yo.asetaTapettava(x);
+        yo.asetaAmmuttu(x);
         assertEquals(null, yo.getAmmuttu());
-        assertFalse(yo.asetaTapettava(y));
+        assertFalse(yo.asetaAmmuttu(y));
     }
 
     /**
@@ -131,7 +133,7 @@ public class YoTest {
     @Test
     public void josSuojeltuJaAmmuttuSamatKukaanEiKuole() {
         yo.asetaSuojeltu(a);
-        yo.asetaTapettava(a);
+        yo.asetaAmmuttu(a);
         yo.tapaAmmutut();
         assertEquals(9, yo.getPelaajat().size());
     }
@@ -142,7 +144,7 @@ public class YoTest {
     @Test
     public void josSuojeltuJaAmmuttuEriAmmuttuPoistetaan() {
         yo.asetaSuojeltu(a);
-        yo.asetaTapettava(b);
+        yo.asetaAmmuttu(b);
         yo.tapaAmmutut();
         assertEquals(8, yo.getPelaajat().size());
         assertFalse(yo.getPelaajat().contains(b));
@@ -153,7 +155,7 @@ public class YoTest {
      */
     @Test
     public void josketäänEiSuojellaAmmuttuPoistetaan() {
-        yo.asetaTapettava(b);
+        yo.asetaAmmuttu(b);
         yo.tapaAmmutut();
         assertEquals(8, yo.getPelaajat().size());
         assertFalse(yo.getPelaajat().contains(b));

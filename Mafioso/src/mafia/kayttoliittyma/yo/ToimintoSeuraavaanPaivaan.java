@@ -8,32 +8,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import mafia.kayttoliittyma.Kayttis;
 import mafia.kayttoliittyma.Paiva.PaivaMainPanel;
-import mafia.kayttoliittyma.PelinLopetusPanel;
-import mafia.sovelluslogiikka.Aanestys;
+import mafia.kayttoliittyma.sekalaiset.PelinLopetusPanel;
 import mafia.sovelluslogiikka.Ohjaus;
-import mafia.sovelluslogiikka.Paiva;
-import mafia.sovelluslogiikka.Yo;
-import mafia.sovelluslogiikka.peli.Peli;
+import mafia.sovelluslogiikka.peli.Paiva;
 
 /**
  *
  * @author Arto
  */
 public class ToimintoSeuraavaanPaivaan  implements ActionListener{
-    private Yo yo;
+    private Ohjaus ohjaus;
     private Kayttis kayttis;
     
-    public ToimintoSeuraavaanPaivaan(Yo yo,  Kayttis kayttis){
+    /**
+     *
+     * @param ohjaus
+     * @param kayttis
+     */
+    public ToimintoSeuraavaanPaivaan(Ohjaus ohjaus,  Kayttis kayttis){
         this.kayttis = kayttis;
-        this.yo = yo;
+        this.ohjaus = ohjaus;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Paiva paiva = (Paiva) Ohjaus.luoSeuraavaVaihe(yo);
-        if(Ohjaus.jatkuuko(paiva)){
-            PaivaMainPanel seuraavaPaiva = new PaivaMainPanel(paiva, kayttis);
-            seuraavaPaiva.luo(Ohjaus.ensimmainenAanestys(paiva));
+        Paiva paiva = (Paiva) ohjaus.siirrySeuraavaanVaiheeseen();
+        ohjaus.setPaiva(paiva);
+        if(ohjaus.jatkuuko()){
+            PaivaMainPanel seuraavaPaiva = new PaivaMainPanel(ohjaus, kayttis);
+            ohjaus.luoEnsimmainenAanestys();
+            seuraavaPaiva.luo(ohjaus.getAanestys());
             kayttis.korvaaKeskusta(seuraavaPaiva);
         } else {
             PelinLopetusPanel lopetus = new PelinLopetusPanel(paiva,kayttis);          

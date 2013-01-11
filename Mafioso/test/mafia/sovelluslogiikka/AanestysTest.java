@@ -1,5 +1,7 @@
 package mafia.sovelluslogiikka;
 
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
+import mafia.sovelluslogiikka.sekalaista.Aanestys;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
@@ -97,9 +99,9 @@ public class AanestysTest {
     @Test
     public void enitenAaniaSaanutOikein() {
         kaikkiAanestavatA4B3C2();
-        assertTrue(aanestys.haeTulokset(1).contains(a));
-        assertFalse(aanestys.haeTulokset(1).contains(b));
-        assertEquals(1, aanestys.haeTulokset(1).size());
+        assertTrue(aanestys.haeTulokset().contains(a));
+        assertFalse(aanestys.haeTulokset().contains(b));
+        assertEquals(1, aanestys.haeTulokset().size());
     }
 
     /**
@@ -108,10 +110,10 @@ public class AanestysTest {
     @Test
     public void enitenAaniaSaanutOikeinTasapeli() {
         kaikkiAanestavatA4B4C1();
-        assertTrue(aanestys.haeTulokset(1).contains(a));
-        assertTrue(aanestys.haeTulokset(1).contains(b));
-        assertFalse(aanestys.haeTulokset(1).contains(c));
-        assertEquals(2, aanestys.haeTulokset(1).size());
+        assertTrue(aanestys.haeTulokset().contains(a));
+        assertTrue(aanestys.haeTulokset().contains(b));
+        assertFalse(aanestys.haeTulokset().contains(c));
+        assertEquals(2, aanestys.haeTulokset().size());
     }
 
     /**
@@ -120,10 +122,11 @@ public class AanestysTest {
     @Test
     public void kaksiEnitenAaniaSaanuttaOikein() {
         kaikkiAanestavatA4B3C2();
-        assertTrue(aanestys.haeTulokset(2).contains(a));
-        assertTrue(aanestys.haeTulokset(2).contains(b));
-        assertFalse(aanestys.haeTulokset(2).contains(c));
-        assertEquals(2, aanestys.haeTulokset(2).size());
+        aanestys.setJatkoonMenijat(2);
+        assertTrue(aanestys.haeTulokset().contains(a));
+        assertTrue(aanestys.haeTulokset().contains(b));
+        assertFalse(aanestys.haeTulokset().contains(c));
+        assertEquals(2, aanestys.haeTulokset().size());
     }
 
     /**
@@ -132,10 +135,11 @@ public class AanestysTest {
     @Test
     public void kaksiEnitenAaniaSaanuttaOikeinKunKahdenTasapeli() {
         kaikkiAanestavatA4B4C1();
-        assertTrue(aanestys.haeTulokset(2).contains(a));
-        assertTrue(aanestys.haeTulokset(2).contains(b));
-        assertFalse(aanestys.haeTulokset(2).contains(c));
-        assertEquals(2, aanestys.haeTulokset(2).size());
+        aanestys.setJatkoonMenijat(2);
+        assertTrue(aanestys.haeTulokset().contains(a));
+        assertTrue(aanestys.haeTulokset().contains(b));
+        assertFalse(aanestys.haeTulokset().contains(c));
+        assertEquals(2, aanestys.haeTulokset().size());
     }
 
     /**
@@ -144,11 +148,13 @@ public class AanestysTest {
     @Test
     public void kaksiEnitenAaniaSaanuttaOikeinKunKolmenTasapeli() {
         kaikkiAanestavatA2B2C2D1E1F1();
-        assertTrue(aanestys.haeTulokset(2).contains(a));
-        assertTrue(aanestys.haeTulokset(2).contains(b));
-        assertTrue(aanestys.haeTulokset(2).contains(c));
-        assertFalse(aanestys.haeTulokset(2).contains(d));
-        assertEquals(3, aanestys.haeTulokset(3).size());
+        aanestys.setJatkoonMenijat(2);
+        assertTrue(aanestys.haeTulokset().contains(a));
+        assertTrue(aanestys.haeTulokset().contains(b));
+        assertTrue(aanestys.haeTulokset().contains(c));
+        assertFalse(aanestys.haeTulokset().contains(d));
+        
+        assertEquals(3, aanestys.haeTulokset().size());
     }
 
     /**

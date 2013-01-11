@@ -19,6 +19,10 @@ import mafia.kayttoliittyma.KayttisPeliRakentaja.PeliRakentajaMainPanel;
 public class ToimintoUusiPeliRakentaja implements ActionListener{
     private Kayttis kayttis;
     
+    /**
+     *
+     * @param kayttis
+     */
     public ToimintoUusiPeliRakentaja(Kayttis kayttis){
         this.kayttis=kayttis;
     }

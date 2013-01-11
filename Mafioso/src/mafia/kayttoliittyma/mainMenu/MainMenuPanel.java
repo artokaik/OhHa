@@ -20,6 +20,10 @@ public class MainMenuPanel extends JPanel {
 
     private Kayttis kayttis;
 
+    /**
+     *
+     * @param kayttis
+     */
     public MainMenuPanel(Kayttis kayttis) {
         this.kayttis = kayttis;
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -30,6 +34,10 @@ public class MainMenuPanel extends JPanel {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton teeUusiPeliNappi() {
         JButton nappi = new JButton("Uusi peli");
         ToimintoUusiPeliRakentaja toiminto = new ToimintoUusiPeliRakentaja(kayttis);
@@ -37,6 +45,10 @@ public class MainMenuPanel extends JPanel {
         return nappi;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton teeLopetusNappi() {
         JButton nappi = new JButton("Lopeta");
         ToimintoSuljeOhjelma sulje = new ToimintoSuljeOhjelma(kayttis);

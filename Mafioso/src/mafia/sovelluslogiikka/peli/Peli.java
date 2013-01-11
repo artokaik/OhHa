@@ -1,10 +1,7 @@
 package mafia.sovelluslogiikka.peli;
 
 import java.util.ArrayList;
-import mafia.sovelluslogiikka.Paiva;
-import mafia.sovelluslogiikka.Pelaaja;
-import mafia.sovelluslogiikka.Vaihe;
-import mafia.sovelluslogiikka.Yo;
+import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 
 /**
  * Peli-luokka kuvaa yhtä peliä. Se tuntee pelaajat, säännöt, sekä pelin
@@ -16,7 +13,6 @@ public class Peli {
 
     private ArrayList<Pelaaja> pelaajat;
     private ArrayList<Vaihe> vaiheet;
-//    private Vaihe kaynnissaOlevaVaihe;
     private Saannot saannot;
 
     /**
@@ -41,7 +37,7 @@ public class Peli {
     }
 
     /**
-     * Palauttaa pelin seuraavan vaiheen.
+     * Pyytää nykyistä vaihetta luomaan pelin seuraavan vaiheen ja lisää sen vaihelistaan. Mikäli kyseessä on pelin ensimmäinen vaihe, tarkastaa säännöistä onko vaihe Paiva vai Yo. Lopuksi palauttaa kyseisen vaiheen.
      *
      * @return
      */
@@ -62,6 +58,10 @@ public class Peli {
 
     }
     
+    /**
+     * Palauttaa pelin käynnissä olevan tai viimeisen vaiheen.
+     * @return
+     */
     public Vaihe haeNykyinenVaihe(){
         if (vaiheet.isEmpty()){
             return null;
@@ -70,6 +70,10 @@ public class Peli {
         }
     }
     
+    /**
+     * Palauttaa elossa olevat pelaajat.
+     * @return
+     */
     public ArrayList<Pelaaja> elossa(){
         return this.haeNykyinenVaihe().getPelaajat();
     }
@@ -189,7 +193,7 @@ public class Peli {
     }
 
     /**
-     *
+     * Palauttaa Stringinä pelin voittajan.
      * @param hengissa
      * @return
      */
@@ -254,43 +258,3 @@ public class Peli {
         this.saannot = saannot;
     }
 }
-//    /**
-//     *
-//     */
-//    public void pelaa() {
-//        Vaihe seuraavaVaihe = new Yo((ArrayList<Pelaaja>) pelaajat.clone());
-//        if (saannot.getPaivaEnsin()) {
-//            seuraavaVaihe = new Paiva((ArrayList<Pelaaja>) pelaajat.clone());
-//        }
-//        while (jatkuuko(seuraavaVaihe.getPelaajat())) {
-//            seuraavaVaihe = pelaaYksiVaihe(seuraavaVaihe);
-//        }
-//        this.julistaVoittaja(seuraavaVaihe.getPelaajat());
-//    }
-//    /**
-//     * Suorittaa käynnissä olevan vaiheen pelaa(Saannot saannot) -metodin, lisää vaiheen pelin vaihelistaan, pyytää ohjausoliota tulostamaan vaiheen tapahtumat ja pyytää käynnissä olevaa vaihetta luomaan seuraavan vaiheen, joka on metodin paluuarvo.
-//     * @param vaihe
-//     * @return
-//     */
-//    public Vaihe pelaaYksiVaihe(Vaihe vaihe) {
-//        kaynnissaOlevaVaihe = vaihe;
-//        vaihe.pelaa(saannot);
-//        vaiheet.add(vaihe);
-//        Ohjaus ohjaus = new Ohjaus();
-//        ohjaus.tulostaTapahtumat(vaihe);
-//        return vaihe.luoSeuraavaVaihe();
-//    }
-//    /**
-//     *
-//     * @param hengissa
-//     */
-//    public void julistaVoittaja(ArrayList<Pelaaja> hengissa) {
-//        Ohjaus ohjaus = new Ohjaus();
-//        for (Pelaaja pelaaja : hengissa) {
-//            if (pelaaja.getRooli().onkoPahis()) {
-//                ohjaus.julistaVoittaja("Pahikset");
-//                return;
-//            }
-//        }
-//        ohjaus.julistaVoittaja("Hyvikset");
-//    }
