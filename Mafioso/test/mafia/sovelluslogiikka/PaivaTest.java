@@ -12,6 +12,7 @@ import mafia.sovelluslogiikka.roolit.Etsiva;
 import mafia.sovelluslogiikka.roolit.Kansalainen;
 import mafia.sovelluslogiikka.roolit.Mafioso;
 import mafia.sovelluslogiikka.roolit.Suojelija;
+import mafia.sovelluslogiikka.sekalaista.Aanestys;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -86,5 +87,11 @@ public class PaivaTest {
         yo.asetaAmmuttu(pekka);
         yo.tapaAmmutut();
         assertFalse(paiva.getPelaajat().equals(yo.getPelaajat()));
+    }
+    
+    @Test
+    public void aanestyksenLisaaminenToimii(){
+        paiva.lisaaAanestys(new Aanestys(paiva.getPelaajat(), paiva.getPelaajat()));
+        assertEquals(1,paiva.getAanestykset().size());
     }
 }

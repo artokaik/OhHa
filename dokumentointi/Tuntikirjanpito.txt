@@ -19,4 +19,9 @@ Tuntikirjanpito
 9.1.13		testejä				2h
 		käyttiksen kanssa tappelua	4h
 		dokumentointia 			1h
+10.1.13		käyttis toimintakuntoon		6h
+11.1.13		Käyttiksen koodin hiomista	3h
+		demotilaisuus			1,5h
+		javadoc				2h
+		
 		

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Arto-MacBook-Air.local" name="mafia.sovelluslogiikka.AanestysTest" tests="14" time="0.261" timestamp="2013-01-11T17:33:00">
+<testsuite errors="0" failures="0" hostname="Arto-MacBook-Air.local" name="mafia.sovelluslogiikka.AanestysTest" tests="14" time="0.311" timestamp="2013-01-11T18:42:17">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -63,7 +63,7 @@
     <property name="manifest.available+main.class" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mafia.sovelluslogiikka.AanestysTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/test/results/TEST-mafia.sovelluslogiikka.AanestysTest.xml crashfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junitvmwatcher2994477486160014539.properties propsfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junit7885803178113684594.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mafia.sovelluslogiikka.AanestysTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/test/results/TEST-mafia.sovelluslogiikka.AanestysTest.xml crashfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junitvmwatcher6986387638806141841.properties propsfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junit3228445515695685111.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -435,20 +435,20 @@
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
     <property name="ant.file.Mafia-impl" value="/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/nbproject/build-impl.xml" />
   </properties>
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="ehdokkaatOikein" time="0.003" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="laskeAanetOikeinMontaAanta" time="0.006" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="laskeAanetOikeinNollaAanta" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="jokuAanestaaKahdesti" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="aanenVaihtoToimii" time="0.0" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="aanenVaihtoEiToimiJosAantaEiOleAnnettu" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="ehdokkaatOikein" time="0.0" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="alussaEiAania" time="0.0" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="aanienMaaraOikein" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="enitenAaniaSaanutOikein" time="0.001" />
+  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="enitenAaniaSaanutOikein" time="0.003" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="enitenAaniaSaanutOikeinTasapeli" time="0.001" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="kaksiEnitenAaniaSaanuttaOikein" time="0.001" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="kaksiEnitenAaniaSaanuttaOikeinKunKahdenTasapeli" time="0.001" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="kaksiEnitenAaniaSaanuttaOikeinKunKolmenTasapeli" time="0.001" />
   <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="laskeAanetOikeinYksiAani" time="0.001" />
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="laskeAanetOikeinMontaAanta" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="laskeAanetOikeinNollaAanta" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="jokuAanestaaKahdesti" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="aanenVaihtoToimii" time="0.0" />
-  <testcase classname="mafia.sovelluslogiikka.AanestysTest" name="aanenVaihtoEiToimiJosAantaEiOleAnnettu" time="0.0" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

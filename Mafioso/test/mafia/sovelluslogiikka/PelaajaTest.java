@@ -63,20 +63,6 @@ public class PelaajaTest {
         assertEquals(mafioso, pelaaja.getRooli());
     }
 
-    /**
-     *
-     */
-    @Test
-    public void alussaElossa() {
-        assertEquals(true, pelaaja.getElossa());
-    }
 
-    /**
-     *
-     */
-    @Test
-    public void kuoleToimii() {
-        pelaaja.kuole();
-        assertEquals(false, pelaaja.getElossa());
-    }
+
 }

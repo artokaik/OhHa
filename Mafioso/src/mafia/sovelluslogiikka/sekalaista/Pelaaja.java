@@ -12,7 +12,7 @@ import mafia.sovelluslogiikka.roolit.Rooli;
 public class Pelaaja implements Comparable{
     private String nimi;
     private Rooli rooli;
-    private boolean elossa;
+
     
     /**
      *
@@ -20,7 +20,6 @@ public class Pelaaja implements Comparable{
      */
     public Pelaaja(String nimi){
         this.nimi = nimi;
-        this.elossa = true;
     }
     
     /**
@@ -29,21 +28,6 @@ public class Pelaaja implements Comparable{
      */
     public String getNimi(){
         return this.nimi;
-    }
-    
-    /**
-     *
-     */
-    public void kuole(){
-        this.elossa = false;
-    }
-    
-    /**
-     *
-     * @return
-     */
-    public boolean getElossa(){
-        return elossa;
     }
     
     /**
@@ -62,14 +46,7 @@ public class Pelaaja implements Comparable{
         this.rooli=rooli;
     }
     
-    /**
-     *
-     * @param yo
-     */
-    public void toimiRoolinMukaan(Yo yo){
-        this.rooli.toimi(yo, this);
-    }
-    
+
     @Override
     public String toString(){
         return this.nimi;

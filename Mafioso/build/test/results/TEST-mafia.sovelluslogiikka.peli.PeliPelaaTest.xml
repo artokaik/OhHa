@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Arto-MacBook-Air.local" name="mafia.sovelluslogiikka.peli.PeliPelaaTest" tests="1" time="0.119" timestamp="2013-01-11T17:33:05">
+<testsuite errors="0" failures="0" hostname="Arto-MacBook-Air.local" name="mafia.sovelluslogiikka.peli.PeliPelaaTest" tests="1" time="0.13" timestamp="2013-01-11T18:42:24">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -63,7 +63,7 @@
     <property name="manifest.available+main.class" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mafia.sovelluslogiikka.peli.PeliPelaaTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/test/results/TEST-mafia.sovelluslogiikka.peli.PeliPelaaTest.xml crashfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junitvmwatcher3206619815946310241.properties propsfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junit1876213168945987033.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mafia.sovelluslogiikka.peli.PeliPelaaTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/test/results/TEST-mafia.sovelluslogiikka.peli.PeliPelaaTest.xml crashfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junitvmwatcher4858527140903784935.properties propsfile=/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/build/junit4820053266436852229.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -435,7 +435,7 @@
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
     <property name="ant.file.Mafia-impl" value="/Users/Arto/Dropbox/Koulu/OhHa/Mafioso/nbproject/build-impl.xml" />
   </properties>
-  <testcase classname="mafia.sovelluslogiikka.peli.PeliPelaaTest" name="testi" time="0.005" />
+  <testcase classname="mafia.sovelluslogiikka.peli.PeliPelaaTest" name="testi" time="0.008" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

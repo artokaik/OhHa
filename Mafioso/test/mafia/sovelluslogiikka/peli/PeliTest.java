@@ -7,11 +7,11 @@
  */
 package mafia.sovelluslogiikka.peli;
 
+import java.util.ArrayList;
+import mafia.sovelluslogiikka.PeliRakentaja;
 import mafia.sovelluslogiikka.roolit.Etsiva;
 import mafia.sovelluslogiikka.roolit.Mafioso;
 import mafia.sovelluslogiikka.roolit.Kansalainen;
-import mafia.sovelluslogiikka.peli.Peli;
-import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 import mafia.sovelluslogiikka.sekalaista.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -237,4 +237,53 @@ public class PeliTest {
         assertTrue(peli.voittikoHyvikset(peli.getPelaajat()));
         assertFalse(peli.voittikoPahikset(peli.getPelaajat()));
     }
-}
+
+    @Test
+    public void seuraavaVaiheToimiiJokaToinenPaiva() {
+        Vaihe vaihe1;
+        Vaihe vaihe2;
+        if (peli.getSaannot().getPaivaEnsin()) {
+            vaihe1 = new Paiva(new ArrayList<Pelaaja>());
+            vaihe2 = new Yo(new ArrayList<Pelaaja>());
+        } else {
+            vaihe2 = new Paiva(new ArrayList<Pelaaja>());
+            vaihe1 = new Yo(new ArrayList<Pelaaja>());
+        }
+        assertEquals(vaihe1.getClass(), peli.seuraavaanVaiheseen().getClass());
+        assertEquals(vaihe2.getClass(), peli.seuraavaanVaiheseen().getClass());
+        assertEquals(vaihe1.getClass(), peli.seuraavaanVaiheseen().getClass());
+        assertEquals(vaihe2.getClass(), peli.seuraavaanVaiheseen().getClass());
+        assertEquals(vaihe1.getClass(), peli.seuraavaanVaiheseen().getClass());
+    }
+
+    @Test
+    public void seuraavaVaiheToimiiPelaajatSiirtyvät() {
+        peli = teeIsoPeliPeliRakentajalla();
+        assertEquals(9, peli.seuraavaanVaiheseen().getPelaajat().size());
+        assertEquals(9, peli.seuraavaanVaiheseen().getPelaajat().size()); 
+        assertEquals(9, peli.seuraavaanVaiheseen().getPelaajat().size());
+    }
+    
+        public static Peli teeIsoPeliPeliRakentajalla() {
+        PeliRakentaja rakentaja = new PeliRakentaja();
+        rakentaja.lisaaPelaaja(new Pelaaja("a"));
+        rakentaja.lisaaPelaaja(new Pelaaja("b"));
+        rakentaja.lisaaPelaaja(new Pelaaja("c"));
+        rakentaja.lisaaPelaaja(new Pelaaja("d"));
+        rakentaja.lisaaPelaaja(new Pelaaja("e"));
+        rakentaja.lisaaPelaaja(new Pelaaja("f"));
+        rakentaja.lisaaPelaaja(new Pelaaja("g"));
+        rakentaja.lisaaPelaaja(new Pelaaja("h"));
+        rakentaja.lisaaPelaaja(new Pelaaja("i"));
+        rakentaja.lisaaRooli(new Mafioso());
+        rakentaja.lisaaRooli(new Mafioso());
+        rakentaja.lisaaRooli(new Mafioso());
+        rakentaja.lisaaRooli(new Kansalainen());
+        rakentaja.lisaaRooli(new Kansalainen());
+        rakentaja.lisaaRooli(new Kansalainen());
+        rakentaja.lisaaRooli(new Kansalainen());
+        rakentaja.lisaaRooli(new Kansalainen());
+        rakentaja.lisaaRooli(new Kansalainen());
+        return rakentaja.teePeli();
+    }
+    }
